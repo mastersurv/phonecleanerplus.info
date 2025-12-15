@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html class="page" lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Ultra Cleaner</title>
+  <meta name="description" content="Ultra Cleaner">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#eeeeee">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#eeeeee">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicons/favicon-16x16.png">
+  <link rel="icon" type="image/svg+xml" sizes="any" href="images/favicons/favicon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/favicons/apple-touch-icon.png">
+  <link rel="manifest" href="images/favicons/manifest.webmanifest">
+
+  <link rel="stylesheet" href="styles/swiper.min.css">
+  <link rel="stylesheet" href="styles/hystmodal.min.css">
+  <link rel="stylesheet" href="styles/style.css">
+</head>
+
+<body class="page__body">
+
+  <div class="page-loader loader">
+    <span>Loading</span>
+  </div>
+
+  <div class="progress-loader loader-2">
+    <span>Loading</span>
+  </div>
+
+  <div class="wrapper">
+
+    <div class="main page__content">
+      <header class="header header--lk container-xs">
+        <button class="header__hamburger icon-button js-menu-toggle" aria-expanded="false" aria-controls="menu" aria-label="Open menu" type="button">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+            <g clip-path="url(#a)">
+              <path d="M28.444 25.778H3.556a.889.889 0 0 1 0-1.778h24.888a.889.889 0 1 1 0 1.778ZM28.444 16.89H3.556a.889.889 0 1 1 0-1.779h24.888a.889.889 0 0 1 0 1.778ZM28.444 8H3.556a.889.889 0 1 1 0-1.778h24.888a.889.889 0 1 1 0 1.778Z" />
+            </g>
+            <defs>
+              <clipPath id="a">
+                <path fill="#fff" d="M0 0h32v32H0z" />
+              </clipPath>
+            </defs>
+          </svg>
+        </button>
+
+        <div class="header__profile header-premium">
+          <div class="header-premium__info">
+            <span class="header-premium__title">Premium Version</span>
+
+            <span class="header-premium__version">Sept. 28, 2025, 10:31 a.m. UTC</span>
+          </div>
+
+          <img class="header-premium__icon" src="images/premium-icon.svg" width="36" height="36" aria-hidden="true" alt="">
+        </div>
+      </header>
+
+
+      <nav class="sidemenu is-closed js-menu" id="menu">
+        <button class="sidemenu__close icon-button js-menu-close" aria-label="Close menu" type="button">
+          <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36">
+            <circle cx="18" cy="18" r="17.5" stroke="#fff" opacity=".5" />
+            <path stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="m12 12 12 12m-12 0 12-12" />
+          </svg>
+        </button>
+
+        <ul class="sidemenu__list js-menu-links">
+          <li class="is-active">
+            <a href="/lk-app.html">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+                <path d="M24.609 2.011a1.78 1.78 0 0 1 2.383-.832 1.797 1.797 0 0 1 .835 2.393l-3.256 6.782a1.236 1.236 0 0 1-1.655.577l-.983-.477a1.247 1.247 0 0 1-.58-1.661l3.256-6.782Zm1.995 1.678c-.277.578-.799.902-1.165.725-.366-.178-.438-.79-.16-1.368.277-.578.799-.902 1.165-.725.366.177.438.79.16 1.368Zm-11.776 6.584 11.876 6.32c.311-.951.608-2.095.188-2.411-.673-.508-6.968-3.75-9.98-5.263-.386-.07-1.663.425-2.084 1.354Zm11.876 7.5-12.716-6.76c-1.577 1.197-5.675 3.507-9.459 3.169-.315.668-.82 2.408-.315 4.013.666.423 2.606 1.183 5.044.845-.77.529-2.795 1.374-4.729.529.175 1.091.841 3.549 2.102 4.647 1.612-.14 5.402-.93 7.672-2.957-.946 1.267-3.468 4.056-5.99 5.07 1.4 1.69 5.717 4.985 11.77 4.647.946-.845 3.006-2.957 3.678-4.647-.245 1.02-1.03 3.38-2.207 4.647.946-.105 3.006-.464 3.679-1.056 1.085-1.972 2.9-7.162 1.47-12.147Z" clip-rule="evenodd" />
+              </svg>
+
+              Smart Clean
+            </a>
+          </li>
+
+          <li>
+            <a href="/lk-compress.html">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+                <path d="M5.333 19.81a1.47 1.47 0 0 1-1.085-.44 1.482 1.482 0 0 1-.438-1.084c-.001-.431.145-.793.438-1.085a1.477 1.477 0 0 1 1.085-.44h21.334c.431 0 .794.147 1.086.44.293.292.439.654.438 1.085-.002.43-.148.793-.44 1.086-.29.294-.653.44-1.084.438H5.333Zm0-4.572a1.47 1.47 0 0 1-1.085-.439 1.481 1.481 0 0 1-.438-1.085c-.001-.43.145-.792.438-1.085a1.477 1.477 0 0 1 1.085-.438h21.334c.431 0 .794.146 1.086.438.293.293.439.655.438 1.085-.002.431-.148.793-.44 1.087-.29.293-.653.44-1.084.437H5.333ZM16 32a1.47 1.47 0 0 1-1.085-.439 1.482 1.482 0 0 1-.439-1.085v-3.352l-1.371 1.371c-.28.28-.635.42-1.067.42-.432 0-.787-.14-1.067-.42-.279-.28-.419-.635-.419-1.066 0-.432.14-.788.42-1.067l3.961-3.962c.153-.152.318-.26.496-.323.177-.063.368-.095.571-.096.203-.001.394.03.571.096.178.065.343.173.496.323l3.962 3.962c.279.28.425.629.437 1.048a1.42 1.42 0 0 1-.437 1.085 1.49 1.49 0 0 1-1.047.44 1.48 1.48 0 0 1-1.087-.402L17.524 27.2v3.276c0 .432-.146.794-.439 1.087A1.47 1.47 0 0 1 16 32Zm0-21.981c-.203 0-.394-.032-.571-.096a1.354 1.354 0 0 1-.496-.323l-3.962-3.962c-.279-.28-.419-.635-.419-1.067 0-.431.14-.787.42-1.066.279-.28.634-.42 1.066-.42.432 0 .787.14 1.067.42l1.371 1.371V1.524c0-.432.146-.794.439-1.085A1.482 1.482 0 0 1 16 0c.43-.001.793.145 1.087.439.293.293.439.655.437 1.085v3.352l1.371-1.371c.28-.28.635-.42 1.067-.42.432 0 .787.14 1.067.42.279.28.419.635.419 1.066 0 .432-.14.788-.42 1.067L17.068 9.6c-.153.152-.318.26-.496.325a1.647 1.647 0 0 1-.571.094Z" />
+              </svg>
+
+              Compress
+            </a>
+          </li>
+
+          <li>
+            <a href="/lk-speedtest.html">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+                <path d="M26.6 7.367A15.013 15.013 0 0 0 1.017 17.31a15.019 15.019 0 0 0 3.725 10.627l.011.012c.021.022.04.045.063.066.046.053.099.112.16.174a2.577 2.577 0 0 0 3.777-.026 9.829 9.829 0 0 1 14.468 0 2.578 2.578 0 0 0 3.794.004l.2-.22.012-.012a15.015 15.015 0 0 0-.626-20.57l-.002.002Zm-11.618.61a1.001 1.001 0 1 1 2.002 0v2.002a1.001 1.001 0 0 1-2.002 0V7.977ZM7.975 18.989H5.973a1 1 0 0 1 0-2.002h2.002a1.001 1.001 0 0 1 0 2.002Zm3.053-5.957a1 1 0 0 1-1.415 0l-1.416-1.415a1.001 1.001 0 0 1 1.416-1.416l1.415 1.416a1.001 1.001 0 0 1 0 1.415Zm9.34 1.446-2.971 4.724a1.94 1.94 0 0 1-.438.438 1.884 1.884 0 0 1-2.19-3.066l4.724-2.972a.64.64 0 0 1 .732 0 .63.63 0 0 1 .143.876Zm1.985-1.445a1 1 0 0 1-1.415-1.416l1.415-1.416a1.001 1.001 0 0 1 1.416 1.416l-1.416 1.415Zm3.64 5.956H23.99a1 1 0 1 1 0-2.002h2.002a1.001 1.001 0 0 1 0 2.002Z" />
+              </svg>
+              Speed Test
+            </a>
+          </li>
+
+          <li>
+            <a href="/lk-recommendations.html">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+                <path d="m16 25.457-7.29 4.28c-.322.2-.658.286-1.01.257a1.723 1.723 0 0 1-.922-.342c-.263-.2-.468-.45-.615-.748-.146-.3-.175-.635-.087-1.007l1.932-8.09-6.455-5.436c-.293-.257-.476-.55-.548-.879-.073-.329-.051-.65.065-.962.116-.313.291-.57.527-.77.235-.201.557-.33.966-.386l8.518-.728 3.294-7.619c.146-.342.373-.599.681-.77A1.92 1.92 0 0 1 16 2c.321 0 .635.086.943.257.308.171.536.428.682.77l3.293 7.62 8.519.727c.41.057.732.186.966.385.234.2.41.457.527.771.117.314.139.635.066.964-.072.329-.256.62-.55.877l-6.454 5.436 1.932 8.09c.088.37.058.706-.088 1.007-.146.3-.351.55-.615.748-.263.198-.57.313-.922.342a1.612 1.612 0 0 1-1.01-.257L16 25.457Z" />
+              </svg>
+
+              Recommendations
+            </a>
+          </li>
+
+          <li>
+            <a href="/lk.html">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+                <path d="M16 2a7 7 0 1 1 0 14 7 7 0 0 1 0-14Zm0 17.5c7.735 0 14 3.133 14 7V30H2v-3.5c0-3.867 6.265-7 14-7Z" />
+              </svg>
+
+              Account
+            </a>
+          </li>
+
+          <li>
+            <a href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+                <path fill-rule="evenodd" d="M12.061 1.612c-1.06.94-1.06 2.661-1.06 6.1v16.574c0 3.44 0 5.16 1.06 6.1 1.06.941 2.682.66 5.925.094l3.495-.61c3.592-.627 5.387-.94 6.454-2.257 1.067-1.319 1.067-3.224 1.067-7.035V11.42c0-3.81 0-5.715-1.066-7.034-1.068-1.317-2.865-1.63-6.456-2.256l-3.492-.61c-3.243-.566-4.865-.848-5.925.092m3.438 11.64c.62 0 1.125.526 1.125 1.176v3.14c0 .65-.504 1.177-1.125 1.177s-1.125-.527-1.125-1.176v-3.141c0-.65.504-1.176 1.125-1.176Z" clip-rule="evenodd" />
+                <path d="M8.82 4.749c-3.086.004-4.696.072-5.722 1.098C2 6.945 2 8.712 2 12.249v7.5c0 3.536 0 5.303 1.098 6.403 1.026 1.024 2.636 1.093 5.723 1.098-.07-.936-.07-2.016-.07-3.185V7.933c0-1.17 0-2.25.07-3.184Z" />
+              </svg>
+
+              Exit
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <main>
+        <div class="app-page">
+          <div class="app-page__header container-xs">
+            <div class="app-header app-header--align-start app-header--xl">
+              <div class="app-header__icon">
+                <img class="app-icon__icon" src="images/logo.png" width="80" height="80" alt="App Icon">
+              </div>
+
+              <div class="app-header__info">
+                <h2 class="app-header__title">Ultra Cleaner
+                </h2>
+
+                <div class="app-header__text">Cleanup & Duplicate Remover</div>
+
+                <div class="app-header__text app-header__text--sm">Designed for iPad. Not verified for MacOS.</div>
+              </div>
+            </div>
+
+            <a class="button button--secondary button--shadow" href="#">
+              Download my PREMIUM APP
+            </a>
+          </div>
+
+          <div class="app-page__gallery app-page__slider-wrapper">
+            <div class="gallery-slider swiper">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                  <img src="images/gallery-1.jpg" width="200" height="434" alt="Ultra Cleaner Kit">
+                </div>
+
+                <div class="swiper-slide">
+                  <img src="images/gallery-2.jpg" width="200" height="434" alt="Compress">
+                </div>
+
+                <div class="swiper-slide">
+                  <img src="images/gallery-3.jpg" width="200" height="434" alt="Smart Scanning">
+                </div>
+
+                <div class="swiper-slide">
+                  <img src="images/gallery-4.jpg" width="200" height="434" alt="Sort photos">
+                </div>
+
+                <div class="swiper-slide">
+                  <img src="images/gallery-5.jpg" width="200" height="434" alt="And much more">
+                </div>
+
+                <div class="swiper-slide">
+                  <img src="images/gallery-6.jpg" width="200" height="434" alt="Test connection">
+                </div>
+
+                <div class="swiper-slide">
+                  <img src="images/gallery-1.jpg" width="200" height="434" alt="Ultra Cleaner Kit">
+                </div>
+
+                <div class="swiper-slide">
+                  <img src="images/gallery-2.jpg" width="200" height="434" alt="Compress">
+                </div>
+
+                <div class="swiper-slide">
+                  <img src="images/gallery-3.jpg" width="200" height="434" alt="Smart Scanning">
+                </div>
+
+                <div class="swiper-slide">
+                  <img src="images/gallery-4.jpg" width="200" height="434" alt="Sort photos">
+                </div>
+
+                <div class="swiper-slide">
+                  <img src="images/gallery-5.jpg" width="200" height="434" alt="And much more">
+                </div>
+
+                <div class="swiper-slide">
+                  <img src="images/gallery-6.jpg" width="200" height="434" alt="Test connection">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="app-page__content container-xs entry-content">
+            <p>Simplify your iPhone life with Ultra Cleaner, a cleaning tool that easily recognizes similar photos, merges duplicate contacts, finds large video files and unwanted screenshots, compresses photos and more.</p>
+
+            <p>What can Ultra Cleaner do?</p>
+
+            <p>- Similar Photos Cleanup (recognize similar pictures, live and burst photos, screenshots and easily delete duplicates).</p>
+
+            <p>- Photos compression.</p>
+
+            <p>- Contacts Cleanup (quickly find and merge duplicate contacts in just one tap).</p>
+
+            <p>- Large and unwanted files Cleanup (search and remove large video files).</p>
+
+            <p>- Modern sets of widgets for productivity.</p>
+
+            <p>- Clearing calendar events</p>
+
+            <p>- Remove unwanted geo-tags from photos</p>
+
+            <p>- Speed test to check the speed of your connection</p>
+
+            <p>- Lots of useful tips to optimize your free space</p>
+
+            <p>Start a free trial to familiarize yourself with all the app’s features.</p>
+
+            <p>Unlimited access to all features within Ultra Cleaner:</p>
+
+            <p>- Subscriptions are billed weekly, monthly or annually at the rate selected depending on the subscription plan</p>
+
+            <p>- Payment will be charged to iTunes Account at confirmation of purchase</p>
+
+            <p>- Subscription automatically renews unless auto-renew is turned off at least 24 hours before the end of the current period</p>
+
+            <p>- Account will be charged for renewal within 24 hours prior to the end of the current period, and identify the cost of the renewal</p>
+
+            <p>- Subscriptions may be managed by the user and auto-renewal may be turned off by going to the user's Account Settings after purchase</p>
+          </div>
+
+          <section class="section section--padding-sm">
+            <header class="section-header section-header--center container-xs">
+              <h2 class="section-title section-title--sm">
+                What our users are saying
+              </h2>
+            </header>
+
+            <div class="app-page__slider-wrapper">
+              <div class="reviews-slider-2 swiper slider">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <div class="reviews-slide">
+                      <div class="reviews-slide__content">
+                        <div class="reviews-slide__rating rating-static">
+                          <span class="rating-static__star is-checked">
+                            <svg class="rating-static__icon" width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M8.5245.4635c.1496-.4606.8014-.4606.951 0l1.6574 5.1008a.5.5 0 0 0 .4755.3455h5.3633c.4844 0 .6858.6198.2939.9045l-4.339 3.1525a.4999.4999 0 0 0-.1816.559l1.6573 5.1008c.1497.4607-.3775.8438-.7694.5591l-4.339-3.1525a.5.5 0 0 0-.5878 0l-4.339 3.1525c-.3919.2847-.9191-.0984-.7694-.5591l1.6573-5.1008a.5.5 0 0 0-.1816-.559L.7344 6.8143c-.3919-.2847-.1905-.9045.2939-.9045h5.3633a.5.5 0 0 0 .4755-.3455L8.5245.4635Z" />
+                            </svg>
+                          </span>
+                          <span class="rating-static__star is-checked">
+                            <svg class="rating-static__icon" width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M8.5245.4635c.1496-.4606.8014-.4606.951 0l1.6574 5.1008a.5.5 0 0 0 .4755.3455h5.3633c.4844 0 .6858.6198.2939.9045l-4.339 3.1525a.4999.4999 0 0 0-.1816.559l1.6573 5.1008c.1497.4607-.3775.8438-.7694.5591l-4.339-3.1525a.5.5 0 0 0-.5878 0l-4.339 3.1525c-.3919.2847-.9191-.0984-.7694-.5591l1.6573-5.1008a.5.5 0 0 0-.1816-.559L.7344 6.8143c-.3919-.2847-.1905-.9045.2939-.9045h5.3633a.5.5 0 0 0 .4755-.3455L8.5245.4635Z" />
+                            </svg>
+                          </span>
+                          <span class="rating-static__star is-checked">
+                            <svg class="rating-static__icon" width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M8.5245.4635c.1496-.4606.8014-.4606.951 0l1.6574 5.1008a.5.5 0 0 0 .4755.3455h5.3633c.4844 0 .6858.6198.2939.9045l-4.339 3.1525a.4999.4999 0 0 0-.1816.559l1.6573 5.1008c.1497.4607-.3775.8438-.7694.5591l-4.339-3.1525a.5.5 0 0 0-.5878 0l-4.339 3.1525c-.3919.2847-.9191-.0984-.7694-.5591l1.6573-5.1008a.5.5 0 0 0-.1816-.559L.7344 6.8143c-.3919-.2847-.1905-.9045.2939-.9045h5.3633a.5.5 0 0 0 .4755-.3455L8.5245.4635Z" />
+                            </svg>
+                          </span>
+                          <span class="rating-static__star is-checked">
+                            <svg class="rating-static__icon" width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M8.5245.4635c.1496-.4606.8014-.4606.951 0l1.6574 5.1008a.5.5 0 0 0 .4755.3455h5.3633c.4844 0 .6858.6198.2939.9045l-4.339 3.1525a.4999.4999 0 0 0-.1816.559l1.6573 5.1008c.1497.4607-.3775.8438-.7694.5591l-4.339-3.1525a.5.5 0 0 0-.5878 0l-4.339 3.1525c-.3919.2847-.9191-.0984-.7694-.5591l1.6573-5.1008a.5.5 0 0 0-.1816-.559L.7344 6.8143c-.3919-.2847-.1905-.9045.2939-.9045h5.3633a.5.5 0 0 0 .4755-.3455L8.5245.4635Z" />
+                            </svg>
+                          </span>
+                          <span class="rating-static__star is-checked">
+                            <svg class="rating-static__icon" width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M8.5245.4635c.1496-.4606.8014-.4606.951 0l1.6574 5.1008a.5.5 0 0 0 .4755.3455h5.3633c.4844 0 .6858.6198.2939.9045l-4.339 3.1525a.4999.4999 0 0 0-.1816.559l1.6573 5.1008c.1497.4607-.3775.8438-.7694.5591l-4.339-3.1525a.5.5 0 0 0-.5878 0l-4.339 3.1525c-.3919.2847-.9191-.0984-.7694-.5591l1.6573-5.1008a.5.5 0 0 0-.1816-.559L.7344 6.8143c-.3919-.2847-.1905-.9045.2939-.9045h5.3633a.5.5 0 0 0 .4755-.3455L8.5245.4635Z" />
+                            </svg>
+                          </span>
+                        </div>
+
+                        <h3 class="reviews-slide__title">Thanks!</h3>
+
+                        <div class="reviews-slide__text">
+                          Auto cleaner does a fantastuc job of cleanung up the mess from our phones for free 👍
+                        </div>
+                      </div>
+
+                      <div class="reviews-slide__footer">
+                        <div class="reviews-slide__name">Frederick</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="swiper-slide">
+                    <div class="reviews-slide">
+                      <div class="reviews-slide__content">
+                        <div class="reviews-slide__rating rating-static">
+                          <span class="rating-static__star is-checked">
+                            <svg class="rating-static__icon" width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M8.5245.4635c.1496-.4606.8014-.4606.951 0l1.6574 5.1008a.5.5 0 0 0 .4755.3455h5.3633c.4844 0 .6858.6198.2939.9045l-4.339 3.1525a.4999.4999 0 0 0-.1816.559l1.6573 5.1008c.1497.4607-.3775.8438-.7694.5591l-4.339-3.1525a.5.5 0 0 0-.5878 0l-4.339 3.1525c-.3919.2847-.9191-.0984-.7694-.5591l1.6573-5.1008a.5.5 0 0 0-.1816-.559L.7344 6.8143c-.3919-.2847-.1905-.9045.2939-.9045h5.3633a.5.5 0 0 0 .4755-.3455L8.5245.4635Z" />
+                            </svg>
+                          </span>
+                          <span class="rating-static__star is-checked">
+                            <svg class="rating-static__icon" width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M8.5245.4635c.1496-.4606.8014-.4606.951 0l1.6574 5.1008a.5.5 0 0 0 .4755.3455h5.3633c.4844 0 .6858.6198.2939.9045l-4.339 3.1525a.4999.4999 0 0 0-.1816.559l1.6573 5.1008c.1497.4607-.3775.8438-.7694.5591l-4.339-3.1525a.5.5 0 0 0-.5878 0l-4.339 3.1525c-.3919.2847-.9191-.0984-.7694-.5591l1.6573-5.1008a.5.5 0 0 0-.1816-.559L.7344 6.8143c-.3919-.2847-.1905-.9045.2939-.9045h5.3633a.5.5 0 0 0 .4755-.3455L8.5245.4635Z" />
+                            </svg>
+                          </span>
+                          <span class="rating-static__star is-checked">
+                            <svg class="rating-static__icon" width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M8.5245.4635c.1496-.4606.8014-.4606.951 0l1.6574 5.1008a.5.5 0 0 0 .4755.3455h5.3633c.4844 0 .6858.6198.2939.9045l-4.339 3.1525a.4999.4999 0 0 0-.1816.559l1.6573 5.1008c.1497.4607-.3775.8438-.7694.5591l-4.339-3.1525a.5.5 0 0 0-.5878 0l-4.339 3.1525c-.3919.2847-.9191-.0984-.7694-.5591l1.6573-5.1008a.5.5 0 0 0-.1816-.559L.7344 6.8143c-.3919-.2847-.1905-.9045.2939-.9045h5.3633a.5.5 0 0 0 .4755-.3455L8.5245.4635Z" />
+                            </svg>
+                          </span>
+                          <span class="rating-static__star is-checked">
+                            <svg class="rating-static__icon" width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M8.5245.4635c.1496-.4606.8014-.4606.951 0l1.6574 5.1008a.5.5 0 0 0 .4755.3455h5.3633c.4844 0 .6858.6198.2939.9045l-4.339 3.1525a.4999.4999 0 0 0-.1816.559l1.6573 5.1008c.1497.4607-.3775.8438-.7694.5591l-4.339-3.1525a.5.5 0 0 0-.5878 0l-4.339 3.1525c-.3919.2847-.9191-.0984-.7694-.5591l1.6573-5.1008a.5.5 0 0 0-.1816-.559L.7344 6.8143c-.3919-.2847-.1905-.9045.2939-.9045h5.3633a.5.5 0 0 0 .4755-.3455L8.5245.4635Z" />
+                            </svg>
+                          </span>
+                          <span class="rating-static__star is-checked">
+                            <svg class="rating-static__icon" width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M8.5245.4635c.1496-.4606.8014-.4606.951 0l1.6574 5.1008a.5.5 0 0 0 .4755.3455h5.3633c.4844 0 .6858.6198.2939.9045l-4.339 3.1525a.4999.4999 0 0 0-.1816.559l1.6573 5.1008c.1497.4607-.3775.8438-.7694.5591l-4.339-3.1525a.5.5 0 0 0-.5878 0l-4.339 3.1525c-.3919.2847-.9191-.0984-.7694-.5591l1.6573-5.1008a.5.5 0 0 0-.1816-.559L.7344 6.8143c-.3919-.2847-.1905-.9045.2939-.9045h5.3633a.5.5 0 0 0 .4755-.3455L8.5245.4635Z" />
+                            </svg>
+                          </span>
+                        </div>
+
+                        <h3 class="reviews-slide__title">You already at the top</h3>
+
+                        <div class="reviews-slide__text">
+                          Hold on don't bend over do not jump everyone looking at you because they're behind you because you're number one you guys park and I am very thankful for you. Race.
+                        </div>
+                      </div>
+
+                      <div class="reviews-slide__footer">
+                        <div class="reviews-slide__name">05ecaR08</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="swiper-slide">
+                    <div class="reviews-slide">
+                      <div class="reviews-slide__content">
+                        <div class="reviews-slide__rating rating-static">
+                          <span class="rating-static__star is-checked">
+                            <svg class="rating-static__icon" width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M8.5245.4635c.1496-.4606.8014-.4606.951 0l1.6574 5.1008a.5.5 0 0 0 .4755.3455h5.3633c.4844 0 .6858.6198.2939.9045l-4.339 3.1525a.4999.4999 0 0 0-.1816.559l1.6573 5.1008c.1497.4607-.3775.8438-.7694.5591l-4.339-3.1525a.5.5 0 0 0-.5878 0l-4.339 3.1525c-.3919.2847-.9191-.0984-.7694-.5591l1.6573-5.1008a.5.5 0 0 0-.1816-.559L.7344 6.8143c-.3919-.2847-.1905-.9045.2939-.9045h5.3633a.5.5 0 0 0 .4755-.3455L8.5245.4635Z" />
+                            </svg>
+                          </span>
+                          <span class="rating-static__star is-checked">
+                            <svg class="rating-static__icon" width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M8.5245.4635c.1496-.4606.8014-.4606.951 0l1.6574 5.1008a.5.5 0 0 0 .4755.3455h5.3633c.4844 0 .6858.6198.2939.9045l-4.339 3.1525a.4999.4999 0 0 0-.1816.559l1.6573 5.1008c.1497.4607-.3775.8438-.7694.5591l-4.339-3.1525a.5.5 0 0 0-.5878 0l-4.339 3.1525c-.3919.2847-.9191-.0984-.7694-.5591l1.6573-5.1008a.5.5 0 0 0-.1816-.559L.7344 6.8143c-.3919-.2847-.1905-.9045.2939-.9045h5.3633a.5.5 0 0 0 .4755-.3455L8.5245.4635Z" />
+                            </svg>
+                          </span>
+                          <span class="rating-static__star is-checked">
+                            <svg class="rating-static__icon" width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M8.5245.4635c.1496-.4606.8014-.4606.951 0l1.6574 5.1008a.5.5 0 0 0 .4755.3455h5.3633c.4844 0 .6858.6198.2939.9045l-4.339 3.1525a.4999.4999 0 0 0-.1816.559l1.6573 5.1008c.1497.4607-.3775.8438-.7694.5591l-4.339-3.1525a.5.5 0 0 0-.5878 0l-4.339 3.1525c-.3919.2847-.9191-.0984-.7694-.5591l1.6573-5.1008a.5.5 0 0 0-.1816-.559L.7344 6.8143c-.3919-.2847-.1905-.9045.2939-.9045h5.3633a.5.5 0 0 0 .4755-.3455L8.5245.4635Z" />
+                            </svg>
+                          </span>
+                          <span class="rating-static__star is-checked">
+                            <svg class="rating-static__icon" width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M8.5245.4635c.1496-.4606.8014-.4606.951 0l1.6574 5.1008a.5.5 0 0 0 .4755.3455h5.3633c.4844 0 .6858.6198.2939.9045l-4.339 3.1525a.4999.4999 0 0 0-.1816.559l1.6573 5.1008c.1497.4607-.3775.8438-.7694.5591l-4.339-3.1525a.5.5 0 0 0-.5878 0l-4.339 3.1525c-.3919.2847-.9191-.0984-.7694-.5591l1.6573-5.1008a.5.5 0 0 0-.1816-.559L.7344 6.8143c-.3919-.2847-.1905-.9045.2939-.9045h5.3633a.5.5 0 0 0 .4755-.3455L8.5245.4635Z" />
+                            </svg>
+                          </span>
+                          <span class="rating-static__star is-checked">
+                            <svg class="rating-static__icon" width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M8.5245.4635c.1496-.4606.8014-.4606.951 0l1.6574 5.1008a.5.5 0 0 0 .4755.3455h5.3633c.4844 0 .6858.6198.2939.9045l-4.339 3.1525a.4999.4999 0 0 0-.1816.559l1.6573 5.1008c.1497.4607-.3775.8438-.7694.5591l-4.339-3.1525a.5.5 0 0 0-.5878 0l-4.339 3.1525c-.3919.2847-.9191-.0984-.7694-.5591l1.6573-5.1008a.5.5 0 0 0-.1816-.559L.7344 6.8143c-.3919-.2847-.1905-.9045.2939-.9045h5.3633a.5.5 0 0 0 .4755-.3455L8.5245.4635Z" />
+                            </svg>
+                          </span>
+                        </div>
+
+                        <h3 class="reviews-slide__title">Incredible</h3>
+
+                        <div class="reviews-slide__text">
+                          Highly nessesary!
+                        </div>
+                      </div>
+
+                      <div class="reviews-slide__footer">
+                        <div class="reviews-slide__name">Emma</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="swiper-slide">
+                    <div class="reviews-slide">
+                      <div class="reviews-slide__content">
+                        <div class="reviews-slide__rating rating-static">
+                          <span class="rating-static__star is-checked">
+                            <svg class="rating-static__icon" width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M8.5245.4635c.1496-.4606.8014-.4606.951 0l1.6574 5.1008a.5.5 0 0 0 .4755.3455h5.3633c.4844 0 .6858.6198.2939.9045l-4.339 3.1525a.4999.4999 0 0 0-.1816.559l1.6573 5.1008c.1497.4607-.3775.8438-.7694.5591l-4.339-3.1525a.5.5 0 0 0-.5878 0l-4.339 3.1525c-.3919.2847-.9191-.0984-.7694-.5591l1.6573-5.1008a.5.5 0 0 0-.1816-.559L.7344 6.8143c-.3919-.2847-.1905-.9045.2939-.9045h5.3633a.5.5 0 0 0 .4755-.3455L8.5245.4635Z" />
+                            </svg>
+                          </span>
+                          <span class="rating-static__star is-checked">
+                            <svg class="rating-static__icon" width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M8.5245.4635c.1496-.4606.8014-.4606.951 0l1.6574 5.1008a.5.5 0 0 0 .4755.3455h5.3633c.4844 0 .6858.6198.2939.9045l-4.339 3.1525a.4999.4999 0 0 0-.1816.559l1.6573 5.1008c.1497.4607-.3775.8438-.7694.5591l-4.339-3.1525a.5.5 0 0 0-.5878 0l-4.339 3.1525c-.3919.2847-.9191-.0984-.7694-.5591l1.6573-5.1008a.5.5 0 0 0-.1816-.559L.7344 6.8143c-.3919-.2847-.1905-.9045.2939-.9045h5.3633a.5.5 0 0 0 .4755-.3455L8.5245.4635Z" />
+                            </svg>
+                          </span>
+                          <span class="rating-static__star is-checked">
+                            <svg class="rating-static__icon" width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M8.5245.4635c.1496-.4606.8014-.4606.951 0l1.6574 5.1008a.5.5 0 0 0 .4755.3455h5.3633c.4844 0 .6858.6198.2939.9045l-4.339 3.1525a.4999.4999 0 0 0-.1816.559l1.6573 5.1008c.1497.4607-.3775.8438-.7694.5591l-4.339-3.1525a.5.5 0 0 0-.5878 0l-4.339 3.1525c-.3919.2847-.9191-.0984-.7694-.5591l1.6573-5.1008a.5.5 0 0 0-.1816-.559L.7344 6.8143c-.3919-.2847-.1905-.9045.2939-.9045h5.3633a.5.5 0 0 0 .4755-.3455L8.5245.4635Z" />
+                            </svg>
+                          </span>
+                          <span class="rating-static__star is-checked">
+                            <svg class="rating-static__icon" width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M8.5245.4635c.1496-.4606.8014-.4606.951 0l1.6574 5.1008a.5.5 0 0 0 .4755.3455h5.3633c.4844 0 .6858.6198.2939.9045l-4.339 3.1525a.4999.4999 0 0 0-.1816.559l1.6573 5.1008c.1497.4607-.3775.8438-.7694.5591l-4.339-3.1525a.5.5 0 0 0-.5878 0l-4.339 3.1525c-.3919.2847-.9191-.0984-.7694-.5591l1.6573-5.1008a.5.5 0 0 0-.1816-.559L.7344 6.8143c-.3919-.2847-.1905-.9045.2939-.9045h5.3633a.5.5 0 0 0 .4755-.3455L8.5245.4635Z" />
+                            </svg>
+                          </span>
+                          <span class="rating-static__star is-checked">
+                            <svg class="rating-static__icon" width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M8.5245.4635c.1496-.4606.8014-.4606.951 0l1.6574 5.1008a.5.5 0 0 0 .4755.3455h5.3633c.4844 0 .6858.6198.2939.9045l-4.339 3.1525a.4999.4999 0 0 0-.1816.559l1.6573 5.1008c.1497.4607-.3775.8438-.7694.5591l-4.339-3.1525a.5.5 0 0 0-.5878 0l-4.339 3.1525c-.3919.2847-.9191-.0984-.7694-.5591l1.6573-5.1008a.5.5 0 0 0-.1816-.559L.7344 6.8143c-.3919-.2847-.1905-.9045.2939-.9045h5.3633a.5.5 0 0 0 .4755-.3455L8.5245.4635Z" />
+                            </svg>
+                          </span>
+                        </div>
+
+                        <h3 class="reviews-slide__title">Thanks!</h3>
+
+                        <div class="reviews-slide__text">
+                          Auto cleaner does a fantastuc job of cleanung up the mess from our phones for free 👍
+                        </div>
+                      </div>
+
+                      <div class="reviews-slide__footer">
+                        <div class="reviews-slide__name">Frederick</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="swiper-slide">
+                    <div class="reviews-slide">
+                      <div class="reviews-slide__content">
+                        <div class="reviews-slide__rating rating-static">
+                          <span class="rating-static__star is-checked">
+                            <svg class="rating-static__icon" width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M8.5245.4635c.1496-.4606.8014-.4606.951 0l1.6574 5.1008a.5.5 0 0 0 .4755.3455h5.3633c.4844 0 .6858.6198.2939.9045l-4.339 3.1525a.4999.4999 0 0 0-.1816.559l1.6573 5.1008c.1497.4607-.3775.8438-.7694.5591l-4.339-3.1525a.5.5 0 0 0-.5878 0l-4.339 3.1525c-.3919.2847-.9191-.0984-.7694-.5591l1.6573-5.1008a.5.5 0 0 0-.1816-.559L.7344 6.8143c-.3919-.2847-.1905-.9045.2939-.9045h5.3633a.5.5 0 0 0 .4755-.3455L8.5245.4635Z" />
+                            </svg>
+                          </span>
+                          <span class="rating-static__star is-checked">
+                            <svg class="rating-static__icon" width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M8.5245.4635c.1496-.4606.8014-.4606.951 0l1.6574 5.1008a.5.5 0 0 0 .4755.3455h5.3633c.4844 0 .6858.6198.2939.9045l-4.339 3.1525a.4999.4999 0 0 0-.1816.559l1.6573 5.1008c.1497.4607-.3775.8438-.7694.5591l-4.339-3.1525a.5.5 0 0 0-.5878 0l-4.339 3.1525c-.3919.2847-.9191-.0984-.7694-.5591l1.6573-5.1008a.5.5 0 0 0-.1816-.559L.7344 6.8143c-.3919-.2847-.1905-.9045.2939-.9045h5.3633a.5.5 0 0 0 .4755-.3455L8.5245.4635Z" />
+                            </svg>
+                          </span>
+                          <span class="rating-static__star is-checked">
+                            <svg class="rating-static__icon" width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M8.5245.4635c.1496-.4606.8014-.4606.951 0l1.6574 5.1008a.5.5 0 0 0 .4755.3455h5.3633c.4844 0 .6858.6198.2939.9045l-4.339 3.1525a.4999.4999 0 0 0-.1816.559l1.6573 5.1008c.1497.4607-.3775.8438-.7694.5591l-4.339-3.1525a.5.5 0 0 0-.5878 0l-4.339 3.1525c-.3919.2847-.9191-.0984-.7694-.5591l1.6573-5.1008a.5.5 0 0 0-.1816-.559L.7344 6.8143c-.3919-.2847-.1905-.9045.2939-.9045h5.3633a.5.5 0 0 0 .4755-.3455L8.5245.4635Z" />
+                            </svg>
+                          </span>
+                          <span class="rating-static__star is-checked">
+                            <svg class="rating-static__icon" width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M8.5245.4635c.1496-.4606.8014-.4606.951 0l1.6574 5.1008a.5.5 0 0 0 .4755.3455h5.3633c.4844 0 .6858.6198.2939.9045l-4.339 3.1525a.4999.4999 0 0 0-.1816.559l1.6573 5.1008c.1497.4607-.3775.8438-.7694.5591l-4.339-3.1525a.5.5 0 0 0-.5878 0l-4.339 3.1525c-.3919.2847-.9191-.0984-.7694-.5591l1.6573-5.1008a.5.5 0 0 0-.1816-.559L.7344 6.8143c-.3919-.2847-.1905-.9045.2939-.9045h5.3633a.5.5 0 0 0 .4755-.3455L8.5245.4635Z" />
+                            </svg>
+                          </span>
+                          <span class="rating-static__star is-checked">
+                            <svg class="rating-static__icon" width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M8.5245.4635c.1496-.4606.8014-.4606.951 0l1.6574 5.1008a.5.5 0 0 0 .4755.3455h5.3633c.4844 0 .6858.6198.2939.9045l-4.339 3.1525a.4999.4999 0 0 0-.1816.559l1.6573 5.1008c.1497.4607-.3775.8438-.7694.5591l-4.339-3.1525a.5.5 0 0 0-.5878 0l-4.339 3.1525c-.3919.2847-.9191-.0984-.7694-.5591l1.6573-5.1008a.5.5 0 0 0-.1816-.559L.7344 6.8143c-.3919-.2847-.1905-.9045.2939-.9045h5.3633a.5.5 0 0 0 .4755-.3455L8.5245.4635Z" />
+                            </svg>
+                          </span>
+                        </div>
+
+                        <h3 class="reviews-slide__title">You already at the top</h3>
+
+                        <div class="reviews-slide__text">
+                          Hold on don't bend over do not jump everyone looking at you because they're behind you because you're number one you guys park and I am very thankful for you. Race.
+                        </div>
+                      </div>
+
+                      <div class="reviews-slide__footer">
+                        <div class="reviews-slide__name">05ecaR08</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="swiper-slide">
+                    <div class="reviews-slide">
+                      <div class="reviews-slide__content">
+                        <div class="reviews-slide__rating rating-static">
+                          <span class="rating-static__star is-checked">
+                            <svg class="rating-static__icon" width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M8.5245.4635c.1496-.4606.8014-.4606.951 0l1.6574 5.1008a.5.5 0 0 0 .4755.3455h5.3633c.4844 0 .6858.6198.2939.9045l-4.339 3.1525a.4999.4999 0 0 0-.1816.559l1.6573 5.1008c.1497.4607-.3775.8438-.7694.5591l-4.339-3.1525a.5.5 0 0 0-.5878 0l-4.339 3.1525c-.3919.2847-.9191-.0984-.7694-.5591l1.6573-5.1008a.5.5 0 0 0-.1816-.559L.7344 6.8143c-.3919-.2847-.1905-.9045.2939-.9045h5.3633a.5.5 0 0 0 .4755-.3455L8.5245.4635Z" />
+                            </svg>
+                          </span>
+                          <span class="rating-static__star is-checked">
+                            <svg class="rating-static__icon" width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M8.5245.4635c.1496-.4606.8014-.4606.951 0l1.6574 5.1008a.5.5 0 0 0 .4755.3455h5.3633c.4844 0 .6858.6198.2939.9045l-4.339 3.1525a.4999.4999 0 0 0-.1816.559l1.6573 5.1008c.1497.4607-.3775.8438-.7694.5591l-4.339-3.1525a.5.5 0 0 0-.5878 0l-4.339 3.1525c-.3919.2847-.9191-.0984-.7694-.5591l1.6573-5.1008a.5.5 0 0 0-.1816-.559L.7344 6.8143c-.3919-.2847-.1905-.9045.2939-.9045h5.3633a.5.5 0 0 0 .4755-.3455L8.5245.4635Z" />
+                            </svg>
+                          </span>
+                          <span class="rating-static__star is-checked">
+                            <svg class="rating-static__icon" width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M8.5245.4635c.1496-.4606.8014-.4606.951 0l1.6574 5.1008a.5.5 0 0 0 .4755.3455h5.3633c.4844 0 .6858.6198.2939.9045l-4.339 3.1525a.4999.4999 0 0 0-.1816.559l1.6573 5.1008c.1497.4607-.3775.8438-.7694.5591l-4.339-3.1525a.5.5 0 0 0-.5878 0l-4.339 3.1525c-.3919.2847-.9191-.0984-.7694-.5591l1.6573-5.1008a.5.5 0 0 0-.1816-.559L.7344 6.8143c-.3919-.2847-.1905-.9045.2939-.9045h5.3633a.5.5 0 0 0 .4755-.3455L8.5245.4635Z" />
+                            </svg>
+                          </span>
+                          <span class="rating-static__star is-checked">
+                            <svg class="rating-static__icon" width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M8.5245.4635c.1496-.4606.8014-.4606.951 0l1.6574 5.1008a.5.5 0 0 0 .4755.3455h5.3633c.4844 0 .6858.6198.2939.9045l-4.339 3.1525a.4999.4999 0 0 0-.1816.559l1.6573 5.1008c.1497.4607-.3775.8438-.7694.5591l-4.339-3.1525a.5.5 0 0 0-.5878 0l-4.339 3.1525c-.3919.2847-.9191-.0984-.7694-.5591l1.6573-5.1008a.5.5 0 0 0-.1816-.559L.7344 6.8143c-.3919-.2847-.1905-.9045.2939-.9045h5.3633a.5.5 0 0 0 .4755-.3455L8.5245.4635Z" />
+                            </svg>
+                          </span>
+                          <span class="rating-static__star is-checked">
+                            <svg class="rating-static__icon" width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M8.5245.4635c.1496-.4606.8014-.4606.951 0l1.6574 5.1008a.5.5 0 0 0 .4755.3455h5.3633c.4844 0 .6858.6198.2939.9045l-4.339 3.1525a.4999.4999 0 0 0-.1816.559l1.6573 5.1008c.1497.4607-.3775.8438-.7694.5591l-4.339-3.1525a.5.5 0 0 0-.5878 0l-4.339 3.1525c-.3919.2847-.9191-.0984-.7694-.5591l1.6573-5.1008a.5.5 0 0 0-.1816-.559L.7344 6.8143c-.3919-.2847-.1905-.9045.2939-.9045h5.3633a.5.5 0 0 0 .4755-.3455L8.5245.4635Z" />
+                            </svg>
+                          </span>
+                        </div>
+
+                        <h3 class="reviews-slide__title">Incredible</h3>
+
+                        <div class="reviews-slide__text">
+                          Highly nessesary!
+                        </div>
+                      </div>
+
+                      <div class="reviews-slide__footer">
+                        <div class="reviews-slide__name">Emma</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="swiper-slide">
+                    <div class="reviews-slide">
+                      <div class="reviews-slide__content">
+                        <div class="reviews-slide__rating rating-static">
+                          <span class="rating-static__star is-checked">
+                            <svg class="rating-static__icon" width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M8.5245.4635c.1496-.4606.8014-.4606.951 0l1.6574 5.1008a.5.5 0 0 0 .4755.3455h5.3633c.4844 0 .6858.6198.2939.9045l-4.339 3.1525a.4999.4999 0 0 0-.1816.559l1.6573 5.1008c.1497.4607-.3775.8438-.7694.5591l-4.339-3.1525a.5.5 0 0 0-.5878 0l-4.339 3.1525c-.3919.2847-.9191-.0984-.7694-.5591l1.6573-5.1008a.5.5 0 0 0-.1816-.559L.7344 6.8143c-.3919-.2847-.1905-.9045.2939-.9045h5.3633a.5.5 0 0 0 .4755-.3455L8.5245.4635Z" />
+                            </svg>
+                          </span>
+                          <span class="rating-static__star is-checked">
+                            <svg class="rating-static__icon" width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M8.5245.4635c.1496-.4606.8014-.4606.951 0l1.6574 5.1008a.5.5 0 0 0 .4755.3455h5.3633c.4844 0 .6858.6198.2939.9045l-4.339 3.1525a.4999.4999 0 0 0-.1816.559l1.6573 5.1008c.1497.4607-.3775.8438-.7694.5591l-4.339-3.1525a.5.5 0 0 0-.5878 0l-4.339 3.1525c-.3919.2847-.9191-.0984-.7694-.5591l1.6573-5.1008a.5.5 0 0 0-.1816-.559L.7344 6.8143c-.3919-.2847-.1905-.9045.2939-.9045h5.3633a.5.5 0 0 0 .4755-.3455L8.5245.4635Z" />
+                            </svg>
+                          </span>
+                          <span class="rating-static__star is-checked">
+                            <svg class="rating-static__icon" width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M8.5245.4635c.1496-.4606.8014-.4606.951 0l1.6574 5.1008a.5.5 0 0 0 .4755.3455h5.3633c.4844 0 .6858.6198.2939.9045l-4.339 3.1525a.4999.4999 0 0 0-.1816.559l1.6573 5.1008c.1497.4607-.3775.8438-.7694.5591l-4.339-3.1525a.5.5 0 0 0-.5878 0l-4.339 3.1525c-.3919.2847-.9191-.0984-.7694-.5591l1.6573-5.1008a.5.5 0 0 0-.1816-.559L.7344 6.8143c-.3919-.2847-.1905-.9045.2939-.9045h5.3633a.5.5 0 0 0 .4755-.3455L8.5245.4635Z" />
+                            </svg>
+                          </span>
+                          <span class="rating-static__star is-checked">
+                            <svg class="rating-static__icon" width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M8.5245.4635c.1496-.4606.8014-.4606.951 0l1.6574 5.1008a.5.5 0 0 0 .4755.3455h5.3633c.4844 0 .6858.6198.2939.9045l-4.339 3.1525a.4999.4999 0 0 0-.1816.559l1.6573 5.1008c.1497.4607-.3775.8438-.7694.5591l-4.339-3.1525a.5.5 0 0 0-.5878 0l-4.339 3.1525c-.3919.2847-.9191-.0984-.7694-.5591l1.6573-5.1008a.5.5 0 0 0-.1816-.559L.7344 6.8143c-.3919-.2847-.1905-.9045.2939-.9045h5.3633a.5.5 0 0 0 .4755-.3455L8.5245.4635Z" />
+                            </svg>
+                          </span>
+                          <span class="rating-static__star is-checked">
+                            <svg class="rating-static__icon" width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M8.5245.4635c.1496-.4606.8014-.4606.951 0l1.6574 5.1008a.5.5 0 0 0 .4755.3455h5.3633c.4844 0 .6858.6198.2939.9045l-4.339 3.1525a.4999.4999 0 0 0-.1816.559l1.6573 5.1008c.1497.4607-.3775.8438-.7694.5591l-4.339-3.1525a.5.5 0 0 0-.5878 0l-4.339 3.1525c-.3919.2847-.9191-.0984-.7694-.5591l1.6573-5.1008a.5.5 0 0 0-.1816-.559L.7344 6.8143c-.3919-.2847-.1905-.9045.2939-.9045h5.3633a.5.5 0 0 0 .4755-.3455L8.5245.4635Z" />
+                            </svg>
+                          </span>
+                        </div>
+
+                        <h3 class="reviews-slide__title">Thanks!</h3>
+
+                        <div class="reviews-slide__text">
+                          Auto cleaner does a fantastuc job of cleanung up the mess from our phones for free 👍
+                        </div>
+                      </div>
+
+                      <div class="reviews-slide__footer">
+                        <div class="reviews-slide__name">Frederick</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="swiper-slide">
+                    <div class="reviews-slide">
+                      <div class="reviews-slide__content">
+                        <div class="reviews-slide__rating rating-static">
+                          <span class="rating-static__star is-checked">
+                            <svg class="rating-static__icon" width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M8.5245.4635c.1496-.4606.8014-.4606.951 0l1.6574 5.1008a.5.5 0 0 0 .4755.3455h5.3633c.4844 0 .6858.6198.2939.9045l-4.339 3.1525a.4999.4999 0 0 0-.1816.559l1.6573 5.1008c.1497.4607-.3775.8438-.7694.5591l-4.339-3.1525a.5.5 0 0 0-.5878 0l-4.339 3.1525c-.3919.2847-.9191-.0984-.7694-.5591l1.6573-5.1008a.5.5 0 0 0-.1816-.559L.7344 6.8143c-.3919-.2847-.1905-.9045.2939-.9045h5.3633a.5.5 0 0 0 .4755-.3455L8.5245.4635Z" />
+                            </svg>
+                          </span>
+                          <span class="rating-static__star is-checked">
+                            <svg class="rating-static__icon" width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M8.5245.4635c.1496-.4606.8014-.4606.951 0l1.6574 5.1008a.5.5 0 0 0 .4755.3455h5.3633c.4844 0 .6858.6198.2939.9045l-4.339 3.1525a.4999.4999 0 0 0-.1816.559l1.6573 5.1008c.1497.4607-.3775.8438-.7694.5591l-4.339-3.1525a.5.5 0 0 0-.5878 0l-4.339 3.1525c-.3919.2847-.9191-.0984-.7694-.5591l1.6573-5.1008a.5.5 0 0 0-.1816-.559L.7344 6.8143c-.3919-.2847-.1905-.9045.2939-.9045h5.3633a.5.5 0 0 0 .4755-.3455L8.5245.4635Z" />
+                            </svg>
+                          </span>
+                          <span class="rating-static__star is-checked">
+                            <svg class="rating-static__icon" width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M8.5245.4635c.1496-.4606.8014-.4606.951 0l1.6574 5.1008a.5.5 0 0 0 .4755.3455h5.3633c.4844 0 .6858.6198.2939.9045l-4.339 3.1525a.4999.4999 0 0 0-.1816.559l1.6573 5.1008c.1497.4607-.3775.8438-.7694.5591l-4.339-3.1525a.5.5 0 0 0-.5878 0l-4.339 3.1525c-.3919.2847-.9191-.0984-.7694-.5591l1.6573-5.1008a.5.5 0 0 0-.1816-.559L.7344 6.8143c-.3919-.2847-.1905-.9045.2939-.9045h5.3633a.5.5 0 0 0 .4755-.3455L8.5245.4635Z" />
+                            </svg>
+                          </span>
+                          <span class="rating-static__star is-checked">
+                            <svg class="rating-static__icon" width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M8.5245.4635c.1496-.4606.8014-.4606.951 0l1.6574 5.1008a.5.5 0 0 0 .4755.3455h5.3633c.4844 0 .6858.6198.2939.9045l-4.339 3.1525a.4999.4999 0 0 0-.1816.559l1.6573 5.1008c.1497.4607-.3775.8438-.7694.5591l-4.339-3.1525a.5.5 0 0 0-.5878 0l-4.339 3.1525c-.3919.2847-.9191-.0984-.7694-.5591l1.6573-5.1008a.5.5 0 0 0-.1816-.559L.7344 6.8143c-.3919-.2847-.1905-.9045.2939-.9045h5.3633a.5.5 0 0 0 .4755-.3455L8.5245.4635Z" />
+                            </svg>
+                          </span>
+                          <span class="rating-static__star is-checked">
+                            <svg class="rating-static__icon" width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M8.5245.4635c.1496-.4606.8014-.4606.951 0l1.6574 5.1008a.5.5 0 0 0 .4755.3455h5.3633c.4844 0 .6858.6198.2939.9045l-4.339 3.1525a.4999.4999 0 0 0-.1816.559l1.6573 5.1008c.1497.4607-.3775.8438-.7694.5591l-4.339-3.1525a.5.5 0 0 0-.5878 0l-4.339 3.1525c-.3919.2847-.9191-.0984-.7694-.5591l1.6573-5.1008a.5.5 0 0 0-.1816-.559L.7344 6.8143c-.3919-.2847-.1905-.9045.2939-.9045h5.3633a.5.5 0 0 0 .4755-.3455L8.5245.4635Z" />
+                            </svg>
+                          </span>
+                        </div>
+
+                        <h3 class="reviews-slide__title">You already at the top</h3>
+
+                        <div class="reviews-slide__text">
+                          Hold on don't bend over do not jump everyone looking at you because they're behind you because you're number one you guys park and I am very thankful for you. Race.
+                        </div>
+                      </div>
+
+                      <div class="reviews-slide__footer">
+                        <div class="reviews-slide__name">05ecaR08</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="swiper-slide">
+                    <div class="reviews-slide">
+                      <div class="reviews-slide__content">
+                        <div class="reviews-slide__rating rating-static">
+                          <span class="rating-static__star is-checked">
+                            <svg class="rating-static__icon" width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M8.5245.4635c.1496-.4606.8014-.4606.951 0l1.6574 5.1008a.5.5 0 0 0 .4755.3455h5.3633c.4844 0 .6858.6198.2939.9045l-4.339 3.1525a.4999.4999 0 0 0-.1816.559l1.6573 5.1008c.1497.4607-.3775.8438-.7694.5591l-4.339-3.1525a.5.5 0 0 0-.5878 0l-4.339 3.1525c-.3919.2847-.9191-.0984-.7694-.5591l1.6573-5.1008a.5.5 0 0 0-.1816-.559L.7344 6.8143c-.3919-.2847-.1905-.9045.2939-.9045h5.3633a.5.5 0 0 0 .4755-.3455L8.5245.4635Z" />
+                            </svg>
+                          </span>
+                          <span class="rating-static__star is-checked">
+                            <svg class="rating-static__icon" width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M8.5245.4635c.1496-.4606.8014-.4606.951 0l1.6574 5.1008a.5.5 0 0 0 .4755.3455h5.3633c.4844 0 .6858.6198.2939.9045l-4.339 3.1525a.4999.4999 0 0 0-.1816.559l1.6573 5.1008c.1497.4607-.3775.8438-.7694.5591l-4.339-3.1525a.5.5 0 0 0-.5878 0l-4.339 3.1525c-.3919.2847-.9191-.0984-.7694-.5591l1.6573-5.1008a.5.5 0 0 0-.1816-.559L.7344 6.8143c-.3919-.2847-.1905-.9045.2939-.9045h5.3633a.5.5 0 0 0 .4755-.3455L8.5245.4635Z" />
+                            </svg>
+                          </span>
+                          <span class="rating-static__star is-checked">
+                            <svg class="rating-static__icon" width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M8.5245.4635c.1496-.4606.8014-.4606.951 0l1.6574 5.1008a.5.5 0 0 0 .4755.3455h5.3633c.4844 0 .6858.6198.2939.9045l-4.339 3.1525a.4999.4999 0 0 0-.1816.559l1.6573 5.1008c.1497.4607-.3775.8438-.7694.5591l-4.339-3.1525a.5.5 0 0 0-.5878 0l-4.339 3.1525c-.3919.2847-.9191-.0984-.7694-.5591l1.6573-5.1008a.5.5 0 0 0-.1816-.559L.7344 6.8143c-.3919-.2847-.1905-.9045.2939-.9045h5.3633a.5.5 0 0 0 .4755-.3455L8.5245.4635Z" />
+                            </svg>
+                          </span>
+                          <span class="rating-static__star is-checked">
+                            <svg class="rating-static__icon" width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M8.5245.4635c.1496-.4606.8014-.4606.951 0l1.6574 5.1008a.5.5 0 0 0 .4755.3455h5.3633c.4844 0 .6858.6198.2939.9045l-4.339 3.1525a.4999.4999 0 0 0-.1816.559l1.6573 5.1008c.1497.4607-.3775.8438-.7694.5591l-4.339-3.1525a.5.5 0 0 0-.5878 0l-4.339 3.1525c-.3919.2847-.9191-.0984-.7694-.5591l1.6573-5.1008a.5.5 0 0 0-.1816-.559L.7344 6.8143c-.3919-.2847-.1905-.9045.2939-.9045h5.3633a.5.5 0 0 0 .4755-.3455L8.5245.4635Z" />
+                            </svg>
+                          </span>
+                          <span class="rating-static__star is-checked">
+                            <svg class="rating-static__icon" width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M8.5245.4635c.1496-.4606.8014-.4606.951 0l1.6574 5.1008a.5.5 0 0 0 .4755.3455h5.3633c.4844 0 .6858.6198.2939.9045l-4.339 3.1525a.4999.4999 0 0 0-.1816.559l1.6573 5.1008c.1497.4607-.3775.8438-.7694.5591l-4.339-3.1525a.5.5 0 0 0-.5878 0l-4.339 3.1525c-.3919.2847-.9191-.0984-.7694-.5591l1.6573-5.1008a.5.5 0 0 0-.1816-.559L.7344 6.8143c-.3919-.2847-.1905-.9045.2939-.9045h5.3633a.5.5 0 0 0 .4755-.3455L8.5245.4635Z" />
+                            </svg>
+                          </span>
+                        </div>
+
+                        <h3 class="reviews-slide__title">Incredible</h3>
+
+                        <div class="reviews-slide__text">
+                          Highly nessesary!
+                        </div>
+                      </div>
+
+                      <div class="reviews-slide__footer">
+                        <div class="reviews-slide__name">Emma</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="swiper-slide">
+                    <div class="reviews-slide">
+                      <div class="reviews-slide__content">
+                        <div class="reviews-slide__rating rating-static">
+                          <span class="rating-static__star is-checked">
+                            <svg class="rating-static__icon" width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M8.5245.4635c.1496-.4606.8014-.4606.951 0l1.6574 5.1008a.5.5 0 0 0 .4755.3455h5.3633c.4844 0 .6858.6198.2939.9045l-4.339 3.1525a.4999.4999 0 0 0-.1816.559l1.6573 5.1008c.1497.4607-.3775.8438-.7694.5591l-4.339-3.1525a.5.5 0 0 0-.5878 0l-4.339 3.1525c-.3919.2847-.9191-.0984-.7694-.5591l1.6573-5.1008a.5.5 0 0 0-.1816-.559L.7344 6.8143c-.3919-.2847-.1905-.9045.2939-.9045h5.3633a.5.5 0 0 0 .4755-.3455L8.5245.4635Z" />
+                            </svg>
+                          </span>
+                          <span class="rating-static__star is-checked">
+                            <svg class="rating-static__icon" width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M8.5245.4635c.1496-.4606.8014-.4606.951 0l1.6574 5.1008a.5.5 0 0 0 .4755.3455h5.3633c.4844 0 .6858.6198.2939.9045l-4.339 3.1525a.4999.4999 0 0 0-.1816.559l1.6573 5.1008c.1497.4607-.3775.8438-.7694.5591l-4.339-3.1525a.5.5 0 0 0-.5878 0l-4.339 3.1525c-.3919.2847-.9191-.0984-.7694-.5591l1.6573-5.1008a.5.5 0 0 0-.1816-.559L.7344 6.8143c-.3919-.2847-.1905-.9045.2939-.9045h5.3633a.5.5 0 0 0 .4755-.3455L8.5245.4635Z" />
+                            </svg>
+                          </span>
+                          <span class="rating-static__star is-checked">
+                            <svg class="rating-static__icon" width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M8.5245.4635c.1496-.4606.8014-.4606.951 0l1.6574 5.1008a.5.5 0 0 0 .4755.3455h5.3633c.4844 0 .6858.6198.2939.9045l-4.339 3.1525a.4999.4999 0 0 0-.1816.559l1.6573 5.1008c.1497.4607-.3775.8438-.7694.5591l-4.339-3.1525a.5.5 0 0 0-.5878 0l-4.339 3.1525c-.3919.2847-.9191-.0984-.7694-.5591l1.6573-5.1008a.5.5 0 0 0-.1816-.559L.7344 6.8143c-.3919-.2847-.1905-.9045.2939-.9045h5.3633a.5.5 0 0 0 .4755-.3455L8.5245.4635Z" />
+                            </svg>
+                          </span>
+                          <span class="rating-static__star is-checked">
+                            <svg class="rating-static__icon" width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M8.5245.4635c.1496-.4606.8014-.4606.951 0l1.6574 5.1008a.5.5 0 0 0 .4755.3455h5.3633c.4844 0 .6858.6198.2939.9045l-4.339 3.1525a.4999.4999 0 0 0-.1816.559l1.6573 5.1008c.1497.4607-.3775.8438-.7694.5591l-4.339-3.1525a.5.5 0 0 0-.5878 0l-4.339 3.1525c-.3919.2847-.9191-.0984-.7694-.5591l1.6573-5.1008a.5.5 0 0 0-.1816-.559L.7344 6.8143c-.3919-.2847-.1905-.9045.2939-.9045h5.3633a.5.5 0 0 0 .4755-.3455L8.5245.4635Z" />
+                            </svg>
+                          </span>
+                          <span class="rating-static__star is-checked">
+                            <svg class="rating-static__icon" width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M8.5245.4635c.1496-.4606.8014-.4606.951 0l1.6574 5.1008a.5.5 0 0 0 .4755.3455h5.3633c.4844 0 .6858.6198.2939.9045l-4.339 3.1525a.4999.4999 0 0 0-.1816.559l1.6573 5.1008c.1497.4607-.3775.8438-.7694.5591l-4.339-3.1525a.5.5 0 0 0-.5878 0l-4.339 3.1525c-.3919.2847-.9191-.0984-.7694-.5591l1.6573-5.1008a.5.5 0 0 0-.1816-.559L.7344 6.8143c-.3919-.2847-.1905-.9045.2939-.9045h5.3633a.5.5 0 0 0 .4755-.3455L8.5245.4635Z" />
+                            </svg>
+                          </span>
+                        </div>
+
+                        <h3 class="reviews-slide__title">Thanks!</h3>
+
+                        <div class="reviews-slide__text">
+                          Auto cleaner does a fantastuc job of cleanung up the mess from our phones for free 👍
+                        </div>
+                      </div>
+
+                      <div class="reviews-slide__footer">
+                        <div class="reviews-slide__name">Frederick</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="swiper-slide">
+                    <div class="reviews-slide">
+                      <div class="reviews-slide__content">
+                        <div class="reviews-slide__rating rating-static">
+                          <span class="rating-static__star is-checked">
+                            <svg class="rating-static__icon" width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M8.5245.4635c.1496-.4606.8014-.4606.951 0l1.6574 5.1008a.5.5 0 0 0 .4755.3455h5.3633c.4844 0 .6858.6198.2939.9045l-4.339 3.1525a.4999.4999 0 0 0-.1816.559l1.6573 5.1008c.1497.4607-.3775.8438-.7694.5591l-4.339-3.1525a.5.5 0 0 0-.5878 0l-4.339 3.1525c-.3919.2847-.9191-.0984-.7694-.5591l1.6573-5.1008a.5.5 0 0 0-.1816-.559L.7344 6.8143c-.3919-.2847-.1905-.9045.2939-.9045h5.3633a.5.5 0 0 0 .4755-.3455L8.5245.4635Z" />
+                            </svg>
+                          </span>
+                          <span class="rating-static__star is-checked">
+                            <svg class="rating-static__icon" width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M8.5245.4635c.1496-.4606.8014-.4606.951 0l1.6574 5.1008a.5.5 0 0 0 .4755.3455h5.3633c.4844 0 .6858.6198.2939.9045l-4.339 3.1525a.4999.4999 0 0 0-.1816.559l1.6573 5.1008c.1497.4607-.3775.8438-.7694.5591l-4.339-3.1525a.5.5 0 0 0-.5878 0l-4.339 3.1525c-.3919.2847-.9191-.0984-.7694-.5591l1.6573-5.1008a.5.5 0 0 0-.1816-.559L.7344 6.8143c-.3919-.2847-.1905-.9045.2939-.9045h5.3633a.5.5 0 0 0 .4755-.3455L8.5245.4635Z" />
+                            </svg>
+                          </span>
+                          <span class="rating-static__star is-checked">
+                            <svg class="rating-static__icon" width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M8.5245.4635c.1496-.4606.8014-.4606.951 0l1.6574 5.1008a.5.5 0 0 0 .4755.3455h5.3633c.4844 0 .6858.6198.2939.9045l-4.339 3.1525a.4999.4999 0 0 0-.1816.559l1.6573 5.1008c.1497.4607-.3775.8438-.7694.5591l-4.339-3.1525a.5.5 0 0 0-.5878 0l-4.339 3.1525c-.3919.2847-.9191-.0984-.7694-.5591l1.6573-5.1008a.5.5 0 0 0-.1816-.559L.7344 6.8143c-.3919-.2847-.1905-.9045.2939-.9045h5.3633a.5.5 0 0 0 .4755-.3455L8.5245.4635Z" />
+                            </svg>
+                          </span>
+                          <span class="rating-static__star is-checked">
+                            <svg class="rating-static__icon" width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M8.5245.4635c.1496-.4606.8014-.4606.951 0l1.6574 5.1008a.5.5 0 0 0 .4755.3455h5.3633c.4844 0 .6858.6198.2939.9045l-4.339 3.1525a.4999.4999 0 0 0-.1816.559l1.6573 5.1008c.1497.4607-.3775.8438-.7694.5591l-4.339-3.1525a.5.5 0 0 0-.5878 0l-4.339 3.1525c-.3919.2847-.9191-.0984-.7694-.5591l1.6573-5.1008a.5.5 0 0 0-.1816-.559L.7344 6.8143c-.3919-.2847-.1905-.9045.2939-.9045h5.3633a.5.5 0 0 0 .4755-.3455L8.5245.4635Z" />
+                            </svg>
+                          </span>
+                          <span class="rating-static__star is-checked">
+                            <svg class="rating-static__icon" width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M8.5245.4635c.1496-.4606.8014-.4606.951 0l1.6574 5.1008a.5.5 0 0 0 .4755.3455h5.3633c.4844 0 .6858.6198.2939.9045l-4.339 3.1525a.4999.4999 0 0 0-.1816.559l1.6573 5.1008c.1497.4607-.3775.8438-.7694.5591l-4.339-3.1525a.5.5 0 0 0-.5878 0l-4.339 3.1525c-.3919.2847-.9191-.0984-.7694-.5591l1.6573-5.1008a.5.5 0 0 0-.1816-.559L.7344 6.8143c-.3919-.2847-.1905-.9045.2939-.9045h5.3633a.5.5 0 0 0 .4755-.3455L8.5245.4635Z" />
+                            </svg>
+                          </span>
+                        </div>
+
+                        <h3 class="reviews-slide__title">You already at the top</h3>
+
+                        <div class="reviews-slide__text">
+                          Hold on don't bend over do not jump everyone looking at you because they're behind you because you're number one you guys park and I am very thankful for you. Race.
+                        </div>
+                      </div>
+
+                      <div class="reviews-slide__footer">
+                        <div class="reviews-slide__name">05ecaR08</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="swiper-slide">
+                    <div class="reviews-slide">
+                      <div class="reviews-slide__content">
+                        <div class="reviews-slide__rating rating-static">
+                          <span class="rating-static__star is-checked">
+                            <svg class="rating-static__icon" width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M8.5245.4635c.1496-.4606.8014-.4606.951 0l1.6574 5.1008a.5.5 0 0 0 .4755.3455h5.3633c.4844 0 .6858.6198.2939.9045l-4.339 3.1525a.4999.4999 0 0 0-.1816.559l1.6573 5.1008c.1497.4607-.3775.8438-.7694.5591l-4.339-3.1525a.5.5 0 0 0-.5878 0l-4.339 3.1525c-.3919.2847-.9191-.0984-.7694-.5591l1.6573-5.1008a.5.5 0 0 0-.1816-.559L.7344 6.8143c-.3919-.2847-.1905-.9045.2939-.9045h5.3633a.5.5 0 0 0 .4755-.3455L8.5245.4635Z" />
+                            </svg>
+                          </span>
+                          <span class="rating-static__star is-checked">
+                            <svg class="rating-static__icon" width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M8.5245.4635c.1496-.4606.8014-.4606.951 0l1.6574 5.1008a.5.5 0 0 0 .4755.3455h5.3633c.4844 0 .6858.6198.2939.9045l-4.339 3.1525a.4999.4999 0 0 0-.1816.559l1.6573 5.1008c.1497.4607-.3775.8438-.7694.5591l-4.339-3.1525a.5.5 0 0 0-.5878 0l-4.339 3.1525c-.3919.2847-.9191-.0984-.7694-.5591l1.6573-5.1008a.5.5 0 0 0-.1816-.559L.7344 6.8143c-.3919-.2847-.1905-.9045.2939-.9045h5.3633a.5.5 0 0 0 .4755-.3455L8.5245.4635Z" />
+                            </svg>
+                          </span>
+                          <span class="rating-static__star is-checked">
+                            <svg class="rating-static__icon" width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M8.5245.4635c.1496-.4606.8014-.4606.951 0l1.6574 5.1008a.5.5 0 0 0 .4755.3455h5.3633c.4844 0 .6858.6198.2939.9045l-4.339 3.1525a.4999.4999 0 0 0-.1816.559l1.6573 5.1008c.1497.4607-.3775.8438-.7694.5591l-4.339-3.1525a.5.5 0 0 0-.5878 0l-4.339 3.1525c-.3919.2847-.9191-.0984-.7694-.5591l1.6573-5.1008a.5.5 0 0 0-.1816-.559L.7344 6.8143c-.3919-.2847-.1905-.9045.2939-.9045h5.3633a.5.5 0 0 0 .4755-.3455L8.5245.4635Z" />
+                            </svg>
+                          </span>
+                          <span class="rating-static__star is-checked">
+                            <svg class="rating-static__icon" width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M8.5245.4635c.1496-.4606.8014-.4606.951 0l1.6574 5.1008a.5.5 0 0 0 .4755.3455h5.3633c.4844 0 .6858.6198.2939.9045l-4.339 3.1525a.4999.4999 0 0 0-.1816.559l1.6573 5.1008c.1497.4607-.3775.8438-.7694.5591l-4.339-3.1525a.5.5 0 0 0-.5878 0l-4.339 3.1525c-.3919.2847-.9191-.0984-.7694-.5591l1.6573-5.1008a.5.5 0 0 0-.1816-.559L.7344 6.8143c-.3919-.2847-.1905-.9045.2939-.9045h5.3633a.5.5 0 0 0 .4755-.3455L8.5245.4635Z" />
+                            </svg>
+                          </span>
+                          <span class="rating-static__star is-checked">
+                            <svg class="rating-static__icon" width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M8.5245.4635c.1496-.4606.8014-.4606.951 0l1.6574 5.1008a.5.5 0 0 0 .4755.3455h5.3633c.4844 0 .6858.6198.2939.9045l-4.339 3.1525a.4999.4999 0 0 0-.1816.559l1.6573 5.1008c.1497.4607-.3775.8438-.7694.5591l-4.339-3.1525a.5.5 0 0 0-.5878 0l-4.339 3.1525c-.3919.2847-.9191-.0984-.7694-.5591l1.6573-5.1008a.5.5 0 0 0-.1816-.559L.7344 6.8143c-.3919-.2847-.1905-.9045.2939-.9045h5.3633a.5.5 0 0 0 .4755-.3455L8.5245.4635Z" />
+                            </svg>
+                          </span>
+                        </div>
+
+                        <h3 class="reviews-slide__title">Incredible</h3>
+
+                        <div class="reviews-slide__text">
+                          Highly nessesary!
+                        </div>
+                      </div>
+
+                      <div class="reviews-slide__footer">
+                        <div class="reviews-slide__name">Emma</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer__main">
+          <div class="footer-menu">
+            <h2 class="footer-menu__title">Legal</h2>
+
+            <ul class="footer-menu__list">
+              <li>
+                <a href="/privacy-policy.html">
+                  Legal & Privacy
+                </a>
+              </li>
+
+              <li>
+                <a href="/terms-of-services.html">
+                  Terms & Conditions
+                </a>
+              </li>
+
+              <li>
+                <a href="/subscription-terms.html">
+                  Subscription Policy
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="footer-menu">
+            <h2 class="footer-menu__title">Get in touch</h2>
+
+            <ul class="footer-menu__list">
+              <li>
+                <a href="mailto:support@security-app.pro">
+                  support@security-app.pro
+                </a>
+              </li>
+
+              <li>
+                <a href="#modal-question" data-hystmodal="#modal-question">
+                  Contact Us
+                </a>
+              </li>
+
+              <li>
+                <a href="#modal-cancel-subscription" data-hystmodal="#modal-cancel-subscription">
+                  Cancel Subscription
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer__bottom">
+          <div class="footer__copy">
+            Copyright © PDO Digital Tech FZCO
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </div><!-- end .wrapper -->
+
+  <!-- cancel-subscription -->
+  <div class="modal hystmodal" id="modal-cancel-subscription" aria-hidden="true">
+    <div class="hystmodal__wrap">
+      <div class="modal__body hystmodal__window" role="dialog" aria-modal="true">
+        <header class="modal__header">
+          <h2 class="modal__title">Cancel subscription</h2>
+
+          <button class="modal__close" data-hystclose aria-label="Close modal" type="button">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M9.3335 9.33333L22.6668 22.6667M9.3335 22.6667L22.6668 9.33333" stroke="#0A163E" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </button>
+        </header>
+
+        <div class="modal__content">
+          <form class="form form-grid js-form" id="form-cancel-subscription" action="#">
+
+            <input type="hidden" name="subject" value="Cancel subscription">
+
+            <div class="form-input-wrapper">
+              <label class="form-label" for="fcs-email">Email</label>
+              <input class="form-field" type="email" id="fcs-email" name="email" placeholder="Email address of subscription" required>
+            </div>
+
+            <div class="form-input-wrapper">
+              <label class="form-label" for="fcs-digits">Last 4 digits of card</label>
+              <input class="form-field" type="text" id="fcs-digits" name="cardDigits" data-mask="code" placeholder="Last 4 digits of card" required>
+            </div>
+
+            <div class="form__text">
+              <p>Please provide email address and last four digits of the card you subscribned with to cancel your subscription.</p>
+
+              <p>If you have any question please contacts us at support@pdodigitaltech.com</p>
+            </div>
+
+            <div class="form__actions form-actions">
+              <button class="button form-submit" type="submit">Cancel Subscription</button>
+
+              <div class="form-error">
+                Incorrect email or password
+              </div>
+            </div>
+
+            <div class="form__success">
+              <h2 class="form__success-title">Thank you for submitting the form.</h2>
+              <p class="form__success-text">Your information has been successfully received.</p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- login -->
+  <div class="modal hystmodal" id="modal-login" aria-hidden="true">
+    <div class="hystmodal__wrap">
+      <div class="modal__body hystmodal__window" role="dialog" aria-modal="true">
+        <header class="modal__header">
+          <h2 class="modal__title">Log In</h2>
+
+          <button class="modal__close" data-hystclose aria-label="Close modal" type="button">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M9.3335 9.33333L22.6668 22.6667M9.3335 22.6667L22.6668 9.33333" stroke="#0A163E" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </button>
+        </header>
+
+        <div class="modal__content">
+          <form class="form form-grid js-form" id="form-login" action="#">
+
+            <input type="hidden" name="subject" value="Login">
+
+            <div class="form-input-wrapper">
+              <label class="form-label" for="fl-email">Email</label>
+              <input class="form-field" type="email" id="fl-email" name="email" placeholder="Email address of subscription" required>
+            </div>
+
+            <div class="form-input-wrapper">
+              <label class="form-label" for="fl-password">Password</label>
+              <input class="form-field" type="password" id="fl-password" name="password" placeholder="Enter your password" required autocomplete="off">
+            </div>
+
+            <div class="form__actions form-actions">
+              <button class="button form-submit" type="submit">Log In</button>
+
+              <div class="form-error">
+                Incorrect email or password
+              </div>
+            </div>
+
+            <div class="form__footer">
+              <a href="/payment.html">Not a meber? Register here</a>
+            </div>
+
+            <div class="form__success">
+              <h2 class="form__success-title">Thank you for submitting the form.</h2>
+              <p class="form__success-text">Your information has been successfully received.</p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- question -->
+  <div class="modal hystmodal" id="modal-question" aria-hidden="true">
+    <div class="hystmodal__wrap">
+      <div class="modal__body hystmodal__window" role="dialog" aria-modal="true">
+        <header class="modal__header">
+          <h2 class="modal__title">Support Form</h2>
+
+          <button class="modal__close" data-hystclose aria-label="Close modal" type="button">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M9.3335 9.33333L22.6668 22.6667M9.3335 22.6667L22.6668 9.33333" stroke="#0A163E" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </button>
+        </header>
+
+        <div class="modal__content">
+          <form class="form form-grid js-form" id="form-question" action="#">
+
+            <input type="hidden" name="subject" value="Question">
+
+            <div class="form-input-wrapper">
+              <label class="form-label" for="fq-first-name">Name</label>
+              <input class="form-field" type="text" id="fq-first-name" name="first-name" placeholder="Name">
+            </div>
+
+            <div class="form-input-wrapper">
+              <label class="form-label" for="fq-email">Email</label>
+              <input class="form-field" type="email" id="fq-email" name="email" placeholder="Email" required>
+            </div>
+
+            <div class="form-input-wrapper">
+              <label class="form-label" for="fq-message">Message</label>
+              <textarea class="form-field form-field--textarea" id="fq-message" name="message" cols="10" rows="2" placeholder="Message"></textarea>
+            </div>
+
+            <div class="form__actions form-actions">
+              <button class="button form-submit" type="submit">Send</button>
+            </div>
+
+            <div class="form__success">
+              <h2 class="form__success-title">Thank you for submitting the form.</h2>
+              <p class="form__success-text">Your information has been successfully received.</p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- cancel -->
+  <div class="modal modal--dialog hystmodal" id="modal-unsubscribe" aria-hidden="true">
+    <div class="hystmodal__wrap">
+      <div class="modal__body hystmodal__window" role="dialog" aria-modal="true">
+        <button class="modal__close" data-hystclose aria-label="Close modal" type="button">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M9.3335 9.33333L22.6668 22.6667M9.3335 22.6667L22.6668 9.33333" stroke="#0A163E" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+
+        <div class="modal__content modal__content--centered">
+          <h2 class="modal__title">
+            Are you really sure you want to unsubscribe?
+          </h2>
+
+          <div class="modal__buttons">
+            <button class="button button--outline button--xs js-cancel-page" type="button">Yes</button>
+
+            <button class="button button--outline button--xs button--grey" data-hystclose type="button">No</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- decline -->
+  <div class="modal modal--alert hystmodal" id="modal-decline" aria-hidden="true">
+    <div class="hystmodal__wrap">
+      <div class="modal__body hystmodal__window" role="dialog" aria-modal="true">
+        <div class="modal__content modal__content--centered">
+          <div class="modal-alert">
+            <img src="images/decline-icon.png" width="100" height="100" aria-hidden="true" alt="">
+
+            <h2 class="modal__title">
+              There was an error processing your payment information.
+            </h2>
+
+            <div class="modal__text">
+              Your card has been declined.
+            </div>
+
+            <div class="modal__buttons">
+              <button class="button button--shadow" data-hystclose type="button">Try Again</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="scripts/imask.min.js"></script>
+  <script src="scripts/lottie.min.js"></script>
+  <script src="scripts/hystmodal.min.js"></script>
+  <script src="scripts/swiper.min.js"></script>
+  <script src="scripts/main.js"></script>
+</body>
+
+</html>

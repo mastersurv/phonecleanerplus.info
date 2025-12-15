@@ -1,0 +1,16 @@
+# FastAPI framework
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+
+# Stripe SDK
+stripe==11.4.1
+
+# Environment variables
+python-dotenv==1.0.1
+
+# Request validation
+pydantic[email]==2.10.4
+
+# HTTP client (used by Stripe SDK)
+httpx==0.28.1
+

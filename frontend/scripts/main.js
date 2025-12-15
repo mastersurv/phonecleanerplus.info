@@ -1,0 +1,1229 @@
+window.addEventListener('load', function () {
+
+  /* loader */
+
+  setTimeout(() => {
+    document.querySelector('.page-loader').classList.add('is-close');
+  }, 500);
+
+  /* redirects */
+
+  function redirect(url) {
+    window.location.href = url;
+  }
+
+  let pages = {
+    cancel: 'cancel.html',
+    welcome: 'welcome.html',
+  };
+
+  let toCancelSuccess = document.querySelector('.js-cancel-page');
+
+  if (toCancelSuccess) {
+    toCancelSuccess.addEventListener('click', () => {
+      redirect(pages.cancel);
+    });
+  }
+
+  /* menu links */
+
+  const menuLinks = this.document.querySelector('.js-menu-links');
+
+  if (menuLinks) {
+    const currentUrl = window.location.href;
+
+    const links = menuLinks.querySelectorAll("a");
+
+    links.forEach((item) => {
+      const itemHref = item.getAttribute("href");
+
+      if (currentUrl.includes(itemHref)) {
+        links.forEach((el) => {
+          el.parentElement.classList.remove("is-active")
+        });
+
+        item.parentElement.classList.add("is-active");
+      }
+    });
+  }
+
+  /* check agreements */
+
+  const agreementsCheckboxes = document.querySelectorAll('.js-agreements');
+  const activateButtons = document.querySelectorAll('.activate-button');
+
+  if (agreementsCheckboxes.length > 0) {
+    agreementsCheckboxes.forEach(checkbox => {
+      checkbox.addEventListener('change', function () {
+        setMainButtonState(this.checked);
+      });
+    });
+    if (activateButtons) {
+      setMainButtonState(true);
+    }
+  }
+
+  function setMainButtonState(status) {
+    agreementsCheckboxes.forEach(checkbox => {
+      checkbox.checked = status;
+    });
+    activateButtons.forEach(button => {
+      button.disabled = !status;
+    });
+  }
+
+  /* handleFormSubmit */
+
+  function handleFormSubmit(form, url, onSuccess, onError) {
+    const formData = new FormData(form);
+
+    fetch(url, {
+      method: 'POST',
+      body: formData,
+    })
+      .then(response => {
+        if (response.ok) {
+          onSuccess(form);
+        } else {
+          throw new Error(`Server responded with status ${response.status}`);
+        }
+      })
+      .catch(error => {
+        onError(error, form);
+      });
+  }
+
+  /* disabledBtn */
+
+  function disabledBtn(btn) {
+    btn.disabled = true;
+  }
+
+  /* enabledBtn */
+
+  function enabledBtn(btn) {
+    btn.disabled = false;
+  }
+
+  /* Stripe Elements (inline payments on page) */
+
+  // API base URL for FastAPI backend
+  const API_BASE_URL = window.location.hostname === 'localhost' 
+    ? 'http://localhost:8000' 
+    : window.location.origin;
+
+  // Публичный ключ Stripe (тот же аккаунт, что и у secret key на backend)
+  let stripe = null;
+  let stripeElements = null;
+  let cardElement1 = null;
+  let cardElement2 = null;
+
+  // Инициализация Stripe Elements после загрузки страницы
+  function initStripeElements() {
+    if (typeof Stripe === 'undefined') {
+      console.error('Stripe.js is not loaded');
+      return;
+    }
+
+    try {
+      stripe = Stripe('pk_test_51SaDJJF7QsJpghDdIRUvX9fpLJ2iAjEoCfPMjbArUpHTyRgPyhyBq7ba7YrNHPpc1Oc14w7d6egLidAOfokbneFK00KccSsXbq');
+    } catch (e) {
+      console.error('Stripe init error:', e);
+      return;
+    }
+
+    if (!stripe) {
+      console.error('Failed to initialize Stripe');
+      return;
+    }
+
+    const cardElementContainer1 = document.getElementById('card-element-1');
+    const cardElementContainer2 = document.getElementById('card-element-2');
+
+    if (!cardElementContainer1 && !cardElementContainer2) {
+      return; // Нет контейнеров для карт на этой странице
+    }
+
+    // Стили для Stripe Elements, чтобы они выглядели как обычные поля формы
+    const elementStyles = {
+      base: {
+        fontSize: '16px',
+        color: '#0A163E',
+        fontFamily: 'inherit',
+        '::placeholder': {
+          color: '#999',
+        },
+      },
+      invalid: {
+        color: '#fa755a',
+        iconColor: '#fa755a',
+      },
+    };
+
+    stripeElements = stripe.elements();
+
+    if (cardElementContainer1) {
+      try {
+        cardElement1 = stripeElements.create('card', {
+          style: elementStyles,
+        });
+        cardElement1.mount('#card-element-1');
+        
+        // Обработка ошибок валидации карты
+        cardElement1.on('change', function(event) {
+          const errorElement = document.getElementById('card-errors-1');
+          if (event.error) {
+            if (errorElement) {
+              errorElement.textContent = event.error.message;
+            }
+          } else {
+            if (errorElement) {
+              errorElement.textContent = '';
+            }
+          }
+        });
+      } catch (e) {
+        console.error('Failed to mount card element 1:', e);
+      }
+    }
+
+    if (cardElementContainer2) {
+      try {
+        cardElement2 = stripeElements.create('card', {
+          style: elementStyles,
+        });
+        cardElement2.mount('#card-element-2');
+        
+        // Обработка ошибок валидации карты
+        cardElement2.on('change', function(event) {
+          const errorElement = document.getElementById('card-errors-2');
+          if (event.error) {
+            if (errorElement) {
+              errorElement.textContent = event.error.message;
+            }
+          } else {
+            if (errorElement) {
+              errorElement.textContent = '';
+            }
+          }
+        });
+      } catch (e) {
+        console.error('Failed to mount card element 2:', e);
+      }
+    }
+
+    // Apple Pay / Google Pay - Payment Request API
+    initApplePay();
+  }
+
+  // Инициализация Apple Pay / Google Pay
+  function initApplePay() {
+    const applePayBtn = document.getElementById('applepay-btn');
+    if (!applePayBtn || !stripe) {
+      return;
+    }
+
+    // Создаём Payment Request для подписки
+    // Показываем начальную сумму $0 (trial), затем $29.99/month
+    const paymentRequest = stripe.paymentRequest({
+      country: 'US',
+      currency: 'usd',
+      total: {
+        label: 'Ultra Cleaner - 3 Day Trial',
+        amount: 0, // $0 для trial периода
+      },
+      requestPayerName: true,
+      requestPayerEmail: true,
+    });
+
+    // Проверяем доступность Apple Pay / Google Pay
+    paymentRequest.canMakePayment().then(function(result) {
+      if (result) {
+        // Apple Pay или Google Pay доступен
+        console.log('Apple Pay / Google Pay available:', result);
+        applePayBtn.style.display = 'block';
+
+        // Обработчик клика на кнопку Apple Pay
+        applePayBtn.addEventListener('click', async function() {
+          // Проверяем согласие с условиями
+          const agreementCheckbox = document.querySelector('.js-agreements');
+          if (agreementCheckbox && !agreementCheckbox.checked) {
+            alert('Please agree to the Terms of Service');
+            return;
+          }
+
+          try {
+            // Показываем Apple Pay sheet
+            const paymentResponse = await paymentRequest.show();
+            await handleApplePayPayment(paymentResponse);
+          } catch (err) {
+            if (err.name !== 'AbortError') {
+              console.error('Payment Request error:', err);
+            }
+          }
+        });
+      } else {
+        // Apple Pay / Google Pay недоступен
+        console.log('Apple Pay / Google Pay not available');
+        applePayBtn.style.display = 'none';
+      }
+    });
+
+    // Обработчик события paymentmethod от Payment Request API
+    paymentRequest.on('paymentmethod', async function(ev) {
+      await handleApplePayPayment(ev);
+    });
+  }
+
+  // Обработка платежа через Apple Pay / Google Pay
+  async function handleApplePayPayment(paymentEvent) {
+    const payerEmail = paymentEvent.payerEmail;
+    const paymentMethod = paymentEvent.paymentMethod;
+
+    try {
+      // Шаг 1: Создаём клиента и SetupIntent на бэкенде
+      const setupResponse = await fetch(`${API_BASE_URL}/api/stripe/create-setup-intent`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: payerEmail }),
+      });
+
+      if (!setupResponse.ok) {
+        throw new Error('Failed to create setup intent');
+      }
+
+      const setupData = await setupResponse.json();
+      const { customerId, priceId } = setupData;
+
+      // Шаг 2: Создаём подписку с полученным payment method
+      const subscriptionResponse = await fetch(`${API_BASE_URL}/api/stripe/create-subscription`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          customer_id: customerId,
+          price_id: priceId,
+          payment_method_id: paymentMethod.id,
+        }),
+      });
+
+      if (!subscriptionResponse.ok) {
+        const errorData = await subscriptionResponse.json();
+        throw new Error(errorData.detail || 'Failed to create subscription');
+      }
+
+      const subscriptionData = await subscriptionResponse.json();
+
+      // Успех - завершаем Payment Request
+      paymentEvent.complete('success');
+
+      // Показываем успех и редиректим
+      console.log('Subscription created via Apple Pay:', subscriptionData);
+      setTimeout(() => {
+        redirect('welcome.html');
+      }, 500);
+
+    } catch (error) {
+      console.error('Apple Pay payment error:', error);
+      paymentEvent.complete('fail');
+
+      // Показываем модалку с ошибкой
+      const declineModal = document.getElementById('modal-decline');
+      if (declineModal && typeof modal !== 'undefined') {
+        modal.open('#modal-decline');
+      }
+    }
+  }
+
+  // Инициализируем Stripe Elements после загрузки страницы
+  // Проверяем несколько раз, так как Stripe.js может загружаться асинхронно
+  let initAttempts = 0;
+  const maxAttempts = 10;
+  
+  function tryInitStripeElements() {
+    initAttempts++;
+    
+    if (typeof Stripe !== 'undefined') {
+      initStripeElements();
+    } else if (initAttempts < maxAttempts) {
+      setTimeout(tryInitStripeElements, 100);
+    } else {
+      console.error('Stripe.js failed to load after', maxAttempts, 'attempts');
+    }
+  }
+  
+  tryInitStripeElements();
+
+  async function createStripeSetupIntent(email) {
+    const response = await fetch(`${API_BASE_URL}/api/stripe/create-setup-intent`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email: email }),
+    });
+
+    if (!response.ok) {
+      const text = await response.text();
+      throw new Error(`Failed to create setup intent: ${text}`);
+    }
+
+    const data = await response.json();
+
+    if (!data.clientSecret) {
+      throw new Error('Stripe clientSecret is missing in response');
+    }
+
+    return data; // Возвращаем весь объект с clientSecret, customerId, priceId
+  }
+
+  async function createSubscriptionWithPaymentMethod(customerId, priceId, paymentMethodId) {
+    const response = await fetch(`${API_BASE_URL}/api/stripe/create-subscription`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        customer_id: customerId,
+        price_id: priceId,
+        payment_method_id: paymentMethodId,
+      }),
+    });
+
+    if (!response.ok) {
+      const text = await response.text();
+      throw new Error(`Failed to create subscription: ${text}`);
+    }
+
+    return await response.json();
+  }
+
+  async function handleInlineStripeSubscription(form) {
+    if (!stripe || !stripeElements) {
+      console.error('Stripe is not initialized or Elements not available');
+      return;
+    }
+
+    const submitButton = form.querySelector('button[type="submit"]');
+    const emailInput = form.querySelector('input[type="email"]');
+    const errorContainer = form.id === 'form-payment-1'
+      ? document.getElementById('card-errors-1')
+      : document.getElementById('card-errors-2');
+
+    const email = emailInput ? emailInput.value : '';
+    const cardElement = form.id === 'form-payment-1' ? cardElement1 : cardElement2;
+
+    if (!cardElement) {
+      console.error('Stripe card element not found for form', form.id);
+      return;
+    }
+
+    if (errorContainer) {
+      errorContainer.textContent = '';
+    }
+
+    if (submitButton) {
+      disabledBtn(submitButton);
+    }
+
+    try {
+      // Шаг 1: Создаём SetupIntent для сохранения карты
+      const setupData = await createStripeSetupIntent(email);
+      const { clientSecret, customerId, priceId } = setupData;
+
+      // Проверяем, что clientSecret действительно от SetupIntent (начинается с seti_)
+      if (!clientSecret) {
+        throw new Error('SetupIntent client secret is missing');
+      }
+      
+      if (!clientSecret.startsWith('seti_')) {
+        console.error('Invalid client secret type:', clientSecret.substring(0, 10));
+        throw new Error('Invalid SetupIntent client secret received. Expected SetupIntent secret starting with "seti_"');
+      }
+
+      // Шаг 2: Подтверждаем карту через SetupIntent (НЕ PaymentIntent!)
+      // ВАЖНО: используем confirmCardSetup для SetupIntent, НЕ confirmCardPayment!
+      // Проверяем еще раз перед вызовом
+      if (!clientSecret.startsWith('seti_')) {
+        throw new Error('CRITICAL: Attempting to use SetupIntent secret with wrong method. Secret type: ' + clientSecret.substring(0, 10));
+      }
+      
+      const { error, setupIntent } = await stripe.confirmCardSetup(clientSecret, {
+        payment_method: {
+          card: cardElement,
+          billing_details: {
+            email: email || undefined,
+          },
+        },
+      });
+
+      if (error) {
+        console.error('Stripe setup error:', error);
+        if (errorContainer) {
+          errorContainer.textContent = error.message || 'Card verification failed. Please try again.';
+        }
+        // Показать модалку об ошибке, если она есть
+        const declineModal = document.getElementById('modal-decline');
+        if (declineModal && typeof modal !== 'undefined') {
+          modal.open('#modal-decline');
+        }
+        return;
+      }
+
+      if (setupIntent && setupIntent.status === 'succeeded') {
+        // Шаг 3: Создаём подписку с сохраненным PaymentMethod
+        // payment_method может быть строкой (ID) или объектом
+        const paymentMethodId = typeof setupIntent.payment_method === 'string' 
+          ? setupIntent.payment_method 
+          : setupIntent.payment_method?.id || setupIntent.payment_method;
+        
+        if (!paymentMethodId) {
+          throw new Error('Payment method ID not found in setup intent');
+        }
+        
+        try {
+          const subscriptionResult = await createSubscriptionWithPaymentMethod(
+            customerId,
+            priceId,
+            paymentMethodId
+          );
+
+          // Успех создания подписки
+          form.classList.add('is-success');
+          setTimeout(() => {
+            form.reset();
+            form.classList.remove('is-success');
+            // после успешной оплаты можно редиректить в личный кабинет / welcome
+            redirect('welcome.html');
+          }, 1000);
+        } catch (subError) {
+          console.error('Subscription creation error:', subError);
+          if (errorContainer) {
+            errorContainer.textContent = subError.message || 'Failed to create subscription. Please try again.';
+          }
+        }
+      }
+    } catch (e) {
+      console.error('Subscription error:', e);
+      if (errorContainer) {
+        errorContainer.textContent = e.message || 'Payment failed. Please try again.';
+      }
+    } finally {
+      if (submitButton) {
+        enabledBtn(submitButton);
+      }
+    }
+  }
+
+  /* form */
+
+  const maskList = {
+    'code': '0000',
+    'card-number': '0000 0000 0000 0000',
+    'card-cvc': '000',
+    'card-date': 'MM/YY',
+  };
+
+  const paymentsForms = document.querySelectorAll('.js-form');
+
+  paymentsForms.forEach(form => {
+    let inputs = form.querySelectorAll('input, textarea');
+    let sendButton = form.querySelector('button[type="submit"]');
+
+    let inputsArray = Array.from(inputs).map(input => {
+      const { id, name, validity: { valid } } = input;
+      return { id, name, valid };
+    });
+
+    for (let input of inputs) {
+      let isValid = true;
+      let iMaskInstance = null;
+
+      if (input.dataset.mask) {
+        const mask = maskList[input.dataset.mask];
+
+        iMaskInstance = IMask(input, {
+          mask: mask,
+          blocks: {
+            YY: {
+              mask: '00',
+            },
+            MM: {
+              mask: IMask.MaskedRange,
+              from: 1,
+              to: 12,
+            },
+          },
+        });
+      }
+
+      input.addEventListener('input', function () {
+        isValid = this.validity.valid;
+
+        if (iMaskInstance) {
+          isValid = iMaskInstance.masked.isComplete;
+        }
+
+        inputsArray = inputsArray.map(el => {
+          if (el.id === input.id) {
+            return {
+              ...el,
+              valid: isValid
+            };
+          }
+          return el;
+        });
+
+        input.classList.toggle('is-error', !isValid);
+        checkValidForm();
+      });
+    }
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      if (checkValidForm()) {
+        // Для платежных форм используем Stripe Elements на этой же странице
+        if (form.id === 'form-payment-1' || form.id === 'form-payment-2') {
+          handleInlineStripeSubscription(form);
+        } else {
+          handleFormSubmit(
+            form,
+            'mail/send.php',
+            (form) => {
+              // if success
+              form.classList.add('is-success');
+              setTimeout(() => {
+                form.reset();
+                form.classList.remove('is-success');
+                if (typeof modal !== 'undefined' && typeof modal.close === 'function') {
+                  modal.close();
+                }
+              }, 2000);
+            },
+            (error, form) => {
+              // if error
+              console.error('Ошибка отправки формы:', error);
+              form.classList.add('is-error');
+              setTimeout(() => {
+                form.classList.remove('is-error');
+              }, 3000);
+            }
+          );
+        }
+      }
+    });
+
+    function checkValidForm() {
+      let isValid = !inputsArray.some(el => !el.valid);
+
+      form.classList.toggle('has-error', !isValid);
+      sendButton.disabled = !isValid;
+      return isValid;
+    }
+  });
+
+  /* menu */
+
+  const menu = document.querySelector('.js-menu');
+
+  if (menu) {
+    const menuToggle = document.querySelector('.js-menu-toggle');
+    const menuCloseBtn = document.querySelector('.js-menu-close');
+    let isAnimation = false;
+
+    menuToggle.addEventListener('click', function () {
+      if (isAnimation) return;
+
+      if (this.classList.contains('is-active')) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    });
+
+    menuCloseBtn.addEventListener('click', function () {
+      if (isAnimation) return;
+
+      closeMenu();
+    });
+
+    function closeMenu() {
+      isAnimation = true;
+
+      document.body.classList.remove('no-scroll');
+      menuToggle.setAttribute('aria-expanded', false);
+      menuToggle.classList.remove('is-active');
+      menu.classList.remove('is-active');
+
+      menu.addEventListener('transitionend', function () {
+        menu.classList.add('is-closed');
+        isAnimation = false;
+      }, {
+        once: true,
+      });
+
+      document.removeEventListener('keyup', pressEsc);
+    }
+
+    function openMenu() {
+      isAnimation = true;
+
+      document.body.classList.add('no-scroll');
+      menuToggle.setAttribute('aria-expanded', true);
+      menuToggle.classList.add('is-active');
+      menu.classList.remove('is-closed');
+
+      setTimeout(() => {
+        menu.classList.add('is-active');
+        isAnimation = false;
+      }, 20);
+
+      document.addEventListener('keyup', pressEsc);
+    }
+
+    function pressEsc(e) {
+      if (e.key === 'Escape') {
+        closeMenu();
+      }
+    }
+  }
+
+  /* previews slider */
+
+  const previewsSlider = new Swiper('.previews-slider', {
+    initialSlide: 1,
+    slidesPerView: 1,
+    spaceBetween: 0,
+    centeredSlides: true,
+    loop: true,
+    autoplay: {
+      delay: 5000,
+    },
+    speed: 700,
+    pagination: {
+      el: '.previews-slider .swiper-pagination',
+      clickable: true,
+    },
+    navigation: {
+      nextEl: '.previews-slider .swiper-button-next',
+      prevEl: '.previews-slider .swiper-button-prev',
+    },
+    breakpoints: {
+      998: {
+        slidesPerView: "auto",
+        spaceBetween: 20,
+      },
+    },
+  });
+
+  /* quiz slider */
+
+  const quizSlider = new Swiper('.quiz-slider', {
+    slidesPerView: 1,
+    spaceBetween: 20,
+    centeredSlides: true,
+    speed: 700,
+    pagination: {
+      el: '.quiz-slider .swiper-pagination',
+      clickable: true,
+    },
+  });
+
+  /* gallery slider */
+
+  const gallerySlider = new Swiper('.gallery-slider', {
+    slidesPerView: "auto",
+    spaceBetween: 8,
+    loop: true,
+    autoplay: {
+      delay: 3000,
+    },
+    speed: 700,
+  });
+
+  /* features slider */
+
+  const featuresSlider = new Swiper('.features-slider', {
+    slidesPerView: 1,
+    spaceBetween: 20,
+    centeredSlides: true,
+    loop: true,
+    autoplay: {
+      delay: 3000,
+    },
+    speed: 700,
+    pagination: {
+      el: '.features-slider .swiper-pagination',
+      clickable: true,
+    },
+    navigation: {
+      nextEl: '.features-slider .swiper-button-next',
+      prevEl: '.features-slider .swiper-button-prev',
+    },
+  });
+
+  /* reviews slider */
+
+  const reviewsSlider = new Swiper('.reviews-slider', {
+    slidesPerView: 1.25,
+    spaceBetween: 16,
+    loop: true,
+    autoplay: {
+      delay: 5000,
+    },
+    speed: 700,
+    pagination: {
+      el: '.reviews-slider .swiper-pagination',
+      clickable: true,
+    },
+    navigation: {
+      nextEl: '.reviews-slider .swiper-button-next',
+      prevEl: '.reviews-slider .swiper-button-prev',
+    },
+    breakpoints: {
+      576: {
+        slidesPerView: 2.25,
+      },
+      998: {
+        slidesPerView: 3,
+        spaceBetween: 44,
+      },
+    },
+  });
+
+  /* lk reviews slider */
+
+  const lkReviewsSlider = new Swiper('.reviews-slider-2', {
+    slidesPerView: 1.25,
+    spaceBetween: 16,
+    loop: true,
+    autoplay: {
+      delay: 5000,
+    },
+    speed: 700,
+    breakpoints: {
+      576: {
+        slidesPerView: 2.25,
+      },
+      998: {
+        slidesPerView: 3.5,
+        spaceBetween: 44,
+      },
+    },
+  });
+
+  /* info cards slider */
+
+  const infoCardsSlider = new Swiper('.info-cards-slider', {
+    slidesPerView: 1.25,
+    spaceBetween: 16,
+    loop: true,
+    autoplay: {
+      delay: 5000,
+    },
+    speed: 700,
+    pagination: {
+      el: '.info-cards-slider .swiper-pagination',
+      clickable: true,
+    },
+    navigation: {
+      nextEl: '.info-cards-slider .swiper-button-next',
+      prevEl: '.info-cards-slider .swiper-button-prev',
+    },
+    breakpoints: {
+      576: {
+        slidesPerView: 2.25,
+      },
+      998: {
+        slidesPerView: 1,
+      },
+    },
+  });
+
+  /* timer */
+
+  const timer = document.querySelector(".js-timer");
+
+  if (timer) {
+    const minutesEl = timer.querySelector(".js-timer-min");
+    const secondsEl = timer.querySelector(".js-timer-sec");
+    let totalSeconds = 10 * 60; // 10 minutes
+
+    function updateTimer() {
+      if (totalSeconds <= 0) {
+        clearInterval(timerInterval);
+        minutes.textContent = "00";
+        seconds.textContent = "00";
+        return;
+      }
+
+      const minutes = Math.floor(totalSeconds / 60);
+      const seconds = totalSeconds % 60;
+
+      minutesEl.textContent = String(minutes).padStart(2, "0");
+      secondsEl.textContent = String(seconds).padStart(2, "0");
+      totalSeconds--;
+    }
+
+    const timerInterval = setInterval(updateTimer, 1000);
+
+    updateTimer();
+  }
+
+  /* accordion */
+
+  const accordionBlocks = document.querySelectorAll('.js-accordion');
+
+  accordionBlocks?.forEach(accordion => {
+    const items = accordion.querySelectorAll('.js-accordion-item');
+
+    items.forEach(item => {
+      const toggle = item.querySelector('.js-accordion-toggle');
+
+      toggle.addEventListener('click', () => {
+        // close other item
+        const lastItem = accordion.querySelector('.js-accordion-item.is-active');
+
+        if (lastItem && lastItem != item) {
+          closeItem(lastItem);
+        }
+        // close this item
+        if (item.classList.contains('is-active')) {
+          closeItem(item);
+          return;
+        }
+        // open this item
+        openItem(item);
+      });
+
+      function openItem(item) {
+        item.classList.add('is-active');
+        item.querySelector('.js-accordion-toggle').setAttribute('aria-expanded', true);
+      }
+
+      function closeItem(item) {
+        item.classList.remove('is-active');
+        item.querySelector('.js-accordion-toggle').setAttribute('aria-expanded', false);
+      }
+    });
+  });
+
+  /*  modal */
+
+  const modal = new HystModal({
+    linkAttributeName: 'data-hystmodal',
+    catchFocus: true,
+    waitTransitions: true,
+    closeOnEsc: true,
+    backscroll: true,
+    beforeOpen: function (modal) {
+      const id = modal.element.id;
+
+      if (id) {
+        const currentUrl = window.location.href.split('#')[0];
+        window.history.pushState(null, '', `${currentUrl}#${id}`);
+      }
+    },
+    afterClose: function (modal) {
+      const id = modal.element.id;
+
+      if (id) {
+        const currentUrl = window.location.href.split('#')[0];
+        window.history.replaceState(null, '', currentUrl);
+      }
+    },
+  });
+
+  const hash = window.location.hash;
+
+  if (hash && hash.startsWith('#')) {
+    const modalId = hash.substring(1);
+    const modalElement = document.getElementById(modalId);
+
+    if (modalElement) {
+      modal.open(`#${modalId}`);
+    }
+  }
+
+  /* startCircleProgress */
+
+  function startCircleProgress(el, duration = 7000) {
+    const circle = el.querySelector('.circle-progress__circle');
+    const text = el.querySelector('.circle-progress__text');
+    const radius = circle.r.baseVal.value;
+    const circumference = 2 * Math.PI * radius;
+
+    circle.style.strokeDasharray = `${circumference} ${circumference}`;
+    circle.style.strokeDashoffset = circumference;
+
+    let startTime = null;
+
+    function animateCircle(timestamp) {
+      if (!startTime) startTime = timestamp;
+
+      const progress = timestamp - startTime;
+      const percent = Math.min((progress / duration) * 100, 100);
+      const offset = circumference - (percent / 100) *
+        circumference;
+
+      circle.style.strokeDashoffset = offset;
+      text.textContent = `${Math.round(percent)}%`;
+
+      if (progress < duration) {
+        requestAnimationFrame(animateCircle);
+      }
+    }
+
+    requestAnimationFrame(animateCircle);
+  }
+
+  /* quiz */
+
+  const quiz = document.querySelector('.js-quiz');
+
+  if (quiz) {
+    const form = quiz.querySelector('form');
+    const formProgress = quiz.querySelector('.js-quiz-form-progress');
+    const steps = quiz.querySelectorAll('.js-quiz-step');
+    const nextBtns = quiz.querySelectorAll('.js-quiz-next');
+    const prevBtns = quiz.querySelectorAll('.js-quiz-prev');
+    const progress = quiz.querySelector('.js-quiz-progress');
+    let currentStepNum = 1;
+
+    validationStep(steps[currentStepNum - 1]);
+
+    updateProgress();
+
+    steps[currentStepNum - 1].classList.add('is-active');
+
+    nextBtns.forEach(btn => btn.addEventListener('click', nextStep));
+
+    prevBtns.forEach(btn => btn.addEventListener('click', prevStep));
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      /* test */
+      // nextStep();
+      // startCircleProgress(formProgress);
+      // setTimeout(() => {
+      //   nextStep();
+      // }, 7000);
+
+      handleFormSubmit(
+        form,
+        'mail/send.php',
+        (form) => {
+          nextStep();
+          startCircleProgress(formProgress);
+          setTimeout(() => {
+            nextStep();
+          }, 7000);
+        },
+        (error, form) => {
+          console.error('Ошибка отправки формы:', error);
+        }
+      );
+    });
+
+    function nextStep() {
+      if (currentStepNum < steps.length) {
+        if (validationStep(steps[currentStepNum - 1])) {
+          changeStep(currentStepNum + 1);
+        }
+      }
+    }
+
+    function prevStep() {
+      if (currentStepNum > 1) {
+        changeStep(currentStepNum - 1);
+      }
+    }
+
+    function changeStep(nextStepNum) {
+      let currentStep = steps[currentStepNum - 1];
+
+      const keyframesOut = [{
+        opacity: 1,
+        transform: 'scale(1)',
+      },
+      {
+        opacity: 0,
+        transform: 'scale(0.99)',
+      },
+      ];
+
+      const keyframesIn = [{
+        opacity: 0,
+      },
+      {
+        opacity: 1,
+      },
+      ];
+
+      const options = {
+        duration: 500,
+      };
+
+      let lastStepAnim = currentStep.animate(keyframesOut, options);
+
+      lastStepAnim.addEventListener('finish', function () {
+        currentStep.classList.remove('is-active');
+        currentStepNum = nextStepNum;
+        currentStep = steps[currentStepNum - 1];
+        currentStep.animate(keyframesIn, options);
+        currentStep.classList.add('is-active');
+
+        validationStep(currentStep)
+
+        updateProgress();
+
+        if (currentStep.classList.contains('quiz-step--no-nav')) {
+          quiz.classList.add('hide-nav');
+        } else {
+          quiz.classList.remove('hide-nav');
+        }
+
+        if (currentStep.classList.contains('quiz-step--bg')) {
+          quiz.classList.add('has-bg');
+        } else {
+          quiz.classList.remove('has-bg');
+        }
+
+        if (currentStep.classList.contains('quiz-step--result')) {
+          quizSlider.autoplay.start();
+        }
+      });
+    }
+
+    function validationStep(step) {
+      let isValid = true;
+      let inputs = step.querySelectorAll('input, select, textarea');
+      let radioInputs = step.querySelectorAll('input[type="radio"]');
+      let checkboxInputs = step.querySelectorAll('input[type="checkbox"]');
+      let nextButton = step.querySelector('.quiz-step__actions .js-quiz-next');
+      let sendButton = step.querySelector('button[type="submit"]');
+
+      if (radioInputs.length > 0) {
+        let isRadioSelected = Array.from(radioInputs).some(radio => radio.checked);
+
+        if (!isRadioSelected) {
+          isValid = false;
+
+          if (nextButton) {
+            disabledBtn(nextButton);
+          }
+
+          if (sendButton) {
+            disabledBtn(sendButton);
+          }
+        }
+      }
+
+      if (checkboxInputs.length > 0) {
+        let isCheckboxSelected = Array.from(checkboxInputs).some(radio => radio.checked);
+
+        if (!isCheckboxSelected) {
+          isValid = false;
+
+          if (nextButton) {
+            disabledBtn(nextButton);
+          }
+
+          if (sendButton) {
+            disabledBtn(sendButton);
+          }
+        }
+      }
+
+      if (inputs.length > 0) {
+        for (let input of inputs) {
+          let rule = input.dataset.rule;
+
+          if (!input.validity.valid) {
+            if (nextButton) {
+              disabledBtn(nextButton);
+            }
+
+            if (sendButton) {
+              disabledBtn(sendButton);
+            }
+
+            input.classList.add('is-invalid');
+            isValid = false;
+          } else {
+            input.classList.remove('is-invalid');
+          }
+
+          input.addEventListener('input', function () {
+            if (rule) {
+              this.value = this.value.replace(regExps[rule], '');
+            }
+            if (!input.validity.valid) {
+              input.classList.add('is-invalid');
+
+              if (nextButton) {
+                disabledBtn(nextButton);
+              }
+
+              if (sendButton) {
+                disabledBtn(sendButton);
+              }
+            } else {
+              if (nextButton) {
+                enabledBtn(nextButton);
+              }
+
+              if (sendButton) {
+                enabledBtn(sendButton);
+              }
+
+              input.classList.remove('is-invalid');
+            }
+
+            validationStep(step)
+          });
+        }
+      }
+
+      return isValid;
+    }
+
+    function updateProgress() {
+      progress.querySelector('.progress__line').style.width = currentStepNum * 100 / (steps.length - 3) + '%';
+    }
+  }
+
+  /* show hidden block on scroll */
+
+  let hiddenBlock = document.querySelector('.js-show-on-scroll');
+
+  if (hiddenBlock) {
+    window.addEventListener('scroll', showRules);
+  }
+
+  function showRules() {
+    hiddenBlock.classList.add('is-visible');
+    window.removeEventListener('scroll', showRules);
+  }
+
+  /* setCurrentYear */
+
+  let yearItems = document.querySelectorAll('.js-current-year');
+
+  if (yearItems.length > 0) {
+    const today = new Date();
+
+    yearItems.forEach(item => {
+      item.innerText = today.getFullYear();
+    });
+  }
+
+  /* animation */
+
+  lottie.loadAnimation({
+    container: document.getElementById('offer-info-anim'),
+    renderer: 'svg',
+    loop: true,
+    autoplay: true,
+    path: '../images/peiwall.json',
+  });
+});

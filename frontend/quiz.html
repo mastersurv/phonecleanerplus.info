@@ -1,0 +1,1588 @@
+<!DOCTYPE html>
+<html class="page" lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Ultra Cleaner | Quiz</title>
+  <meta name="description" content="Ultra Cleaner | Quiz">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#eeeeee">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#eeeeee">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicons/favicon-16x16.png">
+  <link rel="icon" type="image/svg+xml" sizes="any" href="images/favicons/favicon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/favicons/apple-touch-icon.png">
+  <link rel="manifest" href="images/favicons/manifest.webmanifest">
+
+  <link rel="stylesheet" href="styles/swiper.min.css">
+  <link rel="stylesheet" href="styles/hystmodal.min.css">
+  <link rel="stylesheet" href="styles/style.css">
+</head>
+
+<body class="page__body">
+
+  <div class="page-loader loader">
+    <span>Loading</span>
+  </div>
+
+  <div class="progress-loader loader-2">
+    <span>Loading</span>
+  </div>
+
+  <div class="wrapper">
+
+    <main class="main">
+      <div class="quiz hide-nav js-quiz">
+        <div class="quiz__inner container">
+          <div class="quiz__nav">
+            <a class="quiz__nav-btn button button--outline button--xs" href="/" aria-label="Back">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="14" viewBox="0 0 16 14" aria-hidden="true">
+                <path fill-rule="evenodd" d="M7.707 13.695a1 1 0 0 1-1.414 0l-6-6a1 1 0 0 1 0-1.414l6-6a1 1 0 0 1 1.414 1.414L3.414 5.988H15a1 1 0 1 1 0 2H3.414l4.293 4.293a1 1 0 0 1 0 1.414Z" clip-rule="evenodd" />
+              </svg>
+            </a>
+
+            <div class="quiz__nav-progress progress js-quiz-progress">
+              <span class="progress__line"></span>
+            </div>
+          </div>
+
+          <form class="quiz__content" action="#">
+            <input type="hidden" name="subject" value="Quiz">
+
+            <!-- Answer the short -->
+            <div class="quiz__step quiz-step quiz-step--first quiz-step--no-nav quiz-step--banner js-quiz-step">
+              <div class="quiz-step__inner">
+                <div class="quiz-step__header">
+                  <h1 class="quiz-step__title">
+                    Answer the short
+                    <br>
+                    Quiz and get a <span>Personalized Offer</span>
+                  </h1>
+                </div>
+
+                <div class="quiz-step__content">
+                  <img src="images/quiz-cover.png" width="286" height="388" alt="">
+                </div>
+
+                <div class="quiz-step__footer">
+                  <div class="quiz-step__actions">
+                    <button class="js-quiz-next button" type="button">Continue</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Your level of proficiency in new technologies: -->
+            <div class="quiz__step quiz-step js-quiz-step">
+              <div class="quiz-step__inner">
+                <div class="quiz-step__header">
+                  <h2 class="quiz-step__title">
+                    Your level of proficiency in new technologies:
+                  </h2>
+                </div>
+
+                <div class="quiz-step__content">
+                  <div class="quiz-step__options-grid">
+                    <label class="quiz-radio">
+                      <input class="quiz-radio__input js-quiz-next" type="radio" name="level" value="1">
+
+                      <span class="quiz-radio__box">Novice User</span>
+                    </label>
+
+                    <label class="quiz-radio">
+                      <input class="quiz-radio__input js-quiz-next" type="radio" name="level" value="2">
+
+                      <span class="quiz-radio__box">Intermediate Level</span>
+                    </label>
+
+                    <label class="quiz-radio">
+                      <input class="quiz-radio__input js-quiz-next" type="radio" name="level" value="3">
+
+                      <span class="quiz-radio__box">Confident User</span>
+                    </label>
+
+                    <label class="quiz-radio">
+                      <input class="quiz-radio__input js-quiz-next" type="radio" name="level" value="4">
+
+                      <span class="quiz-radio__box">Advanced User</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="quiz-step__footer"></div>
+              </div>
+            </div>
+
+            <!-- Have you al ready used other cleanser applications? -->
+            <div class="quiz__step quiz-step js-quiz-step">
+              <div class="quiz-step__inner">
+                <div class="quiz-step__header">
+                  <h2 class="quiz-step__title">
+                    Have you al ready used other cleanser applications?
+                  </h2>
+                </div>
+
+                <div class="quiz-step__content">
+                  <div class="quiz-step__options-list">
+                    <label class="quiz-radio">
+                      <input class="quiz-radio__input" type="radio" name="used" value="1">
+
+                      <span class="quiz-radio__box">👍 Yes</span>
+                    </label>
+
+                    <label class="quiz-radio">
+                      <input class="quiz-radio__input" type="radio" name="used" value="2">
+
+                      <span class="quiz-radio__box">🚫 No</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="quiz-step__footer">
+                  <div class="quiz-step__actions">
+                    <button class="js-quiz-next button" type="button">Continue</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Storage. How much space do you have? -->
+            <div class="quiz__step quiz-step js-quiz-step">
+              <div class="quiz-step__inner">
+                <div class="quiz-step__header">
+                  <h2 class="quiz-step__title">
+                    Storage. How much space do you have?
+                  </h2>
+                </div>
+
+                <div class="quiz-step__content">
+                  <div class="quiz-step__options-grid">
+                    <label class="quiz-radio">
+                      <input class="quiz-radio__input js-quiz-next" type="radio" name="storage" value="1">
+
+                      <span class="quiz-radio__box">128 GB</span>
+                    </label>
+
+                    <label class="quiz-radio">
+                      <input class="quiz-radio__input js-quiz-next" type="radio" name="storage" value="2">
+
+                      <span class="quiz-radio__box">256 GB</span>
+                    </label>
+
+                    <label class="quiz-radio">
+                      <input class="quiz-radio__input js-quiz-next" type="radio" name="storage" value="3">
+
+                      <span class="quiz-radio__box">512 GB</span>
+                    </label>
+
+                    <label class="quiz-radio">
+                      <input class="quiz-radio__input js-quiz-next" type="radio" name="storage" value="4">
+
+                      <span class="quiz-radio__box">1 TB</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="quiz-step__footer"></div>
+              </div>
+            </div>
+
+            <!-- Clean up your device storage easily -->
+            <div class="quiz__step quiz-step quiz-step--banner quiz-step--bg quiz-step--no-nav js-quiz-step">
+              <div class="quiz-step__inner">
+                <div class="quiz-step__header">
+                  <h2 class="quiz-step__title">
+                    Clean up your device storage easily
+                  </h2>
+                </div>
+
+                <div class="quiz-step__content">
+                  <img src="images/quiz-img-1.png" width="208" height="432" alt="App Interface">
+                </div>
+
+                <div class="quiz-step__footer">
+                  <div class="quiz-step__actions">
+                    <button class="js-quiz-next button" type="button">Got It</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- How many photos per day do you take on average? -->
+            <div class="quiz__step quiz-step js-quiz-step">
+              <div class="quiz-step__inner">
+                <div class="quiz-step__header">
+                  <h2 class="quiz-step__title">
+                    How many photos per day do you take on average?
+                  </h2>
+                </div>
+
+                <div class="quiz-step__content">
+                  <div class="quiz-step__options-grid">
+                    <label class="quiz-radio">
+                      <input class="quiz-radio__input js-quiz-next" type="radio" name="photos" value="1">
+
+                      <span class="quiz-radio__box">
+                        < 10</span>
+                    </label>
+
+                    <label class="quiz-radio">
+                      <input class="quiz-radio__input js-quiz-next" type="radio" name="photos" value="2">
+
+                      <span class="quiz-radio__box">10 - 49</span>
+                    </label>
+
+                    <label class="quiz-radio">
+                      <input class="quiz-radio__input js-quiz-next" type="radio" name="photos" value="3">
+
+                      <span class="quiz-radio__box">50 - 99</span>
+                    </label>
+
+                    <label class="quiz-radio">
+                      <input class="quiz-radio__input js-quiz-next" type="radio" name="photos" value="4">
+
+                      <span class="quiz-radio__box">> 100</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="quiz-step__footer"></div>
+              </div>
+            </div>
+
+            <!-- What types of media resources do you have the most? -->
+            <div class="quiz__step quiz-step js-quiz-step">
+              <div class="quiz-step__inner">
+                <div class="quiz-step__header">
+                  <h2 class="quiz-step__title">
+                    What types of media resources do you have the most?
+                  </h2>
+                </div>
+
+                <div class="quiz-step__content">
+                  <div class="quiz-step__options-list">
+                    <label class="quiz-checkbox">
+                      <input class="quiz-checkbox__input" type="checkbox" name="resources" value="1">
+
+                      <span class="quiz-checkbox__text">📷 Photos</span>
+                    </label>
+
+                    <label class="quiz-checkbox">
+                      <input class="quiz-checkbox__input" type="checkbox" name="resources" value="2">
+
+                      <span class="quiz-checkbox__text">📹 Video</span>
+                    </label>
+
+                    <label class="quiz-checkbox">
+                      <input class="quiz-checkbox__input" type="checkbox" name="resources" value="3">
+
+                      <span class="quiz-checkbox__text">📱 Screenshots</span>
+                    </label>
+
+                    <label class="quiz-checkbox">
+                      <input class="quiz-checkbox__input" type="checkbox" name="resources-4" value="4">
+
+                      <span class="quiz-checkbox__text">🖼️ Live Photos</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="quiz-step__footer">
+                  <div class="quiz-step__actions">
+                    <button class="js-quiz-next button" type="button">Continue</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- How often do you need tech tips to clean up your device? -->
+            <div class="quiz__step quiz-step js-quiz-step">
+              <div class="quiz-step__inner">
+                <div class="quiz-step__header">
+                  <h2 class="quiz-step__title">
+                    How often do you need tech tips to clean up your device?
+                  </h2>
+                </div>
+
+                <div class="quiz-step__content">
+                  <div class="quiz-step__options-list">
+                    <label class="quiz-radio">
+                      <input class="quiz-radio__input" type="radio" name="tech-tips" value="1">
+
+                      <span class="quiz-radio__box">Never</span>
+                    </label>
+
+                    <label class="quiz-radio">
+                      <input class="quiz-radio__input" type="radio" name="tech-tips" value="2">
+
+                      <span class="quiz-radio__box">Rarely</span>
+                    </label>
+
+                    <label class="quiz-radio">
+                      <input class="quiz-radio__input" type="radio" name="tech-tips" value="3">
+
+                      <span class="quiz-radio__box">Often</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="quiz-step__footer">
+                  <div class="quiz-step__actions">
+                    <button class="js-quiz-next button" type="button">Continue</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Free up space on your device in a few clicks! -->
+            <div class="quiz__step quiz-step quiz-step--banner quiz-step--bg quiz-step--no-nav js-quiz-step">
+              <div class="quiz-step__inner">
+                <div class="quiz-step__header">
+                  <h2 class="quiz-step__title">
+                    Free up space on your device in a few clicks!
+                  </h2>
+                </div>
+
+                <div class="quiz-step__content">
+                  <img src="images/quiz-img-2.png" width="208" height="432" alt="App Interface">
+                </div>
+
+                <div class="quiz-step__footer">
+                  <div class="quiz-step__actions">
+                    <button class="js-quiz-next button" type="button">Got It</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Do you often make large videos? -->
+            <div class="quiz__step quiz-step js-quiz-step">
+              <div class="quiz-step__inner">
+                <div class="quiz-step__header">
+                  <h2 class="quiz-step__title">
+                    Do you often make large videos?
+                  </h2>
+                </div>
+
+                <div class="quiz-step__content">
+                  <div class="quiz-step__options-list">
+                    <label class="quiz-radio">
+                      <input class="quiz-radio__input" type="radio" name="large-video" value="1">
+
+                      <span class="quiz-radio__box">Every day</span>
+                    </label>
+
+                    <label class="quiz-radio">
+                      <input class="quiz-radio__input" type="radio" name="large-video" value="2">
+
+                      <span class="quiz-radio__box">1 - 2 times a week</span>
+                    </label>
+
+                    <label class="quiz-radio">
+                      <input class="quiz-radio__input" type="radio" name="large-video" value="3">
+
+                      <span class="quiz-radio__box">Several times a month</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="quiz-step__footer">
+                  <div class="quiz-step__actions">
+                    <button class="js-quiz-next button" type="button">Continue</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Do you have a lot of “heavy” photos? -->
+            <div class="quiz__step quiz-step js-quiz-step">
+              <div class="quiz-step__inner">
+                <div class="quiz-step__header">
+                  <h2 class="quiz-step__title">
+                    Do you have a lot of “heavy” photos?
+                  </h2>
+                </div>
+
+                <div class="quiz-step__content">
+                  <div class="quiz-step__options-list">
+                    <label class="quiz-radio">
+                      <input class="quiz-radio__input" type="radio" name="heavy-photo" value="1">
+
+                      <span class="quiz-radio__box">👍 Yes</span>
+                    </label>
+
+                    <label class="quiz-radio">
+                      <input class="quiz-radio__input" type="radio" name="heavy-photo" value="2">
+
+                      <span class="quiz-radio__box">🚫 No</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="quiz-step__footer">
+                  <div class="quiz-step__actions">
+                    <button class="js-quiz-next button" type="button">Continue</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Would you like to save space with smart compression algorithms? -->
+            <div class="quiz__step quiz-step js-quiz-step">
+              <div class="quiz-step__inner">
+                <div class="quiz-step__header">
+                  <h2 class="quiz-step__title">
+                    Would you like to save space with smart compression algorithms?
+                  </h2>
+                </div>
+
+                <div class="quiz-step__content">
+                  <div class="quiz-step__options-list">
+                    <label class="quiz-radio">
+                      <input class="quiz-radio__input" type="radio" name="smart-compress" value="1">
+
+                      <span class="quiz-radio__box">👍 Yes</span>
+                    </label>
+
+                    <label class="quiz-radio">
+                      <input class="quiz-radio__input" type="radio" name="smart-compress" value="1">
+
+                      <span class="quiz-radio__box">🚫 No</span>
+                    </label>
+
+                    <label class="quiz-radio">
+                      <input class="quiz-radio__input" type="radio" name="smart-compress" value="1">
+
+                      <span class="quiz-radio__box">🤷‍♀️ Doubt</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="quiz-step__footer">
+                  <div class="quiz-step__actions">
+                    <button class="js-quiz-next button" type="button">Continue</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Compress Photos & Vdeos -->
+            <div class="quiz__step quiz-step quiz-step--banner quiz-step--bg quiz-step--no-nav js-quiz-step">
+              <div class="quiz-step__inner">
+                <div class="quiz-step__header">
+                  <h2 class="quiz-step__title">
+                    Compress Photos & Vdeos
+                  </h2>
+                </div>
+
+                <div class="quiz-step__content">
+                  <img src="images/quiz-img-3.png" width="208" height="432" alt="App Interface">
+                </div>
+
+                <div class="quiz-step__footer">
+                  <div class="quiz-step__actions">
+                    <button class="js-quiz-next button" type="button">Got It</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Do you have a lot of contacts, including duplicates? -->
+            <div class="quiz__step quiz-step js-quiz-step">
+              <div class="quiz-step__inner">
+                <div class="quiz-step__header">
+                  <h2 class="quiz-step__title">
+                    Do you have a lot of contacts, including duplicates?
+                  </h2>
+                </div>
+
+                <div class="quiz-step__content">
+                  <div class="quiz-step__options-grid">
+                    <label class="quiz-radio">
+                      <input class="quiz-radio__input js-quiz-next" type="radio" name="contacts" value="1">
+
+                      <span class="quiz-radio__box">
+                        < 25 </span>
+                    </label>
+
+                    <label class="quiz-radio">
+                      <input class="quiz-radio__input js-quiz-next" type="radio" name="contacts" value="2">
+
+                      <span class="quiz-radio__box">25 - 49</span>
+                    </label>
+
+                    <label class="quiz-radio">
+                      <input class="quiz-radio__input js-quiz-next" type="radio" name="contacts" value="3">
+
+                      <span class="quiz-radio__box">50 - 99</span>
+                    </label>
+
+                    <label class="quiz-radio">
+                      <input class="quiz-radio__input js-quiz-next" type="radio" name="contacts" value="4">
+
+                      <span class="quiz-radio__box">> 100</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="quiz-step__footer"></div>
+              </div>
+            </div>
+
+            <!-- Cleaning out old notes on your calendar? -->
+            <div class="quiz__step quiz-step js-quiz-step">
+              <div class="quiz-step__inner">
+                <div class="quiz-step__header">
+                  <h2 class="quiz-step__title">
+                    Cleaning out old notes on your calendar?
+                  </h2>
+                </div>
+
+                <div class="quiz-step__content">
+                  <div class="quiz-step__options-list">
+                    <label class="quiz-radio">
+                      <input class="quiz-radio__input" type="radio" name="calendar" value="1">
+
+                      <span class="quiz-radio__box">👍 Yes</span>
+                    </label>
+
+                    <label class="quiz-radio">
+                      <input class="quiz-radio__input" type="radio" name="calendar" value="2">
+
+                      <span class="quiz-radio__box">🚫 No</span>
+                    </label>
+
+                    <label class="quiz-radio">
+                      <input class="quiz-radio__input" type="radio" name="calendar" value="3">
+
+                      <span class="quiz-radio__box">I don't know how to do this, but I would like to</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="quiz-step__footer">
+                  <div class="quiz-step__actions">
+                    <button class="js-quiz-next button" type="button">Continue</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Do you often check the speed of your internet connection? -->
+            <div class="quiz__step quiz-step js-quiz-step">
+              <div class="quiz-step__inner">
+                <div class="quiz-step__header">
+                  <h2 class="quiz-step__title">
+                    Do you often check the speed of your internet connection?
+                  </h2>
+                </div>
+
+                <div class="quiz-step__content">
+                  <div class="quiz-step__options-list">
+                    <label class="quiz-radio">
+                      <input class="quiz-radio__input" type="radio" name="internet-speed" value="1">
+
+                      <span class="quiz-radio__box">Very rarely</span>
+                    </label>
+
+                    <label class="quiz-radio">
+                      <input class="quiz-radio__input" type="radio" name="internet-speed" value="2">
+
+                      <span class="quiz-radio__box">From time to time</span>
+                    </label>
+
+                    <label class="quiz-radio">
+                      <input class="quiz-radio__input" type="radio" name="internet-speed" value="3">
+
+                      <span class="quiz-radio__box">Often</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="quiz-step__footer">
+                  <div class="quiz-step__actions">
+                    <button class="js-quiz-next button" type="button">Continue</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Ultra Cleaner users achieve the desired results -->
+            <div class="quiz__step quiz-step quiz-step--banner quiz-step--bg quiz-step--no-nav js-quiz-step">
+              <div class="quiz-step__inner">
+                <div class="quiz-step__header">
+                  <h2 class="quiz-step__title">
+                    Ultra Cleaner users achieve the desired results
+                  </h2>
+                </div>
+
+                <div class="quiz-step__content">
+                  <img src="images/quiz-img-4.png" width="300" height="384" alt="Review">
+                </div>
+
+                <div class="quiz-step__footer">
+                  <div class="quiz-step__actions">
+                    <button class="js-quiz-next button" type="button">Got It</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Do you organize your photos manually? -->
+            <div class="quiz__step quiz-step js-quiz-step">
+              <div class="quiz-step__inner">
+                <div class="quiz-step__header">
+                  <h2 class="quiz-step__title">
+                    Do you organize your photos manually?
+                  </h2>
+                </div>
+
+                <div class="quiz-step__content">
+                  <div class="quiz-step__options-list">
+                    <label class="quiz-radio">
+                      <input class="quiz-radio__input" type="radio" name="manually-organize" value="1">
+
+                      <span class="quiz-radio__box">👍 Yes</span>
+                    </label>
+
+                    <label class="quiz-radio">
+                      <input class="quiz-radio__input" type="radio" name="manually-organize" value="2">
+
+                      <span class="quiz-radio__box">🚫 No</span>
+                    </label>
+
+                    <label class="quiz-radio">
+                      <input class="quiz-radio__input" type="radio" name="manually-organize" value="3">
+
+                      <span class="quiz-radio__box">Sometimes</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="quiz-step__footer">
+                  <div class="quiz-step__actions">
+                    <button class="js-quiz-next button" type="button">Continue</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- What annoys you most in your gallery? -->
+            <div class="quiz__step quiz-step js-quiz-step">
+              <div class="quiz-step__inner">
+                <div class="quiz-step__header">
+                  <h2 class="quiz-step__title">
+                    What annoys you most in your gallery?
+                  </h2>
+                </div>
+
+                <div class="quiz-step__content">
+                  <div class="quiz-step__options-grid">
+                    <label class="quiz-radio">
+                      <input class="quiz-radio__input js-quiz-next" type="radio" name="annoys" value="1">
+
+                      <span class="quiz-radio__box">Too many duplicates</span>
+                    </label>
+
+                    <label class="quiz-radio">
+                      <input class="quiz-radio__input js-quiz-next" type="radio" name="annoys" value="2">
+
+                      <span class="quiz-radio__box">Difficult to find specific photos</span>
+                    </label>
+
+                    <label class="quiz-radio">
+                      <input class="quiz-radio__input js-quiz-next" type="radio" name="annoys" value="3">
+
+                      <span class="quiz-radio__box">Unnecessary screenshots </span>
+                    </label>
+
+                    <label class="quiz-radio">
+                      <input class="quiz-radio__input js-quiz-next" type="radio" name="annoys" value="4">
+
+                      <span class="quiz-radio__box">Nothing bothers me</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="quiz-step__footer"></div>
+              </div>
+            </div>
+
+            <!-- Do you often run out of storage? -->
+            <div class="quiz__step quiz-step js-quiz-step">
+              <div class="quiz-step__inner">
+                <div class="quiz-step__header">
+                  <h2 class="quiz-step__title">
+                    Do you often run out of storage?
+                  </h2>
+                </div>
+
+                <div class="quiz-step__content">
+                  <div class="quiz-step__options-list">
+                    <label class="quiz-radio">
+                      <input class="quiz-radio__input" type="radio" name="run-out" value="1">
+
+                      <span class="quiz-radio__box">👍 Yes</span>
+                    </label>
+
+                    <label class="quiz-radio">
+                      <input class="quiz-radio__input" type="radio" name="run-out" value="2">
+
+                      <span class="quiz-radio__box">Sometimes</span>
+                    </label>
+
+                    <label class="quiz-radio">
+                      <input class="quiz-radio__input" type="radio" name="run-out" value="3">
+
+                      <span class="quiz-radio__box">🚫 Never</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="quiz-step__footer">
+                  <div class="quiz-step__actions">
+                    <button class="js-quiz-next button" type="button">Continue</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- How important is photo quality to you? -->
+            <div class="quiz__step quiz-step js-quiz-step">
+              <div class="quiz-step__inner">
+                <div class="quiz-step__header">
+                  <h2 class="quiz-step__title">
+                    How important is photo quality to you?
+                  </h2>
+                </div>
+
+                <div class="quiz-step__content">
+                  <div class="quiz-step__options-list">
+                    <label class="quiz-radio">
+                      <input class="quiz-radio__input" type="radio" name="photo-quality" value="1">
+
+                      <span class="quiz-radio__box">Very important</span>
+                    </label>
+
+                    <label class="quiz-radio">
+                      <input class="quiz-radio__input" type="radio" name="photo-quality" value="2">
+
+                      <span class="quiz-radio__box">Somewhat important</span>
+                    </label>
+
+                    <label class="quiz-radio">
+                      <input class="quiz-radio__input" type="radio" name="photo-quality" value="3">
+
+                      <span class="quiz-radio__box">Not important</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="quiz-step__footer">
+                  <div class="quiz-step__actions">
+                    <button class="js-quiz-next button" type="button">Continue</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Would you like to group similar photos automatically? -->
+            <div class="quiz__step quiz-step js-quiz-step">
+              <div class="quiz-step__inner">
+                <div class="quiz-step__header">
+                  <h2 class="quiz-step__title">
+                    Would you like to group similar photos automatically?
+                  </h2>
+                </div>
+
+                <div class="quiz-step__content">
+                  <div class="quiz-step__options-list">
+                    <label class="quiz-radio">
+                      <input class="quiz-radio__input" type="radio" name="group-photos" value="1">
+
+                      <span class="quiz-radio__box">👍 Yes</span>
+                    </label>
+
+                    <label class="quiz-radio">
+                      <input class="quiz-radio__input" type="radio" name="group-photos" value="2">
+
+                      <span class="quiz-radio__box">🚫 No</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="quiz-step__footer">
+                  <div class="quiz-step__actions">
+                    <button class="js-quiz-next button" type="button">Continue</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Do you know how to detect blurry photos manually? -->
+            <div class="quiz__step quiz-step js-quiz-step">
+              <div class="quiz-step__inner">
+                <div class="quiz-step__header">
+                  <h2 class="quiz-step__title">
+                    Do you know how to detect blurry photos manually?
+                  </h2>
+                </div>
+
+                <div class="quiz-step__content">
+                  <div class="quiz-step__options-list">
+                    <label class="quiz-radio">
+                      <input class="quiz-radio__input" type="radio" name="blurry" value="1">
+
+                      <span class="quiz-radio__box">👍 Yes</span>
+                    </label>
+
+                    <label class="quiz-radio">
+                      <input class="quiz-radio__input" type="radio" name="blurry" value="2">
+
+                      <span class="quiz-radio__box">🚫 No</span>
+                    </label>
+
+                    <label class="quiz-radio">
+                      <input class="quiz-radio__input" type="radio" name="blurry" value="3">
+
+                      <span class="quiz-radio__box">I try, but it takes time</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="quiz-step__footer">
+                  <div class="quiz-step__actions">
+                    <button class="js-quiz-next button" type="button">Continue</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Do you keep many screenshots for later use?   -->
+            <div class="quiz__step quiz-step js-quiz-step">
+              <div class="quiz-step__inner">
+                <div class="quiz-step__header">
+                  <h2 class="quiz-step__title">
+                    Do you keep many screenshots for later use?
+                  </h2>
+                </div>
+
+                <div class="quiz-step__content">
+                  <div class="quiz-step__options-list">
+                    <label class="quiz-radio">
+                      <input class="quiz-radio__input" type="radio" name="many-screenshots" value="1">
+
+                      <span class="quiz-radio__box">👍 Yes</span>
+                    </label>
+
+                    <label class="quiz-radio">
+                      <input class="quiz-radio__input" type="radio" name="many-screenshots" value="2">
+
+                      <span class="quiz-radio__box">🚫 No</span>
+                    </label>
+
+                    <label class="quiz-radio">
+                      <input class="quiz-radio__input" type="radio" name="many-screenshots" value="3">
+
+                      <span class="quiz-radio__box">Only temporarily</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="quiz-step__footer">
+                  <div class="quiz-step__actions">
+                    <button class="js-quiz-next button" type="button">Continue</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- What annoys you most in your gallery? -->
+            <div class="quiz__step quiz-step js-quiz-step">
+              <div class="quiz-step__inner">
+                <div class="quiz-step__header">
+                  <h2 class="quiz-step__title">
+                    What annoys you most in your gallery?
+                  </h2>
+                </div>
+
+                <div class="quiz-step__content">
+                  <div class="quiz-step__options-grid">
+                    <label class="quiz-radio">
+                      <input class="quiz-radio__input js-quiz-next" type="radio" name="annoys2" value="1">
+
+                      <span class="quiz-radio__box">Manually</span>
+                    </label>
+
+                    <label class="quiz-radio">
+                      <input class="quiz-radio__input js-quiz-next" type="radio" name="annoys2" value="2">
+
+                      <span class="quiz-radio__box">I don’t clean it</span>
+                    </label>
+
+                    <label class="quiz-radio">
+                      <input class="quiz-radio__input js-quiz-next" type="radio" name="annoys2" value="3">
+
+                      <span class="quiz-radio__box">With apps</span>
+                    </label>
+
+                    <label class="quiz-radio">
+                      <input class="quiz-radio__input js-quiz-next" type="radio" name="annoys2" value="4">
+
+                      <span class="quiz-radio__box">I ask someone to help</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="quiz-step__footer"></div>
+              </div>
+            </div>
+
+            <!-- Would you like your photos to be auto-categorized? -->
+            <div class="quiz__step quiz-step js-quiz-step">
+              <div class="quiz-step__inner">
+                <div class="quiz-step__header">
+                  <h2 class="quiz-step__title">
+                    Would you like your photos to be auto-categorized?
+                  </h2>
+                </div>
+
+                <div class="quiz-step__content">
+                  <div class="quiz-step__options-list">
+                    <label class="quiz-radio">
+                      <input class="quiz-radio__input" type="radio" name="auto-categorized" value="1">
+
+                      <span class="quiz-radio__box">👍 Yes</span>
+                    </label>
+
+                    <label class="quiz-radio">
+                      <input class="quiz-radio__input" type="radio" name="auto-categorized" value="2">
+
+                      <span class="quiz-radio__box">🚫 No</span>
+                    </label>
+
+                    <label class="quiz-radio">
+                      <input class="quiz-radio__input" type="radio" name="auto-categorized" value="3">
+
+                      <span class="quiz-radio__box">Not sure</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="quiz-step__footer">
+                  <div class="quiz-step__actions">
+                    <button class="js-quiz-next button" type="button">Continue</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- How many similar selfies do you usually keep? -->
+            <div class="quiz__step quiz-step js-quiz-step">
+              <div class="quiz-step__inner">
+                <div class="quiz-step__header">
+                  <h2 class="quiz-step__title">
+                    How many similar selfies do you usually keep?
+                  </h2>
+                </div>
+
+                <div class="quiz-step__content">
+                  <div class="quiz-step__options-list">
+                    <label class="quiz-radio">
+                      <input class="quiz-radio__input" type="radio" name="similar-selfies" value="1">
+
+                      <span class="quiz-radio__box">1 or 2</span>
+                    </label>
+
+                    <label class="quiz-radio">
+                      <input class="quiz-radio__input" type="radio" name="similar-selfies" value="2">
+
+                      <span class="quiz-radio__box">3 – 5</span>
+                    </label>
+
+                    <label class="quiz-radio">
+                      <input class="quiz-radio__input" type="radio" name="similar-selfies" value="3">
+
+                      <span class="quiz-radio__box">>5</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="quiz-step__footer">
+                  <div class="quiz-step__actions">
+                    <button class="js-quiz-next button" type="button">Continue</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Do you use iCloud to store your photos? -->
+            <div class="quiz__step quiz-step js-quiz-step">
+              <div class="quiz-step__inner">
+                <div class="quiz-step__header">
+                  <h2 class="quiz-step__title">
+                    Do you use iCloud to store your photos?
+                  </h2>
+                </div>
+
+                <div class="quiz-step__content">
+                  <div class="quiz-step__options-list">
+                    <label class="quiz-radio">
+                      <input class="quiz-radio__input" type="radio" name="icloud" value="1">
+
+                      <span class="quiz-radio__box">👍 Yes</span>
+                    </label>
+
+                    <label class="quiz-radio">
+                      <input class="quiz-radio__input" type="radio" name="icloud" value="2">
+
+                      <span class="quiz-radio__box">🚫 No</span>
+                    </label>
+
+                    <label class="quiz-radio">
+                      <input class="quiz-radio__input" type="radio" name="icloud" value="3">
+
+                      <span class="quiz-radio__box">Sometimes</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="quiz-step__footer">
+                  <div class="quiz-step__actions">
+                    <button class="js-quiz-next button" type="button">Continue</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Do you often rewatch your old photos? -->
+            <div class="quiz__step quiz-step js-quiz-step">
+              <div class="quiz-step__inner">
+                <div class="quiz-step__header">
+                  <h2 class="quiz-step__title">
+                    Do you often rewatch your old photos?
+                  </h2>
+                </div>
+
+                <div class="quiz-step__content">
+                  <div class="quiz-step__options-grid">
+                    <label class="quiz-radio">
+                      <input class="quiz-radio__input js-quiz-next" type="radio" name="rewatch" value="1">
+
+                      <span class="quiz-radio__box">Yes</span>
+                    </label>
+
+                    <label class="quiz-radio">
+                      <input class="quiz-radio__input js-quiz-next" type="radio" name="rewatch" value="2">
+
+                      <span class="quiz-radio__box">Occasionally</span>
+                    </label>
+
+                    <label class="quiz-radio">
+                      <input class="quiz-radio__input js-quiz-next" type="radio" name="rewatch" value="3">
+
+                      <span class="quiz-radio__box">Rarely</span>
+                    </label>
+
+                    <label class="quiz-radio">
+                      <input class="quiz-radio__input js-quiz-next" type="radio" name="rewatch" value="4">
+
+                      <span class="quiz-radio__box">Never</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="quiz-step__footer"></div>
+              </div>
+            </div>
+
+            <!-- Would you like help identifying the best shot from a series? -->
+            <div class="quiz__step quiz-step js-quiz-step">
+              <div class="quiz-step__inner">
+                <div class="quiz-step__header">
+                  <h2 class="quiz-step__title">
+                    Would you like help identifying the best shot from a series?
+                  </h2>
+                </div>
+
+                <div class="quiz-step__content">
+                  <div class="quiz-step__options-list">
+                    <label class="quiz-radio">
+                      <input class="quiz-radio__input" type="radio" name="best-shot" value="1">
+
+                      <span class="quiz-radio__box">👍 Yes</span>
+                    </label>
+
+                    <label class="quiz-radio">
+                      <input class="quiz-radio__input" type="radio" name="best-shot" value="2">
+
+                      <span class="quiz-radio__box">🚫 No</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="quiz-step__footer">
+                  <div class="quiz-step__actions">
+                    <button class="js-quiz-next button" type="button">Continue</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- How often do you take burst photos? -->
+            <div class="quiz__step quiz-step js-quiz-step">
+              <div class="quiz-step__inner">
+                <div class="quiz-step__header">
+                  <h2 class="quiz-step__title">
+                    How often do you take burst photos?
+                  </h2>
+                </div>
+
+                <div class="quiz-step__content">
+                  <div class="quiz-step__options-grid">
+                    <label class="quiz-radio">
+                      <input class="quiz-radio__input js-quiz-next" type="radio" name="burst" value="1">
+
+                      <span class="quiz-radio__box">Often</span>
+                    </label>
+
+                    <label class="quiz-radio">
+                      <input class="quiz-radio__input js-quiz-next" type="radio" name="burst" value="2">
+
+                      <span class="quiz-radio__box">Sometimes</span>
+                    </label>
+
+                    <label class="quiz-radio">
+                      <input class="quiz-radio__input js-quiz-next" type="radio" name="burst" value="3">
+
+                      <span class="quiz-radio__box">Rarely</span>
+                    </label>
+
+                    <label class="quiz-radio">
+                      <input class="quiz-radio__input js-quiz-next" type="radio" name="burst" value="4">
+
+                      <span class="quiz-radio__box">Never</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="quiz-step__footer"></div>
+              </div>
+            </div>
+
+            <!-- Would you use a one-tap smart cleaning feature? -->
+            <div class="quiz__step quiz-step js-quiz-step">
+              <div class="quiz-step__inner">
+                <div class="quiz-step__header">
+                  <h2 class="quiz-step__title">
+                    Would you use a one-tap smart cleaning feature?
+                  </h2>
+                </div>
+
+                <div class="quiz-step__content">
+                  <div class="quiz-step__options-list">
+                    <label class="quiz-radio">
+                      <input class="quiz-radio__input" type="radio" name="one-tap" value="1">
+
+                      <span class="quiz-radio__box">👍 Yes</span>
+                    </label>
+
+                    <label class="quiz-radio">
+                      <input class="quiz-radio__input" type="radio" name="one-tap" value="2">
+
+                      <span class="quiz-radio__box">🚫 No</span>
+                    </label>
+
+                    <label class="quiz-radio">
+                      <input class="quiz-radio__input" type="radio" name="one-tap" value="3">
+
+                      <span class="quiz-radio__box">Only with preview</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="quiz-step__footer">
+                  <div class="quiz-step__actions">
+                    <button class="js-quiz-next button" type="button">Continue</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Great job! -->
+            <div class="quiz__step quiz-step quiz-step--banner quiz-step--bg quiz-step--no-nav js-quiz-step">
+              <div class="quiz-step__inner">
+                <div class="quiz-step__header">
+                  <h2 class="quiz-step__title">
+                    Great job!
+                  </h2>
+
+                  <div class="quiz-step__subtitle">
+                    Just enter your email and we will proceed to the formation of your personalized offer.
+                  </div>
+                </div>
+
+                <div class="quiz-step__content">
+                  <img src="images/quiz-img-result.svg" width="146" height="146" aria-hidden="true" alt="">
+                </div>
+
+                <div class="quiz-step__footer">
+                  <div class="quiz-step__actions">
+                    <button class="js-quiz-next button" type="button">Got It</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Enter your e-mail to get your personalized plan -->
+            <div class="quiz__step quiz__step--no-nav quiz-step quiz-step--no-nav quiz-step--form js-quiz-step">
+              <div class="quiz-step__inner">
+                <img class="quiz-step__form-img" src="images/app-info-img.svg" width="674" height="330" alt="">
+
+                <div class="quiz-step__header">
+                  <h2 class="quiz-step__title">
+                    Enter your e-mail to get your personalized plan
+                  </h2>
+                </div>
+
+                <div class="quiz-step__content">
+                  <div class="quiz-step__options-list">
+                    <div class="form-field-wrapper">
+                      <label class="visually-hidden" for="quiz-email">Email</label>
+
+                      <input class="form-field" type="email" id="quiz-email" name="email" placeholder="Email address of subscription" required>
+                    </div>
+
+                    <div class="form-info form-info--protection">
+                      By submiting you agree to our <a href="/privacy-policy.html">Private Policy</a>. We respect your privacy and are committed to protecting your personal indormation.
+                    </div>
+                  </div>
+                </div>
+
+                <div class="quiz-step__footer">
+                  <div class="quiz-step__actions">
+                    <button class="button js-quiz-submit" type="submit">Get a personal offer</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Analyzing your responses and generating a personalized proposal... -->
+            <div class="quiz__step quiz__step--no-nav quiz-step quiz-step--banner quiz-step--bg quiz-step--no-nav quiz-step--loading js-quiz-step">
+              <div class="quiz-step__inner">
+                <div class="quiz-step__header">
+                  <h2 class="quiz-step__title">
+                    Analyzing your responses and generating a personalized proposal...
+                  </h2>
+                </div>
+
+                <div class="quiz-step__content">
+                  <div class="circle-progress js-quiz-form-progress">
+                    <span class="circle-progress__text">0%</span>
+
+                    <svg width="128" height="128" fill="none">
+                      <circle class="circle-progress__bg" cx="64" cy="64" r="48"></circle>
+
+                      <circle class="circle-progress__circle" cx="64" cy="64" r="48"></circle>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- What to expect from your personalized offer: -->
+            <div class="quiz__step quiz__step--no-nav quiz-step quiz-step--no-nav quiz-step--result quiz-step--banner quiz-step--bg quiz-step--no-nav js-quiz-step">
+              <div class="quiz-step__inner">
+                <div class="quiz-step__header">
+                  <h2 class="quiz-step__title">
+                    What to expect from your personalized offer:
+                  </h2>
+                </div>
+
+                <div class="quiz-step__content">
+                  <div class="quiz-step__slider quiz-slider swiper slider">
+                    <div class="swiper-wrapper">
+                      <div class="swiper-slide">
+                        <img src="images/stats-img-1.png" width="393" height="450" alt="">
+                      </div>
+
+                      <div class="swiper-slide">
+                        <img src="images/stats-img-2.png" width="393" height="450" alt="">
+                      </div>
+
+                      <div class="swiper-slide">
+                        <img src="images/stats-img-3.png" width="393" height="450" alt="">
+                      </div>
+
+                      <div class="swiper-slide">
+                        <img src="images/stats-img-4.png" width="393" height="450" alt="">
+                      </div>
+                    </div>
+
+                    <div class="slider__nav slider__nav--bottom slider-nav">
+                      <div class="swiper-pagination slider-pagination"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="quiz-step__footer">
+                  <div class="quiz-step__actions">
+                    <a class="js-quiz-next button" href="payment.html">Continue</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer__main footer__main--column">
+          <div class="footer-menu">
+            <h2 class="footer-menu__title">By continuing uou agree to our:</h2>
+
+            <ul class="footer-menu__list">
+              <li>
+                <a href="/privacy-policy.html">
+                  Legal & Privacy
+                </a>
+              </li>
+
+              <li>
+                <a href="/terms-of-services.html">
+                  Terms & Conditions
+                </a>
+              </li>
+
+              <li>
+                <a href="/subscription-terms.html">
+                  Subscription Policy
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer__bottom">
+          <div class="footer__copy">
+            <span class="js-current-year"></span>. All rights reserved
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </div><!-- end .wrapper -->
+
+  <!-- cancel-subscription -->
+  <div class="modal hystmodal" id="modal-cancel-subscription" aria-hidden="true">
+    <div class="hystmodal__wrap">
+      <div class="modal__body hystmodal__window" role="dialog" aria-modal="true">
+        <header class="modal__header">
+          <h2 class="modal__title">Cancel subscription</h2>
+
+          <button class="modal__close" data-hystclose aria-label="Close modal" type="button">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M9.3335 9.33333L22.6668 22.6667M9.3335 22.6667L22.6668 9.33333" stroke="#0A163E" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </button>
+        </header>
+
+        <div class="modal__content">
+          <form class="form form-grid js-form" id="form-cancel-subscription" action="#">
+
+            <input type="hidden" name="subject" value="Cancel subscription">
+
+            <div class="form-input-wrapper">
+              <label class="form-label" for="fcs-email">Email</label>
+              <input class="form-field" type="email" id="fcs-email" name="email" placeholder="Email address of subscription" required>
+            </div>
+
+            <div class="form-input-wrapper">
+              <label class="form-label" for="fcs-digits">Last 4 digits of card</label>
+              <input class="form-field" type="text" id="fcs-digits" name="cardDigits" data-mask="code" placeholder="Last 4 digits of card" required>
+            </div>
+
+            <div class="form__text">
+              <p>Please provide email address and last four digits of the card you subscribned with to cancel your subscription.</p>
+
+              <p>If you have any question please contacts us at support@pdodigitaltech.com</p>
+            </div>
+
+            <div class="form__actions form-actions">
+              <button class="button form-submit" type="submit">Cancel Subscription</button>
+
+              <div class="form-error">
+                Incorrect email or password
+              </div>
+            </div>
+
+            <div class="form__success">
+              <h2 class="form__success-title">Thank you for submitting the form.</h2>
+              <p class="form__success-text">Your information has been successfully received.</p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- login -->
+  <div class="modal hystmodal" id="modal-login" aria-hidden="true">
+    <div class="hystmodal__wrap">
+      <div class="modal__body hystmodal__window" role="dialog" aria-modal="true">
+        <header class="modal__header">
+          <h2 class="modal__title">Log In</h2>
+
+          <button class="modal__close" data-hystclose aria-label="Close modal" type="button">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M9.3335 9.33333L22.6668 22.6667M9.3335 22.6667L22.6668 9.33333" stroke="#0A163E" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </button>
+        </header>
+
+        <div class="modal__content">
+          <form class="form form-grid js-form" id="form-login" action="#">
+
+            <input type="hidden" name="subject" value="Login">
+
+            <div class="form-input-wrapper">
+              <label class="form-label" for="fl-email">Email</label>
+              <input class="form-field" type="email" id="fl-email" name="email" placeholder="Email address of subscription" required>
+            </div>
+
+            <div class="form-input-wrapper">
+              <label class="form-label" for="fl-password">Password</label>
+              <input class="form-field" type="password" id="fl-password" name="password" placeholder="Enter your password" required autocomplete="off">
+            </div>
+
+            <div class="form__actions form-actions">
+              <button class="button form-submit" type="submit">Log In</button>
+
+              <div class="form-error">
+                Incorrect email or password
+              </div>
+            </div>
+
+            <div class="form__footer">
+              <a href="/payment.html">Not a meber? Register here</a>
+            </div>
+
+            <div class="form__success">
+              <h2 class="form__success-title">Thank you for submitting the form.</h2>
+              <p class="form__success-text">Your information has been successfully received.</p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- question -->
+  <div class="modal hystmodal" id="modal-question" aria-hidden="true">
+    <div class="hystmodal__wrap">
+      <div class="modal__body hystmodal__window" role="dialog" aria-modal="true">
+        <header class="modal__header">
+          <h2 class="modal__title">Support Form</h2>
+
+          <button class="modal__close" data-hystclose aria-label="Close modal" type="button">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M9.3335 9.33333L22.6668 22.6667M9.3335 22.6667L22.6668 9.33333" stroke="#0A163E" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </button>
+        </header>
+
+        <div class="modal__content">
+          <form class="form form-grid js-form" id="form-question" action="#">
+
+            <input type="hidden" name="subject" value="Question">
+
+            <div class="form-input-wrapper">
+              <label class="form-label" for="fq-first-name">Name</label>
+              <input class="form-field" type="text" id="fq-first-name" name="first-name" placeholder="Name">
+            </div>
+
+            <div class="form-input-wrapper">
+              <label class="form-label" for="fq-email">Email</label>
+              <input class="form-field" type="email" id="fq-email" name="email" placeholder="Email" required>
+            </div>
+
+            <div class="form-input-wrapper">
+              <label class="form-label" for="fq-message">Message</label>
+              <textarea class="form-field form-field--textarea" id="fq-message" name="message" cols="10" rows="2" placeholder="Message"></textarea>
+            </div>
+
+            <div class="form__actions form-actions">
+              <button class="button form-submit" type="submit">Send</button>
+            </div>
+
+            <div class="form__success">
+              <h2 class="form__success-title">Thank you for submitting the form.</h2>
+              <p class="form__success-text">Your information has been successfully received.</p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- cancel -->
+  <div class="modal modal--dialog hystmodal" id="modal-unsubscribe" aria-hidden="true">
+    <div class="hystmodal__wrap">
+      <div class="modal__body hystmodal__window" role="dialog" aria-modal="true">
+        <button class="modal__close" data-hystclose aria-label="Close modal" type="button">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M9.3335 9.33333L22.6668 22.6667M9.3335 22.6667L22.6668 9.33333" stroke="#0A163E" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+
+        <div class="modal__content modal__content--centered">
+          <h2 class="modal__title">
+            Are you really sure you want to unsubscribe?
+          </h2>
+
+          <div class="modal__buttons">
+            <button class="button button--outline button--xs js-cancel-page" type="button">Yes</button>
+
+            <button class="button button--outline button--xs button--grey" data-hystclose type="button">No</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- decline -->
+  <div class="modal modal--alert hystmodal" id="modal-decline" aria-hidden="true">
+    <div class="hystmodal__wrap">
+      <div class="modal__body hystmodal__window" role="dialog" aria-modal="true">
+        <div class="modal__content modal__content--centered">
+          <div class="modal-alert">
+            <img src="images/decline-icon.png" width="100" height="100" aria-hidden="true" alt="">
+
+            <h2 class="modal__title">
+              There was an error processing your payment information.
+            </h2>
+
+            <div class="modal__text">
+              Your card has been declined.
+            </div>
+
+            <div class="modal__buttons">
+              <button class="button button--shadow" data-hystclose type="button">Try Again</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="scripts/imask.min.js"></script>
+  <script src="scripts/lottie.min.js"></script>
+  <script src="scripts/hystmodal.min.js"></script>
+  <script src="scripts/swiper.min.js"></script>
+  <script src="scripts/main.js"></script>
+</body>
+
+</html>

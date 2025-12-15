@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html class="page" lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Ultra Cleaner | Pay</title>
+  <meta name="description" content="Ultra Cleaner | Pay">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#eeeeee">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#eeeeee">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicons/favicon-16x16.png">
+  <link rel="icon" type="image/svg+xml" sizes="any" href="images/favicons/favicon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/favicons/apple-touch-icon.png">
+  <link rel="manifest" href="images/favicons/manifest.webmanifest">
+
+  <link rel="stylesheet" href="styles/swiper.min.css">
+  <link rel="stylesheet" href="styles/hystmodal.min.css">
+  <link rel="stylesheet" href="styles/style.css">
+</head>
+
+<body class="page__body">
+
+  <div class="page-loader loader">
+    <span>Loading</span>
+  </div>
+
+  <div class="progress-loader loader-2">
+    <span>Loading</span>
+  </div>
+
+  <div class="wrapper">
+
+    <main class="main">
+      <section class="offer-info">
+        <div class="timer-inline js-timer">
+          <div class="timer-inline__inner container">
+            <div class="timer-inline__title">
+              <svg class="timer-inline__title-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="22" viewBox="0 0 20 22" aria-hidden="true">
+                <path d="M10 0c5.523 0 10 4.477 10 10s-4.477 10-10 10S0 15.523 0 10 4.477 0 10 0Zm0 2a8 8 0 1 0 0 16 8 8 0 0 0 0-16Zm0 2a1 1 0 0 1 .993.883L11 5v4.586l2.707 2.707a1 1 0 0 1-1.32 1.497l-.094-.083-3-3a1 1 0 0 1-.284-.576L9 10V5a1 1 0 0 1 1-1Z" />
+              </svg>
+
+              Personal offer expires in
+            </div>
+
+            <div class="timer-inline__time">
+              <span class="js-timer-min">10</span>:<span class="js-timer-sec">00</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="offer-info__inner container-xl">
+          <div class="offer-info__header">
+            <h1 class="offer-info__title">Clean your Storage</h1>
+
+            <div class="offer-info__descr">Get rid of what you don’t need</div>
+          </div>
+
+          <div class="offer-info__content">
+            <div class="offer-info__img" id="offer-info-anim"></div>
+
+            <ul class="offer-info__features check-list">
+              <li>Free up storage in minutes</li>
+              <li>Fun swipe-to-clean interface</li>
+              <li>Delete Old Events</li>
+              <li>Manage contacts</li>
+              <li>No ads</li>
+              <li>Compress Photos & Videos</li>
+            </ul>
+          </div>
+
+          <div class="offer-info__footer">
+            <div class="offer-info__footer-col offer-info__footer-col--actions">
+              <button class="offer-info__button activate-button button" type="button">Start for Free</button>
+
+              <p class="offer-info__terms-descr offer-info__terms-descr--hide-sm">
+                3 days free trial, then auto-renewable $29.99/monthly.
+                <br>
+                You can <a href="#" data-hystmodal="#modal-cancel-subscription">cancel your subscription</a> at any time.
+              </p>
+            </div>
+
+            <div class="offer-info__footer-col">
+              <div class="offer-info__terms">
+                <div>
+                  <label class="offer-info__terms-checkbox form-checkbox" for="agreements">
+                    <input class="form-checkbox__input js-agreements" type="checkbox" name="agreements" id="agreements" checked>
+                    <span>I agree with <a href="/privacy-policy.html">Privacy Policy</a>, <a href="/terms-of-services.html">Terms of Services</a> & <a href="/subscription-terms.html">Subscription Policy</a>
+                    </span>
+                  </label>
+
+                  <p class="offer-info__terms-descr offer-info__terms-descr--hide-xl">
+                    3 days free trial, then auto-renewable $29.99/monthly.
+                    <br>
+                    You can <a href="#" data-hystmodal="#modal-cancel-subscription">cancel your subscription</a> at any time.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="payment-info">
+        <div class="payment-info__inner">
+          <div class="payment-info__terms container">
+            <label class="payment-info__terms-checkbox form-checkbox" for="agreements">
+              <input class="form-checkbox__input js-agreements" type="checkbox" name="agreements" id="agreements" checked>
+              <span>I agree with <a href="/privacy-policy.html">Privacy Policy</a>, <a href="/terms-of-services.html">Terms of Services</a> & <a href="/subscription-terms.html">Subscription Policy</a>
+              </span>
+            </label>
+
+            <p class="payment-info__terms-descr">
+              3 days free trial, then auto-renewable $29.99/monthly.
+              <br>
+              You can <a href="#" data-hystmodal="#modal-cancel-subscription">cancel your subscription</a> at any time.
+            </p>
+          </div>
+
+          <div class="payment-info__main container">
+            <div class="payment-info__buttons">
+              <button id="applepay-btn" class="applepay-btn activate-button" aria-label="Apple Pay" type="button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="54" height="22" fill="none" viewBox="0 0 54 22">
+                  <path fill="#fff" d="M9.867 2.836c-.633.743-1.646 1.33-2.658 1.246-.127-1.005.369-2.072.949-2.732C8.791.586 9.898.042 10.795 0c.105 1.047-.306 2.072-.928 2.836Zm.917 1.445c-1.466-.084-2.72.827-3.417.827-.707 0-1.772-.785-2.932-.765-1.509.021-2.912.87-3.682 2.22-1.582 2.7-.411 6.698 1.118 8.896.75 1.088 1.646 2.281 2.827 2.24 1.118-.043 1.561-.723 2.912-.723 1.36 0 1.75.722 2.932.701 1.223-.02 1.994-1.088 2.742-2.176.855-1.236 1.203-2.44 1.224-2.502-.021-.02-2.363-.91-2.384-3.59-.021-2.24 1.846-3.307 1.93-3.37-1.054-1.549-2.7-1.716-3.27-1.758Zm8.47-3.036v16.317h2.553v-5.578h3.534c3.228 0 5.495-2.198 5.495-5.38s-2.225-5.359-5.41-5.359h-6.171Zm2.553 2.136h2.943c2.215 0 3.481 1.172 3.481 3.234 0 2.062-1.266 3.244-3.491 3.244h-2.933V3.381ZM35.5 17.688c1.603 0 3.09-.806 3.765-2.083h.053v1.957h2.363V9.441c0-2.355-1.899-3.873-4.82-3.873-2.712 0-4.716 1.539-4.79 3.653h2.3c.19-1.005 1.129-1.664 2.416-1.664 1.56 0 2.436.722 2.436 2.051v.9l-3.185.189c-2.964.177-4.568 1.381-4.568 3.474 0 2.114 1.656 3.517 4.03 3.517Zm.685-1.936c-1.36 0-2.225-.65-2.225-1.644 0-1.025.833-1.622 2.426-1.716l2.837-.178v.921c0 1.528-1.308 2.617-3.038 2.617ZM44.834 22c2.49 0 3.66-.942 4.683-3.8L54 5.726h-2.595l-3.006 9.64h-.053l-3.006-9.64h-2.669l4.325 11.88-.232.721c-.39 1.225-1.023 1.696-2.152 1.696-.2 0-.59-.021-.749-.042v1.957c.148.042.78.063.97.063Z" />
+                </svg>
+              </button>
+            </div>
+
+            <form class="payment-form form js-form" id="form-payment-1" action="#">
+              <div class="form-legend">or Pay by Card</div>
+
+              <input type="hidden" name="subject" value="Payment">
+
+              <div class="form-grid">
+                <div class="form-row">
+                  <div class="form-input-wrapper">
+                    <label class="form-label" for="fp-email-1">E-mail</label>
+
+                    <input class="form-field" type="email" id="fp-email-1" name="email" placeholder="e-mail" required>
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-input-wrapper">
+                    <label class="form-label">Card details</label>
+                    <div id="card-element-1" class="form-field"></div>
+                    <div id="card-errors-1" class="form-error" role="alert"></div>
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-input-wrapper">
+                    <label class="form-label" for="fp-country-1">Country</label>
+
+                    <div class="form-select">
+                      <select class="form-field form-select__select" id="fp-country-1" name="country">
+                        <option value="1" selected>Australia</option>
+                        <option value="2">Australia</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="payments-list">
+                <div class="payments-list__item">
+                  <img src="images/payments/https.png" width="54" height="54" alt="Secure connection">
+                </div>
+
+                <div class="payments-list__item">
+                  <img src="images/payments/ssl.png" width="54" height="54" alt="SSL">
+                </div>
+
+                <div class="payments-list__item">
+                  <img src="images/payments/visa.png" width="112" height="54" alt="Visa">
+                </div>
+
+                <div class="payments-list__item">
+                  <img src="images/payments/mastercard.png" width="110" height="54" alt="MasterCard">
+                </div>
+
+                <div class="payments-list__text">
+                  Money-Back Guarantee
+                </div>
+              </div>
+
+              <div class="payment-form__footer">
+                <div class="form-actions">
+                  <button class="button activate-button" type="submit">3-Days free trial, then $29.99 / month</button>
+
+                  <label class="payment-form__terms-checkbox form-checkbox js-agreements" for="agreements-2">
+                    <input class="form-checkbox__input js-agreements" type="checkbox" name="agreements" id="agreements-2" checked required>
+                    <span>I agree with <a href="/privacy-policy.html">Privacy Policy</a>, <a href="/terms-of-services.html">Terms of Use</a> & <a href="/subscription-terms.html">Subscription Policy</a>
+                    </span>
+                  </label>
+                </div>
+
+                <div class="payment-form__footer-text">
+                  Monthly auto-renewable subscription.
+                  You can cancel your subscription at any time.
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <div class="payment-info__about about-guarantee">
+            <div class="about-guarantee__row">
+              <img class="about-guarantee__icon" src="images/guarantee-icon.svg" aria-hidden="true" width="58" height="58" alt="">
+
+              <h2 class="about-guarantee__title section-title">Money-Back Guarantee</h2>
+
+              <div class="about-guarantee__text entry-content">
+                We are confident in the quality of our app - tens of thousands of users around the world have already optimized their photo storage with the Ultra Cleaner app. We are prepared to refund your money if you 100% encountered technical issues that hindered the proper TEE use of the application.
+              </div>
+            </div>
+
+            <div class="about-guarantee__row">
+              <div class="about-guarantee__text entry-content">
+                After the 3-day free trial ends, you will be automatically charged $29.99. The subscription will automatically renew monthly at the full price of $29.99 after the 3-day free trial ends. Payments are charged in US dollars. To learn more, visit our legal section or contact us at
+                <br>
+                <a href="mailto:support@security-app.pro">support@security-app.pro</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="grid-2-xl">
+        <div class="grid-2-xl__col">
+          <section class="section">
+            <header class="section-header section-header--center container">
+              <h2 class="section-title">You can enjoy results like these!</h2>
+            </header>
+
+            <div class="info-cards-slider-wrapper">
+              <div class="features-slider swiper slider">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <img src="images/stats-img-1.png" width="393" height="450" alt="">
+                  </div>
+
+                  <div class="swiper-slide">
+                    <img src="images/stats-img-2.png" width="393" height="450" alt="">
+                  </div>
+
+                  <div class="swiper-slide">
+                    <img src="images/stats-img-3.png" width="393" height="450" alt="">
+                  </div>
+
+                  <div class="swiper-slide">
+                    <img src="images/stats-img-4.png" width="393" height="450" alt="">
+                  </div>
+                </div>
+
+                <div class="slider__nav slider__nav--bottom slider-nav">
+                  <button class="swiper-button-prev slider-button slider-button--prev" type="button" aria-label="Prev Slide">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="14" viewBox="0 0 16 14" aria-hidden="true">
+                      <path fill-rule="evenodd" d="M7.707 13.695a1 1 0 0 1-1.414 0l-6-6a1 1 0 0 1 0-1.414l6-6a1 1 0 0 1 1.414 1.414L3.414 5.988H15a1 1 0 1 1 0 2H3.414l4.293 4.293a1 1 0 0 1 0 1.414Z" clip-rule="evenodd" />
+                    </svg>
+                  </button>
+
+                  <div class="swiper-pagination slider-pagination"></div>
+
+                  <button class="swiper-button-next slider-button slider-button--next" type="button" aria-label="Next Slide">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="14" viewBox="0 0 16 14" aria-hidden="true">
+                      <path fill-rule="evenodd" d="M8.293 13.695a1 1 0 0 0 1.414 0l6-6a1 1 0 0 0 0-1.414l-6-6a1 1 0 0 0-1.414 1.414l4.293 4.293H1a1 1 0 0 0 0 2h11.586L8.293 12.28a1 1 0 0 0 0 1.414Z" clip-rule="evenodd" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <div class="grid-2-xl__col">
+          <section class="section">
+            <header class="section-header section-header--center container">
+              <h2 class="section-title">What you get</h2>
+            </header>
+
+            <div class="info-cards-slider-wrapper">
+              <div class="info-cards-slider swiper slider">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <div class="info-card">
+                      <img class="info-card__icon" src="images/icons/info.svg" width="24" height="24" aria-hidden="true" alt="">
+
+                      <h3 class="info-card__title">
+                        Cleaner Kit
+                      </h3>
+
+                      <div class="info-card__descr entry-content">
+                        Cleaner Kit helps you quickly find and remove duplicate photos, large videos, and unnecessary calendar events. It also detects and deletes duplicate contacts, helping to keep your address book clean and organized. You can even remove GPS metadata from your photos to protect your privacy. All-in-one cleanup to keep your device running smoothly.
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="swiper-slide">
+                    <div class="info-card">
+                      <img class="info-card__icon" src="images/icons/info.svg" width="24" height="24" aria-hidden="true" alt="">
+
+                      <h3 class="info-card__title">
+                        Smart Compress
+                      </h3>
+
+                      <div class="info-card__descr entry-content">
+                        Smart Compress reduces the size of your photos and videos without compromising quality. This feature helps free up valuable storage space while keeping your memories intact. Ideal for users with limited space who want a lighter, faster device.
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="swiper-slide">
+                    <div class="info-card">
+                      <img class="info-card__icon" src="images/icons/info.svg" width="24" height="24" aria-hidden="true" alt="">
+
+                      <h3 class="info-card__title">
+                        Sort Photos
+                      </h3>
+
+                      <div class="info-card__descr entry-content">
+                        Sort Photos makes cleaning up your gallery simple and intuitive. Just swipe left or right to decide which photos to keep and which to delete. It’s a fast and fun way to clear space without missing anything important.
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="swiper-slide">
+                    <div class="info-card">
+                      <img class="info-card__icon" src="images/icons/info.svg" width="24" height="24" aria-hidden="true" alt="">
+
+                      <h3 class="info-card__title">
+                        Speed Test
+                      </h3>
+
+                      <div class="info-card__descr entry-content">
+                        Check your internet connection in real time with the built-in Speed Test. Quickly measure your download and upload speeds, as well as latency. Perfect for diagnosing slow Wi-Fi or mobile network issues.
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="swiper-slide">
+                    <div class="info-card">
+                      <img class="info-card__icon" src="images/icons/info.svg" width="24" height="24" aria-hidden="true" alt="">
+
+                      <h3 class="info-card__title">
+                        Other Utilities
+                      </h3>
+
+                      <div class="info-card__descr entry-content">
+                        Explore a set of useful tools including system cleaning tips, flashlight access, and customizable widgets. Get personalized cleaning suggestions based on your usage habits. Everything you need to optimize your device in one place.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="slider__nav slider__nav--bottom slider-nav">
+                  <button class="swiper-button-prev slider-button slider-button--prev" type="button" aria-label="Prev Slide">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="14" viewBox="0 0 16 14" aria-hidden="true">
+                      <path fill-rule="evenodd" d="M7.707 13.695a1 1 0 0 1-1.414 0l-6-6a1 1 0 0 1 0-1.414l6-6a1 1 0 0 1 1.414 1.414L3.414 5.988H15a1 1 0 1 1 0 2H3.414l4.293 4.293a1 1 0 0 1 0 1.414Z" clip-rule="evenodd" />
+                    </svg>
+                  </button>
+
+                  <div class="swiper-pagination slider-pagination"></div>
+
+                  <button class="swiper-button-next slider-button slider-button--next" type="button" aria-label="Next Slide">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="14" viewBox="0 0 16 14" aria-hidden="true">
+                      <path fill-rule="evenodd" d="M8.293 13.695a1 1 0 0 0 1.414 0l6-6a1 1 0 0 0 0-1.414l-6-6a1 1 0 0 0-1.414 1.414l4.293 4.293H1a1 1 0 0 0 0 2h11.586L8.293 12.28a1 1 0 0 0 0 1.414Z" clip-rule="evenodd" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="section">
+            <header class="section-header section-header--center container">
+              <h2 class="section-title">People often ask</h2>
+            </header>
+
+            <div class="faq-list-wrapper">
+              <div class="faq-list accordion js-accordion">
+                <div class="faq-item accordion__item js-accordion-item">
+                  <button class="faq-item__toggle js-accordion-toggle" type="button" aria-expanded="false">
+                    What happens after I order?
+                  </button>
+
+                  <div class="faq-item__block accordion__block js-accordion-block">
+                    <div class="entry-content">
+                      <p>
+                        You will receive personalized access to the premium members area on our website, as well as a premium version of our app in the App Store.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="faq-item accordion__item js-accordion-item">
+                  <button class="faq-item__toggle js-accordion-toggle" type="button" aria-expanded="false">
+                    What do I get with the Ultra Cleaner Kit?
+                  </button>
+
+                  <div class="faq-item__block accordion__block js-accordion-block">
+                    <div class="entry-content">
+                      <p>
+                        You will be immediately synchronized with the premium version of our app, as well as receive access to the premium area of our website via email.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="faq-item accordion__item js-accordion-item">
+                  <button class="faq-item__toggle js-accordion-toggle" type="button" aria-expanded="false">
+                    What if the software doesn't work the way I expect it to?
+                  </button>
+
+                  <div class="faq-item__block accordion__block js-accordion-block">
+                    <div class="entry-content">
+                      <p>
+                        We offer a money-back guarantee, please read the detailed terms and conditions in the Money-Back Gurantee section or on the Subscription Policy page.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer__main">
+          <div class="footer-menu">
+            <h2 class="footer-menu__title">Legal</h2>
+
+            <ul class="footer-menu__list">
+              <li>
+                <a href="/privacy-policy.html">
+                  Legal & Privacy
+                </a>
+              </li>
+
+              <li>
+                <a href="/terms-of-services.html">
+                  Terms & Conditions
+                </a>
+              </li>
+
+              <li>
+                <a href="/subscription-terms.html">
+                  Subscription Policy
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="footer-menu">
+            <h2 class="footer-menu__title">Get in touch</h2>
+
+            <ul class="footer-menu__list">
+              <li>
+                <a href="mailto:support@security-app.pro">
+                  support@security-app.pro
+                </a>
+              </li>
+
+              <li>
+                <a href="#modal-question" data-hystmodal="#modal-question">
+                  Contact Us
+                </a>
+              </li>
+
+              <li>
+                <a href="#modal-cancel-subscription" data-hystmodal="#modal-cancel-subscription">
+                  Cancel Subscription
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer__bottom">
+          <div class="footer__copy">
+            Copyright © PDO Digital Tech FZCO
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </div><!-- end .wrapper -->
+
+  <!-- cancel-subscription -->
+  <div class="modal hystmodal" id="modal-cancel-subscription" aria-hidden="true">
+    <div class="hystmodal__wrap">
+      <div class="modal__body hystmodal__window" role="dialog" aria-modal="true">
+        <header class="modal__header">
+          <h2 class="modal__title">Cancel subscription</h2>
+
+          <button class="modal__close" data-hystclose aria-label="Close modal" type="button">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M9.3335 9.33333L22.6668 22.6667M9.3335 22.6667L22.6668 9.33333" stroke="#0A163E" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </button>
+        </header>
+
+        <div class="modal__content">
+          <form class="form form-grid js-form" id="form-cancel-subscription" action="#">
+
+            <input type="hidden" name="subject" value="Cancel subscription">
+
+            <div class="form-input-wrapper">
+              <label class="form-label" for="fcs-email">Email</label>
+              <input class="form-field" type="email" id="fcs-email" name="email" placeholder="Email address of subscription" required>
+            </div>
+
+            <div class="form-input-wrapper">
+              <label class="form-label" for="fcs-digits">Last 4 digits of card</label>
+              <input class="form-field" type="text" id="fcs-digits" name="cardDigits" data-mask="code" placeholder="Last 4 digits of card" required>
+            </div>
+
+            <div class="form__text">
+              <p>Please provide email address and last four digits of the card you subscribned with to cancel your subscription.</p>
+
+              <p>If you have any question please contacts us at support@pdodigitaltech.com</p>
+            </div>
+
+            <div class="form__actions form-actions">
+              <button class="button form-submit" type="submit">Cancel Subscription</button>
+
+              <div class="form-error">
+                Incorrect email or password
+              </div>
+            </div>
+
+            <div class="form__success">
+              <h2 class="form__success-title">Thank you for submitting the form.</h2>
+              <p class="form__success-text">Your information has been successfully received.</p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- login -->
+  <div class="modal hystmodal" id="modal-login" aria-hidden="true">
+    <div class="hystmodal__wrap">
+      <div class="modal__body hystmodal__window" role="dialog" aria-modal="true">
+        <header class="modal__header">
+          <h2 class="modal__title">Log In</h2>
+
+          <button class="modal__close" data-hystclose aria-label="Close modal" type="button">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M9.3335 9.33333L22.6668 22.6667M9.3335 22.6667L22.6668 9.33333" stroke="#0A163E" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </button>
+        </header>
+
+        <div class="modal__content">
+          <form class="form form-grid js-form" id="form-login" action="#">
+
+            <input type="hidden" name="subject" value="Login">
+
+            <div class="form-input-wrapper">
+              <label class="form-label" for="fl-email">Email</label>
+              <input class="form-field" type="email" id="fl-email" name="email" placeholder="Email address of subscription" required>
+            </div>
+
+            <div class="form-input-wrapper">
+              <label class="form-label" for="fl-password">Password</label>
+              <input class="form-field" type="password" id="fl-password" name="password" placeholder="Enter your password" required autocomplete="off">
+            </div>
+
+            <div class="form__actions form-actions">
+              <button class="button form-submit" type="submit">Log In</button>
+
+              <div class="form-error">
+                Incorrect email or password
+              </div>
+            </div>
+
+            <div class="form__footer">
+              <a href="/payment.html">Not a meber? Register here</a>
+            </div>
+
+            <div class="form__success">
+              <h2 class="form__success-title">Thank you for submitting the form.</h2>
+              <p class="form__success-text">Your information has been successfully received.</p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- question -->
+  <div class="modal hystmodal" id="modal-question" aria-hidden="true">
+    <div class="hystmodal__wrap">
+      <div class="modal__body hystmodal__window" role="dialog" aria-modal="true">
+        <header class="modal__header">
+          <h2 class="modal__title">Support Form</h2>
+
+          <button class="modal__close" data-hystclose aria-label="Close modal" type="button">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M9.3335 9.33333L22.6668 22.6667M9.3335 22.6667L22.6668 9.33333" stroke="#0A163E" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </button>
+        </header>
+
+        <div class="modal__content">
+          <form class="form form-grid js-form" id="form-question" action="#">
+
+            <input type="hidden" name="subject" value="Question">
+
+            <div class="form-input-wrapper">
+              <label class="form-label" for="fq-first-name">Name</label>
+              <input class="form-field" type="text" id="fq-first-name" name="first-name" placeholder="Name">
+            </div>
+
+            <div class="form-input-wrapper">
+              <label class="form-label" for="fq-email">Email</label>
+              <input class="form-field" type="email" id="fq-email" name="email" placeholder="Email" required>
+            </div>
+
+            <div class="form-input-wrapper">
+              <label class="form-label" for="fq-message">Message</label>
+              <textarea class="form-field form-field--textarea" id="fq-message" name="message" cols="10" rows="2" placeholder="Message"></textarea>
+            </div>
+
+            <div class="form__actions form-actions">
+              <button class="button form-submit" type="submit">Send</button>
+            </div>
+
+            <div class="form__success">
+              <h2 class="form__success-title">Thank you for submitting the form.</h2>
+              <p class="form__success-text">Your information has been successfully received.</p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- cancel -->
+  <div class="modal modal--dialog hystmodal" id="modal-unsubscribe" aria-hidden="true">
+    <div class="hystmodal__wrap">
+      <div class="modal__body hystmodal__window" role="dialog" aria-modal="true">
+        <button class="modal__close" data-hystclose aria-label="Close modal" type="button">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M9.3335 9.33333L22.6668 22.6667M9.3335 22.6667L22.6668 9.33333" stroke="#0A163E" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+
+        <div class="modal__content modal__content--centered">
+          <h2 class="modal__title">
+            Are you really sure you want to unsubscribe?
+          </h2>
+
+          <div class="modal__buttons">
+            <button class="button button--outline button--xs js-cancel-page" type="button">Yes</button>
+
+            <button class="button button--outline button--xs button--grey" data-hystclose type="button">No</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- decline -->
+  <div class="modal modal--alert hystmodal" id="modal-decline" aria-hidden="true">
+    <div class="hystmodal__wrap">
+      <div class="modal__body hystmodal__window" role="dialog" aria-modal="true">
+        <div class="modal__content modal__content--centered">
+          <div class="modal-alert">
+            <img src="images/decline-icon.png" width="100" height="100" aria-hidden="true" alt="">
+
+            <h2 class="modal__title">
+              There was an error processing your payment information.
+            </h2>
+
+            <div class="modal__text">
+              Your card has been declined.
+            </div>
+
+            <div class="modal__buttons">
+              <button class="button button--shadow" data-hystclose type="button">Try Again</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="scripts/imask.min.js"></script>
+  <script src="scripts/lottie.min.js"></script>
+  <script src="scripts/hystmodal.min.js"></script>
+  <script src="scripts/swiper.min.js"></script>
+  <!-- Stripe.js v3 -->
+  <script src="https://js.stripe.com/v3"></script>
+  <script src="scripts/main.js?v=2"></script>
+</body>
+
+</html>
