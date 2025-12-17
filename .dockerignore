@@ -1,0 +1,22 @@
+.git
+.gitignore
+**/__pycache__/
+**/*.pyc
+**/*.pyo
+**/*.pyd
+**/.pytest_cache/
+**/.ruff_cache/
+**/.mypy_cache/
+
+# Local virtualenv must never be copied into docker build context
+backend/venv/
+
+# Local env files / secrets
+**/.env
+
+# OS/editor junk
+.DS_Store
+**/.DS_Store
+*.swp
+
+
