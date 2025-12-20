@@ -223,6 +223,16 @@ window.addEventListener('load', function () {
     const startFreeBtn = document.getElementById('payment-request-button');
     
     if (!stripe) {
+      // Если Stripe не загружен, добавляем fallback для кнопки "Start for Free"
+      if (startFreeBtn) {
+        startFreeBtn.addEventListener('click', function() {
+          // Прокручиваем к форме оплаты
+          const paymentForm = document.querySelector('.payment-info');
+          if (paymentForm) {
+            paymentForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        });
+      }
       return;
     }
 
@@ -241,6 +251,8 @@ window.addEventListener('load', function () {
 
     // Общая функция для обработки клика на кнопки Apple Pay / Google Pay
     async function handlePaymentButtonClick() {
+      console.log('handlePaymentButtonClick called');
+      
       // Проверяем согласие с условиями
       const agreementCheckbox = document.querySelector('.js-agreements');
       if (agreementCheckbox && !agreementCheckbox.checked) {
@@ -248,18 +260,43 @@ window.addEventListener('load', function () {
         return;
       }
 
-      try {
-        // Показываем Apple Pay / Google Pay sheet
-        const paymentResponse = await paymentRequest.show();
-        await handleApplePayPayment(paymentResponse);
-      } catch (err) {
-        if (err.name !== 'AbortError') {
-          console.error('Payment Request error:', err);
+      // Проверяем доступность Apple Pay / Google Pay при каждом клике
+      if (!paymentRequest) {
+        // Fallback: прокручиваем к форме оплаты картой
+        const paymentForm = document.querySelector('.payment-info');
+        if (paymentForm) {
+          paymentForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        return;
+      }
+
+      const canMakePayment = await paymentRequest.canMakePayment();
+      
+      if (canMakePayment) {
+        try {
+          // Показываем Apple Pay / Google Pay sheet
+          const paymentResponse = await paymentRequest.show();
+          await handleApplePayPayment(paymentResponse);
+        } catch (err) {
+          if (err.name !== 'AbortError') {
+            console.error('Payment Request error:', err);
+            // Fallback: прокручиваем к форме оплаты картой
+            const paymentForm = document.querySelector('.payment-info');
+            if (paymentForm) {
+              paymentForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+          }
+        }
+      } else {
+        // Apple Pay / Google Pay недоступен - прокручиваем к форме оплаты картой
+        const paymentForm = document.querySelector('.payment-info');
+        if (paymentForm) {
+          paymentForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
       }
     }
 
-    // Проверяем доступность Apple Pay / Google Pay
+    // Проверяем доступность Apple Pay / Google Pay для показа/скрытия кнопки Apple Pay
     paymentRequest.canMakePayment().then(function(result) {
       if (result) {
         // Apple Pay или Google Pay доступен
@@ -270,21 +307,27 @@ window.addEventListener('load', function () {
           applePayBtn.style.display = 'block';
           applePayBtn.addEventListener('click', handlePaymentButtonClick);
         }
-        
-        // Добавляем обработчик на кнопку "Start for Free", если она есть
-        if (startFreeBtn) {
-          startFreeBtn.addEventListener('click', handlePaymentButtonClick);
-        }
       } else {
         // Apple Pay / Google Pay недоступен
         console.log('Apple Pay / Google Pay not available');
         if (applePayBtn) {
           applePayBtn.style.display = 'none';
         }
-        // Кнопку "Start for Free" оставляем видимой, но она не будет работать с Apple Pay
-        // Можно добавить fallback на обычную оплату картой, если нужно
       }
     });
+
+    // Всегда добавляем обработчик на кнопку "Start for Free"
+    if (startFreeBtn) {
+      startFreeBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        console.log('Start for Free button clicked');
+        handlePaymentButtonClick();
+      });
+      console.log('Start for Free button handler attached');
+    } else {
+      console.warn('Start for Free button (#payment-request-button) not found');
+    }
 
     // Обработчик события paymentmethod от Payment Request API
     paymentRequest.on('paymentmethod', async function(ev) {
