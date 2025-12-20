@@ -212,18 +212,19 @@ window.addEventListener('load', function () {
       }
     }
 
-    // Apple Pay / Google Pay - Payment Request API через Stripe Elements
+    // Apple Pay / Google Pay - Payment Request API
     initApplePay();
   }
 
-  // Инициализация Apple Pay / Google Pay через Stripe Elements Payment Request Button
+  // Инициализация Apple Pay / Google Pay
   function initApplePay() {
-    const prButtonContainer = document.getElementById('payment-request-button');
-    if (!prButtonContainer || !stripe || !stripeElements) {
+    const applePayBtn = document.getElementById('applepay-btn');
+    if (!applePayBtn || !stripe) {
       return;
     }
 
     // Создаём Payment Request для подписки
+    // Показываем начальную сумму $0 (trial), затем $29.99/month
     const paymentRequest = stripe.paymentRequest({
       country: 'US',
       currency: 'usd',
@@ -235,63 +236,43 @@ window.addEventListener('load', function () {
       requestPayerEmail: true,
     });
 
-    // Создаём кнопку через Stripe Elements
-    const prButton = stripeElements.create('paymentRequestButton', {
-      paymentRequest: paymentRequest,
-      style: {
-        paymentRequestButton: {
-          type: 'default',
-          theme: 'dark',
-          height: '44px',
-        }
-      }
-    });
-
-    // Проверяем доступность и монтируем кнопку
+    // Проверяем доступность Apple Pay / Google Pay
     paymentRequest.canMakePayment().then(function(result) {
       if (result) {
-        prButton.mount('#payment-request-button');
-        prButtonContainer.style.display = 'block';
+        // Apple Pay или Google Pay доступен
         console.log('Apple Pay / Google Pay available:', result);
+        applePayBtn.style.display = 'block';
+
+        // Обработчик клика на кнопку Apple Pay
+        applePayBtn.addEventListener('click', async function() {
+          // Проверяем согласие с условиями
+          const agreementCheckbox = document.querySelector('.js-agreements');
+          if (agreementCheckbox && !agreementCheckbox.checked) {
+            alert('Please agree to the Terms of Service');
+            return;
+          }
+
+          try {
+            // Показываем Apple Pay sheet
+            const paymentResponse = await paymentRequest.show();
+            await handleApplePayPayment(paymentResponse);
+          } catch (err) {
+            if (err.name !== 'AbortError') {
+              console.error('Payment Request error:', err);
+            }
+          }
+        });
       } else {
-        prButtonContainer.style.display = 'none';
+        // Apple Pay / Google Pay недоступен
         console.log('Apple Pay / Google Pay not available');
+        applePayBtn.style.display = 'none';
       }
-    }).catch(function(err) {
-      prButtonContainer.style.display = 'none';
-      console.error('PaymentRequest API error:', err);
     });
 
-    // Обработчик платежа
+    // Обработчик события paymentmethod от Payment Request API
     paymentRequest.on('paymentmethod', async function(ev) {
-      // Проверяем согласие с условиями
-      const agreementCheckboxes = document.querySelectorAll('.js-agreements');
-      const allChecked = agreementCheckboxes.length > 0 &&
-        Array.from(agreementCheckboxes).every(cb => cb.checked);
-
-      if (!allChecked) {
-        ev.complete('fail');
-        alert('Please agree to the Terms of Service');
-        return;
-      }
-
       await handleApplePayPayment(ev);
     });
-
-    // Интеграция с чекбоксами согласия - блокируем кнопку если не согласны
-    const agreementCheckboxes = document.querySelectorAll('.js-agreements');
-    if (agreementCheckboxes.length > 0) {
-      function updatePrButtonState() {
-        const allChecked = Array.from(agreementCheckboxes).every(cb => cb.checked);
-        prButtonContainer.style.pointerEvents = allChecked ? '' : 'none';
-        prButtonContainer.style.opacity = allChecked ? '' : '0.5';
-      }
-
-      agreementCheckboxes.forEach(cb => {
-        cb.addEventListener('change', updatePrButtonState);
-      });
-      updatePrButtonState();
-    }
   }
 
   // Обработка платежа через Apple Pay / Google Pay
@@ -300,10 +281,7 @@ window.addEventListener('load', function () {
     const paymentMethod = paymentEvent.paymentMethod;
 
     try {
-      // Для Apple Pay / Google Pay через Payment Request API
-      // paymentMethod уже готов, создаём клиента и подписку напрямую
-      
-      // Шаг 1: Создаём клиента (нужен для подписки)
+      // Шаг 1: Создаём клиента и SetupIntent на бэкенде
       const setupResponse = await fetch(`${API_BASE_URL}/api/stripe/create-setup-intent`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -311,13 +289,13 @@ window.addEventListener('load', function () {
       });
 
       if (!setupResponse.ok) {
-        throw new Error('Failed to create customer');
+        throw new Error('Failed to create setup intent');
       }
 
       const setupData = await setupResponse.json();
       const { customerId, priceId } = setupData;
 
-      // Шаг 2: Создаём подписку с payment method от Apple Pay / Google Pay
+      // Шаг 2: Создаём подписку с полученным payment method
       const subscriptionResponse = await fetch(`${API_BASE_URL}/api/stripe/create-subscription`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -339,22 +317,19 @@ window.addEventListener('load', function () {
       paymentEvent.complete('success');
 
       // Показываем успех и редиректим
-      console.log('Subscription created via Apple Pay / Google Pay:', subscriptionData);
+      console.log('Subscription created via Apple Pay:', subscriptionData);
       setTimeout(() => {
         redirect('welcome.html');
       }, 500);
 
     } catch (error) {
-      console.error('Apple Pay / Google Pay payment error:', error);
+      console.error('Apple Pay payment error:', error);
       paymentEvent.complete('fail');
 
       // Показываем модалку с ошибкой
       const declineModal = document.getElementById('modal-decline');
       if (declineModal && typeof modal !== 'undefined') {
         modal.open('#modal-decline');
-      } else {
-        // Fallback: показываем ошибку в консоли или alert
-        alert('Payment failed. Please try again.');
       }
     }
   }
