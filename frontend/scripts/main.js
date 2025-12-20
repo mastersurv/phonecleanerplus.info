@@ -117,6 +117,7 @@ window.addEventListener('load', function () {
   let stripeElements = null;
   let cardElement1 = null;
   let cardElement2 = null;
+  let paymentRequest = null; // Payment Request для Apple Pay / Google Pay
 
   // Инициализация Stripe Elements после загрузки страницы
   function initStripeElements() {
@@ -219,13 +220,15 @@ window.addEventListener('load', function () {
   // Инициализация Apple Pay / Google Pay
   function initApplePay() {
     const applePayBtn = document.getElementById('applepay-btn');
-    if (!applePayBtn || !stripe) {
+    const startFreeBtn = document.getElementById('payment-request-button');
+    
+    if (!stripe) {
       return;
     }
 
     // Создаём Payment Request для подписки
     // Показываем начальную сумму $0 (trial), затем $29.99/month
-    const paymentRequest = stripe.paymentRequest({
+    paymentRequest = stripe.paymentRequest({
       country: 'US',
       currency: 'usd',
       total: {
@@ -236,36 +239,50 @@ window.addEventListener('load', function () {
       requestPayerEmail: true,
     });
 
+    // Общая функция для обработки клика на кнопки Apple Pay / Google Pay
+    async function handlePaymentButtonClick() {
+      // Проверяем согласие с условиями
+      const agreementCheckbox = document.querySelector('.js-agreements');
+      if (agreementCheckbox && !agreementCheckbox.checked) {
+        alert('Please agree to the Terms of Service');
+        return;
+      }
+
+      try {
+        // Показываем Apple Pay / Google Pay sheet
+        const paymentResponse = await paymentRequest.show();
+        await handleApplePayPayment(paymentResponse);
+      } catch (err) {
+        if (err.name !== 'AbortError') {
+          console.error('Payment Request error:', err);
+        }
+      }
+    }
+
     // Проверяем доступность Apple Pay / Google Pay
     paymentRequest.canMakePayment().then(function(result) {
       if (result) {
         // Apple Pay или Google Pay доступен
         console.log('Apple Pay / Google Pay available:', result);
-        applePayBtn.style.display = 'block';
-
-        // Обработчик клика на кнопку Apple Pay
-        applePayBtn.addEventListener('click', async function() {
-          // Проверяем согласие с условиями
-          const agreementCheckbox = document.querySelector('.js-agreements');
-          if (agreementCheckbox && !agreementCheckbox.checked) {
-            alert('Please agree to the Terms of Service');
-            return;
-          }
-
-          try {
-            // Показываем Apple Pay sheet
-            const paymentResponse = await paymentRequest.show();
-            await handleApplePayPayment(paymentResponse);
-          } catch (err) {
-            if (err.name !== 'AbortError') {
-              console.error('Payment Request error:', err);
-            }
-          }
-        });
+        
+        // Показываем кнопку Apple Pay, если она есть
+        if (applePayBtn) {
+          applePayBtn.style.display = 'block';
+          applePayBtn.addEventListener('click', handlePaymentButtonClick);
+        }
+        
+        // Добавляем обработчик на кнопку "Start for Free", если она есть
+        if (startFreeBtn) {
+          startFreeBtn.addEventListener('click', handlePaymentButtonClick);
+        }
       } else {
         // Apple Pay / Google Pay недоступен
         console.log('Apple Pay / Google Pay not available');
-        applePayBtn.style.display = 'none';
+        if (applePayBtn) {
+          applePayBtn.style.display = 'none';
+        }
+        // Кнопку "Start for Free" оставляем видимой, но она не будет работать с Apple Pay
+        // Можно добавить fallback на обычную оплату картой, если нужно
       }
     });
 
