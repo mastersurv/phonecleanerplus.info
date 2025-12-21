@@ -219,11 +219,16 @@ window.addEventListener('load', function () {
 
   // Инициализация Apple Pay / Google Pay
   function initApplePay() {
+    console.log('initApplePay called');
+    
     // Находим ВСЕ кнопки Apple Pay (может быть несколько форм)
     const applePayButtons = document.querySelectorAll('.applepay-btn');
     const startFreeBtn = document.getElementById('payment-request-button');
     
+    console.log(`Found ${applePayButtons.length} Apple Pay button(s)`);
+    
     if (!stripe) {
+      console.warn('Stripe not initialized');
       // Если Stripe не загружен, добавляем fallback для кнопки "Start for Free"
       if (startFreeBtn) {
         startFreeBtn.addEventListener('click', function() {
@@ -252,25 +257,54 @@ window.addEventListener('load', function () {
 
     // Общая функция для обработки клика на кнопки Apple Pay / Google Pay
     async function handlePaymentButtonClick(e) {
-      console.log('handlePaymentButtonClick called');
+      console.log('handlePaymentButtonClick called', e);
       
       // Получаем кнопку, на которую кликнули
       const clickedButton = e?.currentTarget || e?.target || this;
+      console.log('Clicked button:', clickedButton, 'disabled:', clickedButton.disabled);
+      
+      // Проверяем, не disabled ли кнопка
+      if (clickedButton.disabled) {
+        console.log('Button is disabled - checking why...');
+        // Если кнопка disabled, всё равно пытаемся продолжить (может быть из-за чекбокса)
+        // Но сначала проверим чекбокс
+      }
       
       // Проверяем согласие с условиями (ищем ближайший чекбокс в той же форме)
       const paymentInfo = clickedButton.closest('.payment-info');
+      console.log('Payment info container:', paymentInfo);
+      
       const form = paymentInfo?.querySelector('form');
-      const agreementCheckbox = form 
-        ? form.querySelector('.js-agreements') 
-        : document.querySelector('.js-agreements');
+      console.log('Form found:', form);
+      
+      // Ищем чекбокс в форме или в ближайшем контейнере
+      let agreementCheckbox = null;
+      if (form) {
+        agreementCheckbox = form.querySelector('.js-agreements');
+      }
+      if (!agreementCheckbox && paymentInfo) {
+        agreementCheckbox = paymentInfo.querySelector('.js-agreements');
+      }
+      if (!agreementCheckbox) {
+        agreementCheckbox = document.querySelector('.js-agreements');
+      }
+      
+      console.log('Agreement checkbox:', agreementCheckbox, 'checked:', agreementCheckbox?.checked);
         
       if (agreementCheckbox && !agreementCheckbox.checked) {
         alert('Please agree to the Terms of Service');
         return;
       }
+      
+      // Если кнопка disabled, но чекбокс checked, временно включаем кнопку
+      if (clickedButton.disabled && agreementCheckbox && agreementCheckbox.checked) {
+        console.log('Button was disabled but agreement is checked, enabling temporarily');
+        clickedButton.disabled = false;
+      }
 
       // Проверяем доступность Apple Pay / Google Pay при каждом клике
       if (!paymentRequest) {
+        console.log('PaymentRequest not available, scrolling to form');
         // Fallback: прокручиваем к форме оплаты картой
         if (paymentInfo) {
           paymentInfo.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -279,10 +313,12 @@ window.addEventListener('load', function () {
       }
 
       const canMakePayment = await paymentRequest.canMakePayment();
+      console.log('canMakePayment:', canMakePayment);
       
       if (canMakePayment) {
         try {
           // Показываем Apple Pay / Google Pay sheet
+          console.log('Showing payment request');
           const paymentResponse = await paymentRequest.show();
           await handleApplePayPayment(paymentResponse);
         } catch (err) {
@@ -292,40 +328,52 @@ window.addEventListener('load', function () {
             if (paymentInfo) {
               paymentInfo.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
+          } else {
+            console.log('Payment request aborted by user');
           }
         }
       } else {
         // Apple Pay / Google Pay недоступен - прокручиваем к форме оплаты картой
+        console.log('Apple Pay not available, scrolling to form');
         if (paymentInfo) {
           paymentInfo.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
       }
     }
 
-    // Проверяем доступность Apple Pay / Google Pay для показа/скрытия всех кнопок Apple Pay
-    paymentRequest.canMakePayment().then(function(result) {
-      if (result) {
-        // Apple Pay или Google Pay доступен
-        console.log('Apple Pay / Google Pay available:', result);
-        
-        // Показываем и добавляем обработчики на все кнопки Apple Pay
-        applePayButtons.forEach(function(btn) {
-          btn.style.display = 'block';
-          btn.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            handlePaymentButtonClick(e);
-          });
-        });
-        console.log(`Initialized ${applePayButtons.length} Apple Pay button(s)`);
-      } else {
-        // Apple Pay / Google Pay недоступен
-        console.log('Apple Pay / Google Pay not available');
-        applePayButtons.forEach(function(btn) {
+    // ВСЕГДА добавляем обработчики на все кнопки Apple Pay (независимо от доступности)
+    applePayButtons.forEach(function(btn, index) {
+      console.log(`Setting up Apple Pay button ${index + 1}:`, btn.id || `button-${index}`, btn);
+      
+      // Добавляем обработчик клика (используем capture phase для приоритета)
+      btn.addEventListener('click', function(e) {
+        console.log(`Apple Pay button ${index + 1} clicked`, e);
+        e.preventDefault();
+        e.stopPropagation();
+        e.stopImmediatePropagation();
+        handlePaymentButtonClick(e);
+      }, true); // Используем capture phase
+      
+      // Проверяем доступность Apple Pay / Google Pay для показа/скрытия кнопки
+      if (paymentRequest) {
+        paymentRequest.canMakePayment().then(function(result) {
+          if (result) {
+            console.log(`Apple Pay available for button ${index + 1}`);
+            btn.style.display = 'block';
+          } else {
+            console.log(`Apple Pay not available for button ${index + 1}`);
+            btn.style.display = 'none';
+          }
+        }).catch(function(err) {
+          console.error(`Error checking payment availability for button ${index + 1}:`, err);
           btn.style.display = 'none';
         });
+      } else {
+        btn.style.display = 'none';
       }
     });
+    
+    console.log(`Initialized ${applePayButtons.length} Apple Pay button(s)`);
 
     // Всегда добавляем обработчик на кнопку "Start for Free"
     if (startFreeBtn) {
