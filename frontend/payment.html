@@ -425,6 +425,129 @@
           </section>
         </div>
       </div>
+      <section class="payment-info payment-info--guarantee">
+        <div class="payment-info__inner">
+          <div class="payment-info__main container">
+            <div class="payment-info__buttons">
+              <button class="applepay-btn activate-button" aria-label="Apple Pay" type="button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="54" height="22" fill="none" viewBox="0 0 54 22">
+                  <path fill="#fff" d="M9.867 2.836c-.633.743-1.646 1.33-2.658 1.246-.127-1.005.369-2.072.949-2.732C8.791.586 9.898.042 10.795 0c.105 1.047-.306 2.072-.928 2.836Zm.917 1.445c-1.466-.084-2.72.827-3.417.827-.707 0-1.772-.785-2.932-.765-1.509.021-2.912.87-3.682 2.22-1.582 2.7-.411 6.698 1.118 8.896.75 1.088 1.646 2.281 2.827 2.24 1.118-.043 1.561-.723 2.912-.723 1.36 0 1.75.722 2.932.701 1.223-.02 1.994-1.088 2.742-2.176.855-1.236 1.203-2.44 1.224-2.502-.021-.02-2.363-.91-2.384-3.59-.021-2.24 1.846-3.307 1.93-3.37-1.054-1.549-2.7-1.716-3.27-1.758Zm8.47-3.036v16.317h2.553v-5.578h3.534c3.228 0 5.495-2.198 5.495-5.38s-2.225-5.359-5.41-5.359h-6.171Zm2.553 2.136h2.943c2.215 0 3.481 1.172 3.481 3.234 0 2.062-1.266 3.244-3.491 3.244h-2.933V3.381ZM35.5 17.688c1.603 0 3.09-.806 3.765-2.083h.053v1.957h2.363V9.441c0-2.355-1.899-3.873-4.82-3.873-2.712 0-4.716 1.539-4.79 3.653h2.3c.19-1.005 1.129-1.664 2.416-1.664 1.56 0 2.436.722 2.436 2.051v.9l-3.185.189c-2.964.177-4.568 1.381-4.568 3.474 0 2.114 1.656 3.517 4.03 3.517Zm.685-1.936c-1.36 0-2.225-.65-2.225-1.644 0-1.025.833-1.622 2.426-1.716l2.837-.178v.921c0 1.528-1.308 2.617-3.038 2.617ZM44.834 22c2.49 0 3.66-.942 4.683-3.8L54 5.726h-2.595l-3.006 9.64h-.053l-3.006-9.64h-2.669l4.325 11.88-.232.721c-.39 1.225-1.023 1.696-2.152 1.696-.2 0-.59-.021-.749-.042v1.957c.148.042.78.063.97.063Z" />
+                </svg>
+              </button>
+            </div>
+
+            <form class="payment-form form js-form" id="form-payment-2" action="#">
+              <div class="form-legend">or Pay by Card</div>
+
+              <input type="hidden" name="subject" value="Payment">
+
+              <div class="form-grid">
+                <div class="form-row">
+                  <div class="form-input-wrapper">
+                    <label class="form-label" for="fp-email-2">E-mail</label>
+
+                    <input class="form-field" type="email" id="fp-email-2" name="email" placeholder="e-mail" required>
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-input-wrapper">
+                    <label class="form-label" for="fp-card-num-2">Card Number</label>
+
+                    <input class="form-field" type="text" id="fp-card-num-2" name="card-number" data-mask="card-number" placeholder="1234 1234 1234 1236" required>
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-input-wrapper">
+                    <label class="form-label" for="fp-card-date-2">Expiry Date</label>
+
+                    <input class="form-field" type="text" id="fp-card-date-2" name="card-date" data-mask="card-date" placeholder="MM/YY" required>
+                  </div>
+
+                  <div class="form-input-wrapper">
+                    <label class="form-label" for="fp-card-cvc-2">CVC</label>
+
+                    <input class="form-field" type="text" id="fp-card-cvc-2" name="card-cvc" data-mask="card-cvc" maxlength="3" placeholder="111" required>
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-input-wrapper">
+                    <label class="form-label" for="fp-country-2">Country</label>
+
+                    <div class="form-select">
+                      <select class="form-field form-select__select" id="fp-country-2" name="country">
+                        <option value="1" selected>Australia</option>
+                        <option value="2">Australia</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="payments-list">
+                <div class="payments-list__item">
+                  <img src="images/payments/https.png" width="54" height="54" alt="Secure connection">
+                </div>
+
+                <div class="payments-list__item">
+                  <img src="images/payments/ssl.png" width="54" height="54" alt="SSL">
+                </div>
+
+                <div class="payments-list__item">
+                  <img src="images/payments/visa.png" width="112" height="54" alt="Visa">
+                </div>
+
+                <div class="payments-list__item">
+                  <img src="images/payments/mastercard.png" width="110" height="54" alt="MasterCard">
+                </div>
+
+                <div class="payments-list__text">
+                  Money-Back Guarantee
+                </div>
+              </div>
+
+              <div class="payment-form__footer">
+                <div class="form-actions">
+                  <button class="button activate-button" type="submit">3-Days free trial, then $29.99 / month</button>
+
+                  <label class="payment-form__terms-checkbox form-checkbox" for="agreements-3">
+                    <input class="form-checkbox__input js-agreements" type="checkbox" name="agreements" id="agreements-3" checked required>
+                    <span>I agree with <a href="/privacy-policy.html">Privacy Policy</a>, <a href="/terms-of-services.html">Terms of Use</a> & <a href="/subscription-terms.html">Subscription Policy</a>
+                    </span>
+                  </label>
+                </div>
+
+                <div class="payment-form__footer-text">
+                  Monthly auto-renewable subscription.
+                  You can cancel your subscription at any time.
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <div class="payment-info__about about-guarantee">
+            <div class="about-guarantee__row">
+              <img class="about-guarantee__icon" src="images/guarantee-icon.svg" aria-hidden="true" width="58" height="58" alt="">
+
+              <h2 class="about-guarantee__title section-title">Money-Back Guarantee</h2>
+
+              <div class="about-guarantee__text entry-content">
+                We are confident in the quality of our app - tens of thousands of users around the world have already optimized their photo storage with the Ultra Cleaner app. We are prepared to refund your money if you 100% encountered technical issues that hindered the proper TEE use of the application.
+              </div>
+            </div>
+
+            <div class="about-guarantee__row">
+              <div class="about-guarantee__text entry-content">
+                After the 3-day free trial ends, you will be automatically charged $29.99. The subscription will automatically renew monthly at the full price of $29.99 after the 3-day free trial ends. Payments are charged in US dollars. To learn more, visit our legal section or contact us at
+                <br>
+                <a href="mailto:support@security-app.pro">support@security-app.pro</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
 
     <footer class="footer">
