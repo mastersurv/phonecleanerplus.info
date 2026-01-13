@@ -5,12 +5,15 @@ uvicorn[standard]==0.34.0
 # Stripe SDK
 stripe==11.4.1
 
+# Paddle Python SDK
+paddle-python-sdk
+
 # Environment variables
 python-dotenv==1.0.1
 
 # Request validation
 pydantic[email]==2.10.4
 
-# HTTP client (used by Stripe SDK)
+# HTTP client (used by Stripe and Paddle SDKs)
 httpx==0.28.1
 

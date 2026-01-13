@@ -22,6 +22,13 @@ class Settings:
     STRIPE_WEBHOOK_SECRET: str = os.getenv("STRIPE_WEBHOOK_SECRET", "")
     STRIPE_PRICE_ID: str = os.getenv("STRIPE_PRICE_ID", "")
 
+    # Paddle configuration
+    PADDLE_API_KEY: str = os.getenv("PADDLE_API_KEY", "")
+    PADDLE_CLIENT_TOKEN: str = os.getenv("PADDLE_CLIENT_TOKEN", "")
+    PADDLE_WEBHOOK_SECRET: str = os.getenv("PADDLE_WEBHOOK_SECRET", "")
+    PADDLE_PRICE_ID: str = os.getenv("PADDLE_PRICE_ID", "")
+    PADDLE_ENVIRONMENT: str = os.getenv("PADDLE_ENVIRONMENT", "sandbox")
+
     # Application configuration
     BASE_URL: str = os.getenv("BASE_URL", "http://localhost:8000")
     FRONTEND_URL: str = os.getenv("FRONTEND_URL", "http://localhost:8080")
@@ -33,13 +40,15 @@ class Settings:
     @classmethod
     def validate(cls) -> None:
         """Validate that required settings are present."""
-        if not cls.STRIPE_SECRET_KEY:
+        # Check if at least one payment provider is configured
+        stripe_configured = bool(cls.STRIPE_SECRET_KEY and cls.STRIPE_PRICE_ID)
+        paddle_configured = bool(cls.PADDLE_API_KEY and cls.PADDLE_PRICE_ID)
+
+        if not stripe_configured and not paddle_configured:
             raise ValueError(
-                "STRIPE_SECRET_KEY environment variable is required"
-            )
-        if not cls.STRIPE_PRICE_ID:
-            raise ValueError(
-                "STRIPE_PRICE_ID environment variable is required"
+                "At least one payment provider must be configured. "
+                "Set STRIPE_SECRET_KEY + STRIPE_PRICE_ID or "
+                "PADDLE_API_KEY + PADDLE_PRICE_ID"
             )
 
 

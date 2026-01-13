@@ -105,6 +105,47 @@ window.addEventListener('load', function () {
     btn.disabled = false;
   }
 
+  /* Payment Method Tabs (Stripe / Paddle) */
+  
+  function initPaymentTabs() {
+    const tabContainers = document.querySelectorAll('.js-payment-tabs');
+    
+    tabContainers.forEach(container => {
+      const tabs = container.querySelectorAll('.payment-tabs__tab');
+      const parentSection = container.closest('.payment-info__main');
+      
+      if (!parentSection) return;
+      
+      const sections = parentSection.querySelectorAll('.js-payment-section');
+      
+      tabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+          const targetTab = this.dataset.tab;
+          
+          // Update tab states
+          tabs.forEach(t => t.classList.remove('is-active'));
+          this.classList.add('is-active');
+          
+          // Update section visibility
+          sections.forEach(section => {
+            if (section.dataset.section === targetTab) {
+              section.classList.add('is-active');
+            } else {
+              section.classList.remove('is-active');
+            }
+          });
+          
+          // Initialize Paddle checkout if switching to Paddle tab
+          if (targetTab === 'paddle' && typeof Paddle !== 'undefined') {
+            initPaddleCheckoutForSection(parentSection);
+          }
+        });
+      });
+    });
+  }
+  
+  initPaymentTabs();
+
   /* Stripe Elements (inline payments on page) */
 
   // API base URL for FastAPI backend
@@ -118,6 +159,208 @@ window.addEventListener('load', function () {
   let cardElement1 = null;
   let cardElement2 = null;
   let paymentRequest = null; // Payment Request для Apple Pay / Google Pay
+  
+  /* Paddle Checkout */
+  
+  let paddleInitialized = false;
+  let paddleConfig = null;
+  
+  // Fetch Paddle configuration from backend
+  async function fetchPaddleConfig() {
+    try {
+      const response = await fetch(`${API_BASE_URL}/api/paddle/config`);
+      if (!response.ok) {
+        console.warn('Paddle not configured on backend');
+        return null;
+      }
+      return await response.json();
+    } catch (e) {
+      console.warn('Failed to fetch Paddle config:', e);
+      return null;
+    }
+  }
+  
+  // Initialize Paddle.js
+  async function initPaddle() {
+    if (paddleInitialized) return true;
+    
+    if (typeof Paddle === 'undefined') {
+      console.warn('Paddle.js is not loaded');
+      return false;
+    }
+    
+    paddleConfig = await fetchPaddleConfig();
+    
+    if (!paddleConfig || !paddleConfig.clientToken) {
+      console.warn('Paddle configuration missing');
+      return false;
+    }
+    
+    try {
+      // Set environment BEFORE Initialize (required for sandbox)
+      if (paddleConfig.environment === 'sandbox') {
+        Paddle.Environment.set('sandbox');
+        console.log('Paddle environment set to sandbox');
+      }
+      
+      Paddle.Initialize({
+        token: paddleConfig.clientToken,
+        eventCallback: function(event) {
+          console.log('Paddle event:', event.name, event.data);
+          
+          if (event.name === 'checkout.completed') {
+            handlePaddleCheckoutComplete(event.data);
+          } else if (event.name === 'checkout.closed') {
+            console.log('Paddle checkout closed');
+          } else if (event.name === 'checkout.error') {
+            handlePaddleCheckoutError(event.data);
+          }
+        }
+      });
+      
+      paddleInitialized = true;
+      console.log('Paddle initialized successfully');
+      return true;
+    } catch (e) {
+      console.error('Failed to initialize Paddle:', e);
+      return false;
+    }
+  }
+  
+  // Initialize Paddle checkout for a specific section
+  async function initPaddleCheckoutForSection(parentSection) {
+    const initialized = await initPaddle();
+    if (!initialized) return;
+    
+    // Paddle inline checkout will be opened when user clicks the button
+    console.log('Paddle ready for checkout in section');
+  }
+  
+  // Open Paddle inline checkout
+  async function openPaddleCheckout(containerId, email) {
+    const initialized = await initPaddle();
+    if (!initialized) {
+      alert('Payment system is not available. Please try again later.');
+      return;
+    }
+    
+    if (!paddleConfig || !paddleConfig.priceId) {
+      console.error('Paddle price ID not configured');
+      return;
+    }
+    
+    const container = document.getElementById(containerId);
+    if (!container) {
+      console.error('Paddle checkout container not found:', containerId);
+      return;
+    }
+    
+    try {
+      // Open Paddle checkout
+      Paddle.Checkout.open({
+        items: [{ priceId: paddleConfig.priceId, quantity: 1 }],
+        customer: email ? { email: email } : undefined,
+        settings: {
+          displayMode: 'inline',
+          frameTarget: containerId,
+          frameInitialHeight: 450,
+          frameStyle: 'width: 100%; min-width: 312px; background-color: transparent; border: none;',
+          theme: 'light',
+          locale: 'en',
+          allowLogout: false,
+          showAddDiscounts: true,
+        },
+        customData: {
+          source: 'website',
+        }
+      });
+      
+      console.log('Paddle checkout opened');
+    } catch (e) {
+      console.error('Failed to open Paddle checkout:', e);
+      const errorEl = document.getElementById(containerId.replace('container', 'errors'));
+      if (errorEl) {
+        errorEl.textContent = 'Failed to load payment form. Please try again.';
+      }
+    }
+  }
+  
+  // Handle successful Paddle checkout
+  function handlePaddleCheckoutComplete(data) {
+    console.log('Paddle checkout completed:', data);
+    
+    // Show success message and redirect
+    setTimeout(() => {
+      redirect('welcome.html');
+    }, 1000);
+  }
+  
+  // Handle Paddle checkout error
+  function handlePaddleCheckoutError(data) {
+    console.error('Paddle checkout error:', data);
+    
+    // Show error modal if available
+    const declineModal = document.getElementById('modal-decline');
+    if (declineModal && typeof modal !== 'undefined') {
+      modal.open('#modal-decline');
+    }
+  }
+  
+  // Initialize Paddle checkout buttons
+  function initPaddleCheckoutButtons() {
+    const buttons = document.querySelectorAll('.js-paddle-checkout-btn');
+    
+    buttons.forEach(btn => {
+      btn.addEventListener('click', async function(e) {
+        e.preventDefault();
+        
+        const containerId = this.dataset.container;
+        const section = this.closest('.paddle-checkout-container');
+        const emailInput = section?.querySelector('.js-paddle-email');
+        const agreementCheckbox = section?.querySelector('.js-paddle-agreements');
+        
+        // Check agreement
+        if (agreementCheckbox && !agreementCheckbox.checked) {
+          alert('Please agree to the Terms of Service');
+          return;
+        }
+        
+        const email = emailInput?.value || '';
+        
+        // Validate email
+        if (!email || !email.includes('@')) {
+          alert('Please enter a valid email address');
+          emailInput?.focus();
+          return;
+        }
+        
+        // Disable button while loading
+        this.disabled = true;
+        this.textContent = 'Loading...';
+        
+        try {
+          await openPaddleCheckout(containerId, email);
+        } finally {
+          this.disabled = false;
+          this.textContent = 'Start 3-Day Free Trial';
+        }
+      });
+    });
+  }
+  
+  // Initialize Paddle on page load
+  if (typeof Paddle !== 'undefined') {
+    initPaddle();
+    initPaddleCheckoutButtons();
+  } else {
+    // Wait for Paddle.js to load
+    window.addEventListener('load', function() {
+      if (typeof Paddle !== 'undefined') {
+        initPaddle();
+        initPaddleCheckoutButtons();
+      }
+    });
+  }
 
   // Инициализация Stripe Elements после загрузки страницы
   function initStripeElements() {

@@ -11,7 +11,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.responses import JSONResponse
 
 from backend.config import settings
-from backend.routers import stripe_router
+from backend.routers import stripe_router, paddle_router
 
 
 # Configure logging
@@ -38,6 +38,8 @@ app.add_middleware(
         "http://localhost:8080",
         "http://127.0.0.1:8080",
         "http://localhost:3000",
+        "https://phonecleanerplus.info",
+        "http://phonecleanerplus.info",
     ],
     allow_credentials=True,
     allow_methods=["*"],
@@ -46,6 +48,7 @@ app.add_middleware(
 
 # Include routers
 app.include_router(stripe_router.router)
+app.include_router(paddle_router.router)
 
 
 @app.get("/")
@@ -66,6 +69,7 @@ async def health_check():
         content={
             "status": "healthy",
             "stripe_configured": bool(settings.STRIPE_SECRET_KEY),
+            "paddle_configured": bool(settings.PADDLE_API_KEY),
         }
     )
 

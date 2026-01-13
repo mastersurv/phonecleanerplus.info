@@ -119,16 +119,34 @@
           </div>
 
           <div class="payment-info__main container">
-            <div class="payment-info__buttons">
-              <button id="applepay-btn" class="applepay-btn" aria-label="Apple Pay" type="button">
-                <svg xmlns="http://www.w3.org/2000/svg" width="54" height="22" fill="none" viewBox="0 0 54 22">
-                  <path fill="#fff" d="M9.867 2.836c-.633.743-1.646 1.33-2.658 1.246-.127-1.005.369-2.072.949-2.732C8.791.586 9.898.042 10.795 0c.105 1.047-.306 2.072-.928 2.836Zm.917 1.445c-1.466-.084-2.72.827-3.417.827-.707 0-1.772-.785-2.932-.765-1.509.021-2.912.87-3.682 2.22-1.582 2.7-.411 6.698 1.118 8.896.75 1.088 1.646 2.281 2.827 2.24 1.118-.043 1.561-.723 2.912-.723 1.36 0 1.75.722 2.932.701 1.223-.02 1.994-1.088 2.742-2.176.855-1.236 1.203-2.44 1.224-2.502-.021-.02-2.363-.91-2.384-3.59-.021-2.24 1.846-3.307 1.93-3.37-1.054-1.549-2.7-1.716-3.27-1.758Zm8.47-3.036v16.317h2.553v-5.578h3.534c3.228 0 5.495-2.198 5.495-5.38s-2.225-5.359-5.41-5.359h-6.171Zm2.553 2.136h2.943c2.215 0 3.481 1.172 3.481 3.234 0 2.062-1.266 3.244-3.491 3.244h-2.933V3.381ZM35.5 17.688c1.603 0 3.09-.806 3.765-2.083h.053v1.957h2.363V9.441c0-2.355-1.899-3.873-4.82-3.873-2.712 0-4.716 1.539-4.79 3.653h2.3c.19-1.005 1.129-1.664 2.416-1.664 1.56 0 2.436.722 2.436 2.051v.9l-3.185.189c-2.964.177-4.568 1.381-4.568 3.474 0 2.114 1.656 3.517 4.03 3.517Zm.685-1.936c-1.36 0-2.225-.65-2.225-1.644 0-1.025.833-1.622 2.426-1.716l2.837-.178v.921c0 1.528-1.308 2.617-3.038 2.617ZM44.834 22c2.49 0 3.66-.942 4.683-3.8L54 5.726h-2.595l-3.006 9.64h-.053l-3.006-9.64h-2.669l4.325 11.88-.232.721c-.39 1.225-1.023 1.696-2.152 1.696-.2 0-.59-.021-.749-.042v1.957c.148.042.78.063.97.063Z" />
+            <!-- Payment Method Tabs -->
+            <div class="payment-tabs js-payment-tabs">
+              <button class="payment-tabs__tab is-active" type="button" data-tab="stripe">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M13.976 9.15c-2.172-.806-3.356-1.426-3.356-2.409 0-.831.683-1.305 1.901-1.305 2.227 0 4.515.858 6.09 1.631l.89-5.494C18.252.975 15.697 0 12.165 0 9.667 0 7.589.654 6.104 1.872 4.56 3.147 3.757 4.992 3.757 7.218c0 4.039 2.467 5.76 6.476 7.219 2.585.92 3.445 1.574 3.445 2.583 0 .98-.84 1.545-2.354 1.545-1.875 0-4.965-.921-6.99-2.109l-.9 5.555C5.175 22.99 8.385 24 11.714 24c2.641 0 4.843-.624 6.328-1.813 1.664-1.305 2.525-3.236 2.525-5.732 0-4.128-2.524-5.851-6.591-7.305z"/>
                 </svg>
+                Pay with Card
+              </button>
+              <button class="payment-tabs__tab" type="button" data-tab="paddle">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 22c-5.523 0-10-4.477-10-10S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm-2-15v10l7-5-7-5z"/>
+                </svg>
+                Pay with Paddle
               </button>
             </div>
 
-            <form class="payment-form form js-form" id="form-payment-1" action="#">
-              <div class="form-legend">or Pay by Card</div>
+            <!-- Stripe Payment Section -->
+            <div class="payment-section js-payment-section is-active" data-section="stripe">
+              <div class="payment-info__buttons">
+                <button id="applepay-btn" class="applepay-btn" aria-label="Apple Pay" type="button">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="54" height="22" fill="none" viewBox="0 0 54 22">
+                    <path fill="#fff" d="M9.867 2.836c-.633.743-1.646 1.33-2.658 1.246-.127-1.005.369-2.072.949-2.732C8.791.586 9.898.042 10.795 0c.105 1.047-.306 2.072-.928 2.836Zm.917 1.445c-1.466-.084-2.72.827-3.417.827-.707 0-1.772-.785-2.932-.765-1.509.021-2.912.87-3.682 2.22-1.582 2.7-.411 6.698 1.118 8.896.75 1.088 1.646 2.281 2.827 2.24 1.118-.043 1.561-.723 2.912-.723 1.36 0 1.75.722 2.932.701 1.223-.02 1.994-1.088 2.742-2.176.855-1.236 1.203-2.44 1.224-2.502-.021-.02-2.363-.91-2.384-3.59-.021-2.24 1.846-3.307 1.93-3.37-1.054-1.549-2.7-1.716-3.27-1.758Zm8.47-3.036v16.317h2.553v-5.578h3.534c3.228 0 5.495-2.198 5.495-5.38s-2.225-5.359-5.41-5.359h-6.171Zm2.553 2.136h2.943c2.215 0 3.481 1.172 3.481 3.234 0 2.062-1.266 3.244-3.491 3.244h-2.933V3.381ZM35.5 17.688c1.603 0 3.09-.806 3.765-2.083h.053v1.957h2.363V9.441c0-2.355-1.899-3.873-4.82-3.873-2.712 0-4.716 1.539-4.79 3.653h2.3c.19-1.005 1.129-1.664 2.416-1.664 1.56 0 2.436.722 2.436 2.051v.9l-3.185.189c-2.964.177-4.568 1.381-4.568 3.474 0 2.114 1.656 3.517 4.03 3.517Zm.685-1.936c-1.36 0-2.225-.65-2.225-1.644 0-1.025.833-1.622 2.426-1.716l2.837-.178v.921c0 1.528-1.308 2.617-3.038 2.617ZM44.834 22c2.49 0 3.66-.942 4.683-3.8L54 5.726h-2.595l-3.006 9.64h-.053l-3.006-9.64h-2.669l4.325 11.88-.232.721c-.39 1.225-1.023 1.696-2.152 1.696-.2 0-.59-.021-.749-.042v1.957c.148.042.78.063.97.063Z" />
+                  </svg>
+                </button>
+              </div>
+
+              <form class="payment-form form js-form" id="form-payment-1" action="#">
+                <div class="form-legend">or Pay by Card</div>
 
               <input type="hidden" name="subject" value="Payment">
 
@@ -202,6 +220,73 @@
                 </div>
               </div>
             </form>
+            </div><!-- end Stripe section -->
+
+            <!-- Paddle Payment Section -->
+            <div class="payment-section js-payment-section" data-section="paddle">
+              <div class="paddle-checkout-container">
+                <div class="form-legend">Pay with Paddle</div>
+                
+                <div class="form-grid">
+                  <div class="form-row">
+                    <div class="form-input-wrapper">
+                      <label class="form-label" for="paddle-email-1">E-mail</label>
+                      <input class="form-field js-paddle-email" type="email" id="paddle-email-1" name="email" placeholder="e-mail" required>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Paddle Inline Checkout Container -->
+                <div id="paddle-checkout-container-1" class="paddle-checkout-frame"></div>
+                <div id="paddle-errors-1" class="form-error" role="alert"></div>
+
+                <div class="payments-list">
+                  <div class="payments-list__item">
+                    <img src="images/payments/https.png" width="54" height="54" alt="Secure connection">
+                  </div>
+
+                  <div class="payments-list__item">
+                    <img src="images/payments/ssl.png" width="54" height="54" alt="SSL">
+                  </div>
+
+                  <div class="payments-list__item">
+                    <img src="images/payments/visa.png" width="112" height="54" alt="Visa">
+                  </div>
+
+                  <div class="payments-list__item">
+                    <img src="images/payments/mastercard.png" width="110" height="54" alt="MasterCard">
+                  </div>
+
+                  <div class="payments-list__text">
+                    Money-Back Guarantee
+                  </div>
+                </div>
+
+                <div class="payment-form__footer">
+                  <div class="paddle-checkout-note">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    </svg>
+                    Secure payment powered by Paddle. VAT/Tax calculated automatically.
+                  </div>
+
+                  <label class="payment-form__terms-checkbox form-checkbox" for="paddle-agreements-1">
+                    <input class="form-checkbox__input js-agreements js-paddle-agreements" type="checkbox" name="agreements" id="paddle-agreements-1" checked required>
+                    <span>I agree with <a href="/privacy-policy.html">Privacy Policy</a>, <a href="/terms-of-services.html">Terms of Use</a> & <a href="/subscription-terms.html">Subscription Policy</a>
+                    </span>
+                  </label>
+
+                  <button class="button activate-button js-paddle-checkout-btn" type="button" data-container="paddle-checkout-container-1">
+                    Start 3-Day Free Trial
+                  </button>
+
+                  <div class="payment-form__footer-text">
+                    Monthly auto-renewable subscription.
+                    You can cancel your subscription at any time.
+                  </div>
+                </div>
+              </div>
+            </div><!-- end Paddle section -->
           </div>
 
           <div class="payment-info__about about-guarantee">
@@ -820,7 +905,9 @@
   <script src="scripts/swiper.min.js"></script>
   <!-- Stripe.js v3 -->
   <script src="https://js.stripe.com/v3"></script>
-  <script src="scripts/main.js?v=2"></script>
+  <!-- Paddle.js -->
+  <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
+  <script src="scripts/main.js?v=3"></script>
 </body>
 
 </html>
