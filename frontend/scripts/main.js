@@ -255,14 +255,18 @@ window.addEventListener('load', function () {
       return;
     }
     
+    // Ensure container is visible (Paddle can't render in hidden elements)
+    container.style.display = 'block';
+    container.style.minHeight = '450px';
+    
     try {
-      // Open Paddle checkout
+      // Open Paddle checkout - frameTarget must be a CSS selector
       Paddle.Checkout.open({
         items: [{ priceId: paddleConfig.priceId, quantity: 1 }],
         customer: email ? { email: email } : undefined,
         settings: {
           displayMode: 'inline',
-          frameTarget: containerId,
+          frameTarget: '#' + containerId,
           frameInitialHeight: 450,
           frameStyle: 'width: 100%; min-width: 312px; background-color: transparent; border: none;',
           theme: 'light',
