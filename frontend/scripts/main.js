@@ -221,10 +221,7 @@ window.addEventListener('load', function () {
             displayMode: 'inline',
             variant: 'one-page',
             theme: 'light',
-            locale: 'en',
-            frameTarget: 'paddle-checkout-container-1',
-            frameInitialHeight: '450',
-            frameStyle: 'width: 100%; min-width: 312px; background-color: transparent; border: none;'
+            locale: 'en'
           }
         }
       });
@@ -282,23 +279,7 @@ window.addEventListener('load', function () {
   
     // Wait for DOM to update
     await new Promise(resolve => setTimeout(resolve, 200));
-  
-    // Update Paddle settings to ensure frameTarget is correct
-    try {
-      Paddle.Update({
-        checkout: {
-          settings: {
-            displayMode: 'inline',
-            frameTarget: containerId,
-            frameInitialHeight: '450',
-            frameStyle: 'width: 100%; min-width: 312px; background-color: transparent; border: none;',
-          }
-        }
-      });
-    } catch (updateError) {
-      console.warn('Paddle.Update failed (may not be needed):', updateError);
-    }
-  
+    
     // Wait a bit more after update
     await new Promise(resolve => setTimeout(resolve, 100));
   
@@ -306,6 +287,12 @@ window.addEventListener('load', function () {
       Paddle.Checkout.open({
         items: [{ priceId: paddleConfig.priceId, quantity: 1 }],
         customer: email ? { email: email } : undefined,
+        settings: {
+          displayMode: 'inline',
+          frameTarget: containerId,
+          frameInitialHeight: '450',
+          frameStyle: 'width: 100%; min-width: 312px; background-color: transparent; border: none;',
+        },
         customData: {
           source: 'website',
         }
