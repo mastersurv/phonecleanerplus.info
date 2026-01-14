@@ -215,6 +215,13 @@ window.addEventListener('load', function () {
           } else if (event.name === 'checkout.error') {
             handlePaddleCheckoutError(event.data);
           }
+        },
+        checkout: {
+          settings: {
+            displayMode: 'overlay',
+            theme: 'light',
+            locale: 'en',
+          }
         }
       });
       
@@ -275,20 +282,10 @@ window.addEventListener('load', function () {
     await new Promise(resolve => setTimeout(resolve, 100));
     
     try {
-      // Open Paddle checkout - frameTarget is element ID without #
+      // Open Paddle checkout in overlay mode (more reliable than inline)
       Paddle.Checkout.open({
         items: [{ priceId: paddleConfig.priceId, quantity: 1 }],
         customer: email ? { email: email } : undefined,
-        settings: {
-          displayMode: 'inline',
-          frameTarget: containerId,
-          frameInitialHeight: 450,
-          frameStyle: 'width: 100%; min-width: 312px; background-color: transparent; border: none;',
-          theme: 'light',
-          locale: 'en',
-          allowLogout: false,
-          showAddDiscounts: true,
-        },
         customData: {
           source: 'website',
         }
