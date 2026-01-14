@@ -216,6 +216,12 @@ window.addEventListener('load', function () {
             handlePaddleCheckoutError(event.data);
           }
         },
+        settings: {
+          displayMode: 'inline',
+          frameTarget: 'paddle-checkout-frame',
+          frameInitialHeight: '450',
+          frameStyle: 'width: 100%; min-width: 312px; background-color: transparent; border: none;',
+        },
         checkout: {
           settings: {
             displayMode: 'inline',
@@ -288,12 +294,12 @@ window.addEventListener('load', function () {
       Paddle.Checkout.open({
         items: [{ priceId: paddleConfig.priceId, quantity: 1 }],
         customer: email ? { email: email } : undefined,
-        settings: {
-          displayMode: 'inline',
-          frameTarget: containerId,
-          frameInitialHeight: '450',
-          frameStyle: 'width: 100%; min-width: 312px; background-color: transparent; border: none;',
-        },
+        // settings: {
+        //   displayMode: 'inline',
+        //   frameTarget: containerId,
+        //   frameInitialHeight: '450',
+        //   frameStyle: 'width: 100%; min-width: 312px; background-color: transparent; border: none;',
+        // },
         customData: {
           source: 'website',
         }
