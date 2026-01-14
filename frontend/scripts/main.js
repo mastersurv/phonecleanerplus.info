@@ -216,16 +216,12 @@ window.addEventListener('load', function () {
             handlePaddleCheckoutError(event.data);
           }
         },
-        settings: {
-          displayMode: 'inline',
-          frameTarget: 'paddle-checkout-frame',
-          frameInitialHeight: '450',
-          frameStyle: 'width: 100%; min-width: 312px; background-color: transparent; border: none;',
-        },
         checkout: {
           settings: {
             displayMode: 'inline',
-            variant: 'one-page',
+            frameTarget: 'paddle-checkout-frame',
+            frameInitialHeight: '450',
+            frameStyle: 'width: 100%; min-width: 312px; background-color: transparent; border: none;',            variant: 'one-page',
             theme: 'light',
             locale: 'en'
           }
