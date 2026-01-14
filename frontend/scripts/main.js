@@ -250,23 +250,38 @@ window.addEventListener('load', function () {
     }
     
     const container = document.getElementById(containerId);
+    console.log('Looking for container:', containerId, 'Found:', container);
+    
     if (!container) {
       console.error('Paddle checkout container not found:', containerId);
       return;
     }
     
+    console.log('Container dimensions:', container.offsetWidth, 'x', container.offsetHeight);
+    console.log('Container visible:', container.offsetParent !== null);
+    
     // Ensure container is visible (Paddle can't render in hidden elements)
     container.style.display = 'block';
     container.style.minHeight = '450px';
     
+    // Also ensure parent section is visible
+    const parentSection = container.closest('.payment-section');
+    if (parentSection) {
+      parentSection.classList.add('is-active');
+      parentSection.style.display = 'block';
+    }
+    
+    // Wait for DOM to update before opening Paddle
+    await new Promise(resolve => setTimeout(resolve, 100));
+    
     try {
-      // Open Paddle checkout - frameTarget must be a CSS selector
+      // Open Paddle checkout - frameTarget is element ID without #
       Paddle.Checkout.open({
         items: [{ priceId: paddleConfig.priceId, quantity: 1 }],
         customer: email ? { email: email } : undefined,
         settings: {
           displayMode: 'inline',
-          frameTarget: '#' + containerId,
+          frameTarget: containerId,
           frameInitialHeight: 450,
           frameStyle: 'width: 100%; min-width: 312px; background-color: transparent; border: none;',
           theme: 'light',
