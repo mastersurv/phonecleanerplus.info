@@ -219,9 +219,12 @@ window.addEventListener('load', function () {
         checkout: {
           settings: {
             displayMode: 'inline',
-            frameTarget: 'paddle-checkout-container',
+            variant: 'one-page',
             theme: 'light',
             locale: 'en',
+            frameTarget: 'paddle-checkout-container-1',
+            frameInitialHeight: '450',
+            frameStyle: 'width: 100%; min-width: 312px; background-color: transparent; border: none;'
           }
         }
       });
@@ -290,12 +293,8 @@ window.addEventListener('load', function () {
         settings: {
           displayMode: 'inline',
           frameTarget: containerId,
-          frameInitialHeight: 450,
+          frameInitialHeight: '450',
           frameStyle: 'width: 100%; min-width: 312px; background-color: transparent; border: none;',
-          theme: 'light',
-          locale: 'en',
-          allowLogout: false,
-          showAddDiscounts: true,
         },
         customData: {
           source: 'website',
