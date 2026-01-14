@@ -268,8 +268,12 @@ window.addEventListener('load', function () {
     // Ensure container is visible and empty
     container.style.display = 'block';
     container.style.minHeight = '450px';
-    container.innerHTML = ''; // Clear any previous content
-  
+    container.style.width = '100%';
+
+    // Проверим что элемент действительно видим
+    const rect = container.getBoundingClientRect();
+    console.log('Container rect:', rect);
+
     // Also ensure parent section is visible
     const parentSection = container.closest('.payment-section');
     if (parentSection) {
@@ -278,10 +282,7 @@ window.addEventListener('load', function () {
     }
   
     // Wait for DOM to update
-    await new Promise(resolve => setTimeout(resolve, 200));
-    
-    // Wait a bit more after update
-    await new Promise(resolve => setTimeout(resolve, 100));
+    await new Promise(resolve => setTimeout(resolve, 300));
   
     try {
       Paddle.Checkout.open({
