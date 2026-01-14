@@ -218,7 +218,8 @@ window.addEventListener('load', function () {
         },
         checkout: {
           settings: {
-            displayMode: 'overlay',
+            displayMode: 'inline',
+            frameTarget: 'paddle-checkout-container',
             theme: 'light',
             locale: 'en',
           }
@@ -282,10 +283,20 @@ window.addEventListener('load', function () {
     await new Promise(resolve => setTimeout(resolve, 100));
     
     try {
-      // Open Paddle checkout in overlay mode (more reliable than inline)
+      // Open Paddle checkout - frameTarget is element ID without #
       Paddle.Checkout.open({
         items: [{ priceId: paddleConfig.priceId, quantity: 1 }],
         customer: email ? { email: email } : undefined,
+        settings: {
+          displayMode: 'inline',
+          frameTarget: containerId,
+          frameInitialHeight: 450,
+          frameStyle: 'width: 100%; min-width: 312px; background-color: transparent; border: none;',
+          theme: 'light',
+          locale: 'en',
+          allowLogout: false,
+          showAddDiscounts: true,
+        },
         customData: {
           source: 'website',
         }
