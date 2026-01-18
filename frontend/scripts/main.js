@@ -374,16 +374,42 @@ window.addEventListener('load', function () {
     });
   }
   
+  // Initialize Paddle Quick Pay buttons (Apple Pay / Google Pay - no email required)
+  function initPaddleQuickPayButtons() {
+    const buttons = document.querySelectorAll('.js-paddle-quick-pay');
+    
+    buttons.forEach(btn => {
+      btn.addEventListener('click', async function(e) {
+        e.preventDefault();
+        
+        const containerId = this.dataset.container;
+        const section = this.closest('.paddle-checkout-container');
+        const agreementCheckbox = section?.querySelector('.js-paddle-agreements');
+        
+        // Check agreement
+        if (agreementCheckbox && !agreementCheckbox.checked) {
+          alert('Please agree to the Terms of Service');
+          return;
+        }
+        
+        // Open Paddle checkout without email - Paddle will collect it
+        await openPaddleCheckout(containerId, null);
+      });
+    });
+  }
+  
   // Initialize Paddle on page load
   if (typeof Paddle !== 'undefined') {
     initPaddle();
     initPaddleCheckoutButtons();
+    initPaddleQuickPayButtons();
   } else {
     // Wait for Paddle.js to load
     window.addEventListener('load', function() {
       if (typeof Paddle !== 'undefined') {
         initPaddle();
         initPaddleCheckoutButtons();
+        initPaddleQuickPayButtons();
       }
     });
   }
