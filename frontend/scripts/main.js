@@ -381,8 +381,8 @@ window.addEventListener('load', function () {
     buttons.forEach(btn => {
       btn.addEventListener('click', async function(e) {
         e.preventDefault();
+        e.stopPropagation();
         
-        const containerId = this.dataset.container;
         const section = this.closest('.paddle-checkout-container');
         const agreementCheckbox = section?.querySelector('.js-paddle-agreements');
         
@@ -392,10 +392,45 @@ window.addEventListener('load', function () {
           return;
         }
         
-        // Open Paddle checkout without email - Paddle will collect it
-        await openPaddleCheckout(containerId, null);
+        // Open Paddle checkout in overlay mode (supports Apple Pay / Google Pay)
+        await openPaddleOverlayCheckout();
       });
     });
+  }
+  
+  // Open Paddle checkout in overlay mode (for Apple Pay / Google Pay)
+  async function openPaddleOverlayCheckout() {
+    const initialized = await initPaddle();
+    if (!initialized) {
+      alert('Payment system is not available. Please try again later.');
+      return;
+    }
+
+    if (!paddleConfig || !paddleConfig.priceId) {
+      console.error('Paddle price ID not configured');
+      return;
+    }
+
+    try {
+      console.log('Opening Paddle overlay checkout for Apple Pay / Google Pay');
+      
+      Paddle.Checkout.open({
+        items: [{ priceId: paddleConfig.priceId, quantity: 1 }],
+        settings: {
+          displayMode: 'overlay',
+          theme: 'light',
+          locale: 'en'
+        },
+        customData: {
+          source: 'website_quick_pay',
+        }
+      });
+
+      console.log('Paddle overlay checkout opened');
+    } catch (e) {
+      console.error('Failed to open Paddle overlay checkout:', e);
+      alert('Failed to open payment form. Please try again.');
+    }
   }
   
   // Initialize Paddle on page load

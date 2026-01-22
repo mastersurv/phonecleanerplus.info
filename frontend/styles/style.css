@@ -440,7 +440,8 @@ img {
 
 /* applepay-btn */
 
-.applepay-btn {
+.applepay-btn,
+.paddle-applepay-btn {
   position: relative;
   display: inline-flex;
   justify-content: center;
@@ -464,29 +465,34 @@ img {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-.applepay-btn svg {
+.applepay-btn svg,
+.paddle-applepay-btn svg {
   flex-shrink: 0;
   max-width: 100%;
   height: auto;
   fill: currentColor;
 }
 
-.applepay-btn:disabled {
+.applepay-btn:disabled,
+.paddle-applepay-btn:disabled {
   opacity: .5;
   cursor: default;
 }
 
-.applepay-btn:focus-visible:not(:disabled) {
+.applepay-btn:focus-visible:not(:disabled),
+.paddle-applepay-btn:focus-visible:not(:disabled) {
   outline: 2px solid #000;
   outline-offset: 2px;
 }
 
-.applepay-btn:focus:not(:focus-visible) {
+.applepay-btn:focus:not(:focus-visible),
+.paddle-applepay-btn:focus:not(:focus-visible) {
   outline: none;
 }
 
 @media (hover: hover) {
-  .applepay-btn:hover:not(:disabled) {
+  .applepay-btn:hover:not(:disabled),
+  .paddle-applepay-btn:hover:not(:disabled) {
     opacity: .8;
   }
 }
